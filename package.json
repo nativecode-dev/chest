@@ -1,5 +1,5 @@
 {
-  "bin": "./lib/index.js",
+  "bin": "./lib/cli.js",
   "description": "CHEST of me best tools, matey!",
   "dependencies": {
     "chalk": "^2.3.0"
@@ -8,20 +8,22 @@
     "@types/chalk": "^2.2.0",
     "@types/node": "^8.0.52",
     "bin-shebang": "^1.0.11",
+    "rimraf": "^2.6.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"
   },
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "./lib/cli.js",
   "name": "@beard/chest",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "prebuild": "rimraf lib",
     "postbuild": "bin-shebang"
   },
   "typings": "lib/index.d.ts",
-  "version": "1.1.1"
+  "version": "1.1.2"
 }

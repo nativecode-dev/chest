@@ -1,6 +1,0 @@
-* text=lf
-
-# Shell scripts
-*.js eol=lf
-*.sh eol=lf
-*.ts eol=lf
