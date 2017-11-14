@@ -1,0 +1,9 @@
+node_modules/
+src/
+
+*.log
+
+.npmignore
+tsconfig.json
+tslint.json
+yarn.lock
