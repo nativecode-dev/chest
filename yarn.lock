@@ -42,6 +42,10 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
+bin-shebang@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/bin-shebang/-/bin-shebang-1.0.11.tgz#296dd2b8229518f35db1a0aeaf663b0454b350c6"
+
 brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
