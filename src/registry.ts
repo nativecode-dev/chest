@@ -15,6 +15,7 @@ export interface NPM {
   repository?: string | { type: string, url: string }
   scripts?: Dictionary
   types?: string,
+  typeScriptVersion: string,
   typings?: string
   version: string
   workspace?: string[]
