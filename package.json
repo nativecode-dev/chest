@@ -1,0 +1,24 @@
+{
+  "description": "CHEST of me best tools, matey!",
+  "dependencies": {
+    "chalk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^8.0.52",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@beard/chest",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json"
+  },
+  "typings": "lib/index.d.ts",
+  "version": "1.0.0"
+}
