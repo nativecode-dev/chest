@@ -1,4 +1,7 @@
 {
+  "bin": {
+    "chest": "./lib/index.js"
+  },
   "description": "CHEST of me best tools, matey!",
   "dependencies": {
     "chalk": "^2.3.0"
@@ -20,5 +23,5 @@
     "build": "tsc --project tsconfig.json"
   },
   "typings": "lib/index.d.ts",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
