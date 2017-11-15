@@ -1,7 +1,6 @@
 import * as path from 'path'
 
-import { Files, NPM, Project, UpdaterType } from './Core'
-import { Registry } from 'src';
+import { Files, NPM, Project, Registry, UpdaterType } from './Core'
 
 export class Chest {
   public static async run(root: string, ...args: string[]): Promise<void> {

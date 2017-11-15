@@ -19,7 +19,7 @@
 
 It's a chest. With TypeScript inside.
 
-Actually, it's a set of tools to manage TypeScript projects, whether they are stand-alone or workspace-based (either [Yarn](https://yarnpkg.com) or [Lerna](https://lernajs.io).
+Actually, it's a set of tools to manage TypeScript projects, whether they are stand-alone or workspace-based (either [Yarn](https://yarnpkg.com) or [Lerna](https://lernajs.io)).
 
 # What Problems Get Solved
 
@@ -27,6 +27,36 @@ CHEST will...
 
 - Link `@types` dependencies as a `types` array in your `tsconfig.json`, explicitly listing your declaration dependencies.
 - Propogate desriptive `package.json` properties down to child projects if using [Yarn](https://yarnpkg.com) workspaces.
+
+# Getting Started
+
+## Command-Line
+
+If you plan on running `chest` from the command-line:
+
+```bash
+yarn global add @beard/chest
+chest
+```
+
+## Project Package
+
+If you prefer to install `chest` into a local project:
+
+```bash
+yarn add -D @beard/chest
+```
+
+Edit your `package.json` file script to perform a post-build action.
+
+```json
+{
+  scripts: {
+    "build": "...",
+    "postbuild": "chest"
+  }
+}
+```
 
 # Supported Project Management Tools
 
