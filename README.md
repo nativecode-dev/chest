@@ -4,10 +4,10 @@
 [![David](https://img.shields.io/david/dev/nativecode-dev/chest.svg?style=flat-square&label=devdeps)](https://www.npmjs.com/package/@beard/chest)
 
 [![Travis](https://img.shields.io/travis/nativecode-dev/chest/master.svg?style=flat-square&label=master)](https://travis-ci.org/nativecode-dev/chest)
-[![Coveralls github branch](https://img.shields.io/coveralls/github/nativecode-dev/chest/master.svg?style=flat-square&label=coverage)]()
+[![Coveralls branch](https://img.shields.io/coveralls/github/nativecode-dev/chest/master.svg?style=flat-square)](https://coveralls.io/github/nativecode-dev/chest)
 
 [![Travis](https://img.shields.io/travis/nativecode-dev/chest/develop.svg?style=flat-square&label=develop)](https://travis-ci.org/nativecode-dev/chest)
-[![Coveralls github branch](https://img.shields.io/coveralls/github/nativecode-dev/chest/develop.svg?style=flat-square&label=coverage)]()
+[![Coveralls branch](https://img.shields.io/coveralls/github/nativecode-dev/chest/develop.svg?style=flat-square)](https://coveralls.io/github/nativecode-dev/chest)
 
 # @beard/chest
 
