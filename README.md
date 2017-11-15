@@ -2,8 +2,8 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@beard/chest.svg?style=flat-square)](https://www.npmjs.com/package/@beard/chest)
 
-[![Travis](https://img.shields.io/travis/nativecode-dev/chest.svg?style=flat-square&label=master)](https://travis-ci.org/nativecode-dev/chest#master)
-[![Travis](https://img.shields.io/travis/nativecode-dev/chest.svg?style=flat-square&label=develop)](https://travis-ci.org/nativecode-dev/chest#develop)
+[![Travis](https://img.shields.io/travis/nativecode-dev/chest/master.svg?style=flat-square&label=master)](https://travis-ci.org/nativecode-dev/chest)
+[![Travis](https://img.shields.io/travis/nativecode-dev/chest/develop.svg?style=flat-square&label=develop)](https://travis-ci.org/nativecode-dev/chest)
 
 <p align="center">
   <img src="chest-temp.png">
