@@ -1,15 +1,29 @@
-import { Updater, Updaters } from './Interfaces'
+import { Dictionary, Updater, Updaters } from './Interfaces'
 
-const Registry: Updaters = {}
+export class Registry {
+  private static readonly registrations: Updaters = {}
 
-export function GetRegistered(name: string): Updater {
-  return Registry[name]
-}
+  public static add(name: string, updater: Updater): void {
+    this.registrations[name.toLowerCase()] = updater
+  }
 
-export function Register(name: string, updater: Updater): void {
-  Registry[name] = updater
-}
+  public static all(): Dictionary<Updater> {
+    return Object.assign({}, this.registrations)
+  }
 
-export function Registered(): string[] {
-  return Object.keys(Registry)
+  public static execute(root: string, ...args: string[]): Promise<void[]> {
+    return Promise.all(
+      args.map(arg => arg.toLowerCase())
+        .map(name => this.registrations[name].exec(root))
+    )
+  }
+
+  public static get(name: string): Updater {
+    const key = name.toLowerCase()
+    if (this.registrations[key]) {
+      return this.registrations[key]
+    }
+
+    throw new Error(`no registered updaters named ${name}`)
+  }
 }

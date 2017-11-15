@@ -1,14 +1,16 @@
 import * as cp from 'child_process'
 import * as path from 'path'
 
-import { Files, Log, Logger, NPM, Updater, Workspace } from './index'
+import { Files, Log, Logger, NPM, Project, Updater, UpdaterType } from './index'
 
 export abstract class UpdateScript implements Updater {
   protected readonly log: Log
   private readonly _name: string
+  private readonly _type: UpdaterType
 
-  constructor(name: string) {
+  constructor(name: string, type: UpdaterType) {
     this._name = name
+    this._type = type
     this.log = Logger(name)
   }
 
@@ -16,11 +18,15 @@ export abstract class UpdateScript implements Updater {
     return this._name
   }
 
+  public get type(): UpdaterType {
+    return this._type
+  }
+
   public exec(rootpath: string): Promise<void> {
     return Promise.resolve()
   }
 
-  public workspace(workspace: Workspace): Promise<void> {
+  public workspace(project: Project): Promise<void> {
     return Promise.resolve()
   }
 
@@ -34,14 +40,14 @@ export abstract class UpdateScript implements Updater {
     throw Error(`could not find 'package.json' in ${basepath}`)
   }
 
-  protected run(workspace: Workspace, command: string, ...args: string[]): Promise<void> {
+  protected run(project: Project, command: string, ...args: string[]): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.log.debug('run', workspace.name, command, ...args)
-      const child = cp.exec(`${command} ${args.join(' ')}`, { cwd: workspace.basepath }, error => {
+      this.log.debug('run', project.name, command, ...args)
+      const child = cp.exec(`${command} ${args.join(' ')}`, { cwd: project.path }, error => {
         if (error) this.log.error(error)
       })
-      child.stderr.on('data', data => this.args(workspace, process.stderr, data).map(lines => lines).forEach(args => this.log.error(...args)))
-      child.stdout.on('data', data => this.args(workspace, process.stdout, data).map(lines => lines).forEach(args => this.log.task(...args)))
+      child.stderr.on('data', data => this.args(project, process.stderr, data).map(lines => lines).forEach(args => this.log.error(...args)))
+      child.stdout.on('data', data => this.args(project, process.stdout, data).map(lines => lines).forEach(args => this.log.task(...args)))
       child.addListener('exit', (code: number, signal: string) => {
         if (code === 0) {
           resolve()
@@ -52,9 +58,9 @@ export abstract class UpdateScript implements Updater {
     })
   }
 
-  private args(workspace: Workspace, stream: NodeJS.WriteStream, data: string | Buffer): string[][] {
+  private args(project: Project, stream: NodeJS.WriteStream, data: string | Buffer): string[][] {
     const format = (lines: string[]): string[][] => {
-      return lines.filter(line => line.trim()).map(line => [workspace.name, '>', line])
+      return lines.filter(line => line.trim()).map(line => [project.name, '>', line])
     }
 
     if (data instanceof Buffer) {

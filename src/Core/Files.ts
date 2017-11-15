@@ -20,6 +20,10 @@ class InternalFiles {
     return basename.replace(extname, '')
   }
 
+  public join(...args: string[]): string {
+    return path.join(...args)
+  }
+
   public async json<T>(filepath: string): Promise<T> {
     if (await this.exists(filepath)) {
       const buffer = await this.readfile(filepath)
@@ -107,6 +111,7 @@ class InternalFiles {
 export interface Files {
   exists(filepath: string): Promise<boolean>
   extensionless(filename: string): string
+  join(...args: string[]): string
   json<T>(filepath: string): Promise<T>
   readfile(filepath: string): Promise<Buffer>
   listdirs(filepath: string): Promise<string[]>
