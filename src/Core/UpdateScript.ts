@@ -1,14 +1,14 @@
-import * as files from './files'
 import * as path from 'path'
-import { NPM, Updater, Workspace } from './interfaces'
+
+import { Files, Log, Logger, NPM, Updater, Workspace } from './index'
 
 export abstract class UpdateScript implements Updater {
-  protected readonly log: files.Log
+  protected readonly log: Log
   private readonly _name: string
 
   constructor(name: string) {
     this._name = name
-    this.log = files.Logger(name)
+    this.log = Logger(name)
   }
 
   public get name(): string {
@@ -26,8 +26,8 @@ export abstract class UpdateScript implements Updater {
   protected async npm<NPM>(basepath: string): Promise<NPM> {
     const filename = path.join(basepath, 'package.json')
 
-    if (await files.exists(filename)) {
-      return await files.json<NPM>(filename)
+    if (await Files.exists(filename)) {
+      return await Files.json<NPM>(filename)
     }
 
     throw Error(`could not find 'package.json' in ${basepath}`)
@@ -41,7 +41,7 @@ export abstract class UpdateScript implements Updater {
       })
       child.stderr.on('data', data => this.args(workspace, process.stderr, data).map(lines => lines).forEach(args => this.log.error(...args)))
       child.stdout.on('data', data => this.args(workspace, process.stdout, data).map(lines => lines).forEach(args => this.log.task(...args)))
-      child.addListener('exit', (code, signal) => {
+      child.addListener('exit', (code: number, signal: string) => {
         if (code === 0) {
           resolve()
         } else {
@@ -61,5 +61,4 @@ export abstract class UpdateScript implements Updater {
     }
     return format(data.replace('\r', '').split('\n'))
   }
-
 }

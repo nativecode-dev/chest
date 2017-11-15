@@ -1,10 +1,9 @@
-import * as files from '../files'
 import * as path from 'path'
-import { NPM, Register, Updater, Workspace } from '../registry'
-import { UpdateScript } from '../script'
 
-const ScriptName = files.noext(__filename)
-const log = files.Logger(ScriptName)
+import { Files, Logger, NPM, Register, Updater, UpdateScript, Workspace } from '../index'
+
+const ScriptName = Files.extensionless(__filename)
+const log = Logger(ScriptName)
 const prefix = '@types'
 
 interface Dependency {
@@ -35,7 +34,7 @@ class Script extends UpdateScript {
     target.repository = source.repository
 
     const filename = path.join(workspace.basepath, 'package.json')
-    await files.save(filename, target)
+    await Files.save(filename, target)
     this.log.task('updated package info', filename)
   }
 }

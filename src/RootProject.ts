@@ -8,7 +8,7 @@ export class RootProject {
 
   constructor(root: string) {
     this._root = root
-    this.files = new core.Files()
+    this.files = core.Files
     this.init = this.initialize()
   }
 

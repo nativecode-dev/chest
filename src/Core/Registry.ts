@@ -1,4 +1,4 @@
-import { Updater, Updaters } from './interfaces'
+import { Updater, Updaters } from './Interfaces'
 
 const Registry: Updaters = {}
 

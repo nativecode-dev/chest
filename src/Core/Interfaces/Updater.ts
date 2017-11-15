@@ -1,3 +1,5 @@
+import { Workspace } from './Workspace'
+
 export interface Updater {
   name: string
   exec(rootpath: string): Promise<void>
