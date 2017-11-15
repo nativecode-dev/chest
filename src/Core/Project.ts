@@ -1,3 +1,6 @@
+import { Files } from './Files'
+import { NPM } from './Interfaces'
+
 export class Project {
   private readonly _name: string
   private readonly _owner: Project
@@ -15,6 +18,10 @@ export class Project {
 
   public get owner(): Project {
     return this._owner
+  }
+
+  public get package(): Promise<NPM> {
+    return Files.json<NPM>(Files.join(this.path, 'package.json'))
   }
 
   public get path(): string {

@@ -1,10 +1,18 @@
 import 'mocha'
 
-import { expect } from 'chai'
+import * as chai from 'chai'
+import * as chaiAsPromised from 'chai-as-promised'
 import { Chest } from './Chest'
 import { Files } from './Core'
 
+const expect = chai.expect
+
 describe('when using RootProject to load a project', () => {
+
+  beforeEach(() => {
+    chai.should()
+    chai.use(chaiAsPromised)
+  })
 
   it('should load single npm project', async () => {
     const directory = Files.join(process.cwd(), 'testables', 'single')
@@ -21,7 +29,11 @@ describe('when using RootProject to load a project', () => {
     expect(projects[0].name).to.equal('simple-package')
     expect(projects[1].name).to.equal('simple-project')
     expect(projects[0].owner).to.not.equal(undefined)
-    expect((projects[0].owner || { name: 'invalid' }).name).to.equal('project-workspaces')
+  })
+
+  it('should throw error when single project does not exist', () => {
+    const directory = Files.join(process.cwd(), 'testables', 'nonexistant')
+    Chest.projects(directory).should.eventually.throw()
   })
 
 })

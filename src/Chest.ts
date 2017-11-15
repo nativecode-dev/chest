@@ -15,7 +15,7 @@ export class Chest {
 
     if (npm.private && npm.workspace) {
       return npm.workspace
-        .map(async workspaceRoot => await Chest.workspaces(project, workspaceRoot))
+        .map(workspaceRoot => Chest.workspaces(project, workspaceRoot))
         .reduce(async (previous: Promise<Project[]>, current: Promise<Project[]>): Promise<Project[]> => {
           return (await previous).concat(await current)
         }, Promise.resolve([]))
