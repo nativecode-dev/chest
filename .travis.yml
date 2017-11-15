@@ -6,3 +6,13 @@ node_js:
   - '6'
 os:
   - linux
+deploy:
+  provider: npm
+  email: support@nativecode.com
+  api_key:
+    secure: >-
+      EoY8os0mZH2U1SqZFDh5p5CoImh15kK1Ckap9/6WuNXHO+ZduuqRCkgI3/Q/xMlj9b+tmGDfrZ/dTxvXn+aIW+brGvqMETKHsWSdTRnfHCFV1qUpSb+I9h/oMqbljaapbqIIZRQWwbf0rMAUwdsD9F8Un/cTAjW3BrnL7UES2f62+3IAZWUbWkyfM973cuT88Vt6JqrAsHYbVKahacChrohT3pJarsGrMZ3713TQ1X1P2pgbheQYM+82puXNT3jTjp48rg6zBslSjR0ze1un3sUpTmmt8F/B4U9Gma20X9qDvOqPR3ej6Z5wvj/iI/07rDIJISFldJK2+RE8qSdILjEPvrF9OtmpLjpzaokj2JEhwX3hEYHXSu9Uhv7TqxmJYTrlLKTTJgzLu8PI5WgvU5WtfXjrSRLhz71taWVkijeCNUZYjvVSCOucDyi8w55B+zFwZfIgb6Uv8O3b5Rn+GGMlinWLreCgAQn2LqOswjXgk6LYG9Sk3DMGaILAmdxzVZ5yGM8tgg3nk4igQs8SpSRibpAaEeLi2HJfI4prGzvbKXZh+snPp7iPkDjTvHmKjH6fSfVZPwOGk+N5SRWj/v21LONxYGYejJIF/RgD35ILu/qMzz8Z8kT+Od2RJjwxatq1I2RcxLE4DCNCgkcv6MwQrL3z+hjPM2KlDFrBj/c=
+  on:
+    branche: master
+    tag: next
+    repo: nativecode-dev/chest
