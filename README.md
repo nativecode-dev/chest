@@ -51,7 +51,7 @@ Edit your `package.json` file script to perform a post-build action.
 
 ```json
 {
-  scripts: {
+  "scripts": {
     "build": "...",
     "postbuild": "chest"
   }
