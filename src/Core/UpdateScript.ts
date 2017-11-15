@@ -34,7 +34,7 @@ export abstract class UpdateScript implements Updater {
     const filename = path.join(basepath, 'package.json')
 
     if (await Files.exists(filename)) {
-      return await Files.json<NPM>(filename)
+      return Files.json<NPM>(filename)
     }
 
     throw Error(`could not find 'package.json' in ${basepath}`)
