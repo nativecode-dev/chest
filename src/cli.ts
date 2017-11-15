@@ -1,10 +1,9 @@
-import './actions'
+import './Actions'
 
 import * as path from 'path'
 
-import { Dictionary, Files, GetRegistered, Logger, Registered, Updater, Workspace } from './core'
+import { Dictionary, Files, GetRegistered, Logger, Registered, Updater, Workspace } from './Core'
 
-const files = new Files()
 const log = Logger('scripts')
 
 const scripts = (command: string, ...args: string[]): Updater[] => {
@@ -31,7 +30,7 @@ const workspaces = async (): Promise<Workspace[]> => {
     filepath: string
   }
 
-  const packages = await files.listdirs(path.join(process.cwd(), 'packages'))
+  const packages = await Files.listdirs(path.join(process.cwd(), 'packages'))
 
   const promises = packages.map(async (dir: string): Promise<Workspace> => {
     const available: Config[] = []
@@ -39,7 +38,7 @@ const workspaces = async (): Promise<Workspace[]> => {
 
     await Promise.all(CONFIGFILES.map(config => path.join(dir, config))
       .map(async configfile => {
-        if (await files.exists(configfile)) {
+        if (await Files.exists(configfile)) {
           available.push({
             filename: path.basename(configfile),
             filepath: path.dirname(configfile),

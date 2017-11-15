@@ -1,3 +1,4 @@
+import * as cp from 'child_process'
 import * as path from 'path'
 
 import { Files, Log, Logger, NPM, Updater, Workspace } from './index'

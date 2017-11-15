@@ -1,5 +1,5 @@
-import * as core from './core'
 import * as path from 'path'
+import * as core from './Core'
 
 export class RootProject {
   private readonly _root: string
