@@ -1,5 +1,5 @@
-export * from './actions'
-export * from './interfaces'
+export * from './Actions'
+export * from './Interfaces'
 
 export * from './Files'
 export * from './Logger'
