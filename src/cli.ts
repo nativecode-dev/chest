@@ -2,10 +2,10 @@ import './actions'
 
 import * as path from 'path'
 
-import * as files from './files'
-import { Dictionary, GetRegistered, Registered, Updater, Workspace } from './registry'
+import { Dictionary, Files, GetRegistered, Logger, Registered, Updater, Workspace } from './core'
 
-const log = files.Logger('scripts')
+const files = new Files()
+const log = Logger('scripts')
 
 const scripts = (command: string, ...args: string[]): Updater[] => {
   switch (command.toLowerCase()) {
