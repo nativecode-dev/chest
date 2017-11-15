@@ -4,6 +4,8 @@ src/
 *.log
 
 .npmignore
+.travis.yml
+mocha.opts
 tsconfig.json
 tslint.json
 yarn.lock
