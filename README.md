@@ -18,7 +18,7 @@ It's a chest. With TypeScript inside.
 
 Actually, it's a set of tools to manage TypeScript projects, whether they are stand-alone or workspace-based (either [Yarn](https://yarnpkg.com) or [Lerna](https://lernajs.io).
 
-# What Problems Does Get Solved
+# What Problems Get Solved
 
 CHEST will...
 
