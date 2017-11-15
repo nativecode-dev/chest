@@ -36,4 +36,9 @@ describe('when using RootProject to load a project', () => {
     Chest.projects(directory).should.eventually.throw()
   })
 
+  it('should throw error when workspace project has no child projects', () => {
+    const directory = Files.join(process.cwd(), 'testables', 'workspaces-invalid')
+    Chest.projects(directory).should.eventually.throw()
+  })
+
 })
