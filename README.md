@@ -1,9 +1,12 @@
-# @beard/chest
-
-[![npm (scoped)](https://img.shields.io/npm/v/@beard/chest.svg?style=flat-square)](https://www.npmjs.com/package/@beard/chest)
+[![npm](https://img.shields.io/npm/v/@beard/chest.svg?style=flat-square&label=@beard/chest)](https://www.npmjs.com/package/@beard/chest)
+[![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)]()
+[![David](https://img.shields.io/david/nativecode-dev/chest.svg?style=flat-square&label=deps)](https://www.npmjs.com/package/@beard/chest)
+[![David](https://img.shields.io/david/dev/nativecode-dev/chest.svg?style=flat-square&label=devdeps)](https://www.npmjs.com/package/@beard/chest)
 
 [![Travis](https://img.shields.io/travis/nativecode-dev/chest/master.svg?style=flat-square&label=master)](https://travis-ci.org/nativecode-dev/chest)
 [![Travis](https://img.shields.io/travis/nativecode-dev/chest/develop.svg?style=flat-square&label=develop)](https://travis-ci.org/nativecode-dev/chest)
+
+# @beard/chest
 
 <p align="center">
   <img src="chest-temp.png">
@@ -12,6 +15,20 @@
 # WTF
 
 It's a chest. With TypeScript inside.
+
+Actually, it's a set of tools to manage TypeScript projects, whether they are stand-alone or workspace-based (either [Yarn](https://yarnpkg.com) or [Lerna](https://lernajs.io).
+
+# What Problems Does Get Solved
+
+CHEST will...
+
+- Link `@types` dependencies as a `types` array in your `tsconfig.json`, explicitly listing your declaration dependencies.
+- Propogate desriptive `package.json` properties down to child projects if using [Yarn](https://yarnpkg.com) workspaces.
+
+# Supported Project Management Tools
+
+- [Yarn](https://yarnpkg.com) 1.3.2+
+- [Lerna](https://lernajs.io) 2.0+
 
 # License
 © 2017 NativeCode Development <support@nativecode.com>
