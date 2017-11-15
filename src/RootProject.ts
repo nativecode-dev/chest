@@ -25,9 +25,7 @@ export class RootProject {
 
     const npm = await this.files.json<core.NPM>(npmfile)
     if (npm.workspace) {
-      
     } else {
-      core.
     }
   }
 }
