@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "chalk": "*"
+  },
+  "description": "invalid workspace project",
+  "devDependencies": {
+    "@types/chalk": "*"
+  },
+  "name": "project-single",
+  "version": "1.0.0",
+  "workspace": [
+    "packages/*"
+  ]
+}

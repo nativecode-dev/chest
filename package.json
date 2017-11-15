@@ -1,29 +1,63 @@
 {
-  "bin": "./lib/cli.js",
+  "name": "@beard/chest",
   "description": "CHEST of me best tools, matey!",
+  "bin": "./lib/CLI.js",
+  "license": "MIT",
+  "main": "./lib/CLI.js",
+  "typings": "./lib/index.d.ts",
+  "version": "2.0.0-alpha-1",
   "dependencies": {
     "chalk": "^2.3.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/chai-as-promised": "^7.1.0",
     "@types/chalk": "^2.2.0",
+    "@types/mocha": "^2.2.44",
     "@types/node": "^8.0.52",
     "bin-shebang": "^1.0.11",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.1",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
     "ts-node": "^3.3.0",
+    "tsconfig-paths": "^2.3.0",
     "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.1"
   },
-  "license": "MIT",
-  "main": "./lib/cli.js",
-  "name": "@beard/chest",
+  "nyc": {
+    "all": true,
+    "exclude": [
+      "src/**/*.spec.ts",
+      "src/CLI.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "sourceMap": true
+  },
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nativecode-dev/chest"
+  },
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "lint": "tslint src/**/*.ts",
     "prebuild": "rimraf lib",
-    "postbuild": "bin-shebang"
-  },
-  "typings": "lib/index.d.ts",
-  "version": "1.1.2"
+    "postbuild": "bin-shebang && yarn run lint",
+    "test": "cross-env NODE_ENV=test nyc mocha --opts mocha.opts",
+    "pretest": "yarn run build",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  }
 }

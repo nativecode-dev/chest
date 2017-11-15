@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "chalk": "*"
+  },
+  "description": "simple package",
+  "devDependencies": {
+    "@types/chalk": "*"
+  },
+  "name": "simple-package",
+  "version": "1.0.0"
+}

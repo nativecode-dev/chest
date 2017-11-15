@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "declaration": true,
     "diagnostics": true,
     "emitDecoratorMetadata": true,
@@ -19,7 +19,6 @@
     "outDir": "lib",
     "pretty": true,
     "removeComments": true,
-    "rootDir": "./src",
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,

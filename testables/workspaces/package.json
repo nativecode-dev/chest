@@ -1,0 +1,10 @@
+{
+  "description": "project with workspaces",
+  "name": "project-workspaces",
+  "private": true,
+  "workspace": [
+    "packages/*",
+    "projects/*"
+  ],
+  "version": "1.0.0"
+}
