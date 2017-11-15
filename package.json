@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "./lib/CLI.js",
   "typings": "./lib/index.d.ts",
-  "version": "2.0.0",
+  "version": "2.0.0-alpha-1",
   "dependencies": {
     "chalk": "^2.3.0"
   },
@@ -32,7 +32,8 @@
   "nyc": {
     "all": true,
     "exclude": [
-      "src/**/*.spec.ts"
+      "src/**/*.spec.ts",
+      "src/CLI.ts"
     ],
     "extension": [
       ".ts"

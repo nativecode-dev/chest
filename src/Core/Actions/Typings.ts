@@ -19,7 +19,7 @@ interface Dependency {
  **/
 class Script extends UpdateScript {
   constructor() {
-    super(ScriptName, UpdaterType.Projects)
+    super(ScriptName, UpdaterType.Root)
   }
 
   public async exec(rootpath: string): Promise<void> {
@@ -34,9 +34,13 @@ class Script extends UpdateScript {
       const typings = dependencies.reduce((previous, current) => previous.concat(current.filter(c => !!c.typings)), [])
 
       tsconfig.compilerOptions.types = typings.map(typing => typing.npmname).sort()
-      await Files.save(tsconfigfile, tsconfig)
 
-      this.log.task('updated types', tsconfigfile)
+      if (this.testing) {
+        this.log.task('updated types', tsconfigfile, tsconfig)
+      } else {
+        await Files.save(tsconfigfile, tsconfig)
+        this.log.task('updated types', tsconfigfile)
+      }
     }
   }
 

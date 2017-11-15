@@ -18,6 +18,11 @@ export abstract class UpdateScript implements Updater {
     return this._name
   }
 
+  public get testing(): boolean {
+    const env = process.env.NODE_ENV || ''
+    return ['test', 'testing'].some(value => value === env.toLowerCase())
+  }
+
   public get type(): UpdaterType {
     return this._type
   }

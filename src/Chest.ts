@@ -1,9 +1,26 @@
 import * as path from 'path'
 
-import { Files, NPM, Project } from './Core'
+import { Files, NPM, Project, UpdaterType } from './Core'
+import { Registry } from 'src';
 
 export class Chest {
-  public static async projects(root: string): Promise<Project[]> {
+  public static async run(root: string, ...args: string[]): Promise<void> {
+    const project = await Chest.project(root)
+    const projects = await Chest.projects(project)
+    const updaters = Registry.all()
+
+    Object.keys(updaters).forEach(async name => {
+      const updater = updaters[name]
+
+      if (updater.type === UpdaterType.Root) {
+        await updater.exec(root)
+      } else {
+        await Promise.all(projects.map(child => updater.workspace(child)))
+      }
+    })
+  }
+
+  public static async project(root: string): Promise<Project> {
     const npmfile = path.join(root, 'package.json')
 
     if (await Files.exists(npmfile) === false) {
@@ -11,7 +28,12 @@ export class Chest {
     }
 
     const npm = await Files.json<NPM>(npmfile)
-    const project = new Project(npm.name, root)
+    return new Project(npm.name, root)
+  }
+
+  public static async projects(owner: Project): Promise<Project[]> {
+    const project = await Chest.project(owner.path)
+    const npm = await project.package
 
     if (npm.private && npm.workspace) {
       return npm.workspace.map(workspaceRoot => Chest.workspaces(project, workspaceRoot))
