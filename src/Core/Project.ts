@@ -2,6 +2,8 @@ import { Files } from './Files'
 import { NPM } from './Interfaces'
 
 export class Project {
+  public static InvalidProject: Project = new Project('invalid', 'invalid')
+
   private readonly _name: string
   private readonly _owner: Project
   private readonly _path: string

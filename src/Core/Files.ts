@@ -55,6 +55,18 @@ class InternalFiles {
     return stats.filter(stat => stat.file).map(stat => stat.filename)
   }
 
+  public mkdir(filepath: string): Promise<void> {
+    return new Promise<void>(async (resolve, reject) => {
+      fs.mkdir(filepath, (error: NodeJS.ErrnoException) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve()
+        }
+      })
+    })
+  }
+
   public async save<T>(filepath: string, data: T): Promise<void> {
     await this.writefile(filepath, JSON.stringify(data, null, 2))
   }
@@ -116,6 +128,7 @@ export interface Files {
   readfile(filepath: string): Promise<Buffer>
   listdirs(filepath: string): Promise<string[]>
   listfiles(filepath: string): Promise<string[]>
+  mkdir(filepath: string): Promise<void>
   save<T>(filepath: string, data: T): Promise<void>
   statfile(filepath: string): Promise<fs.Stats>
   statfiles(filepath: string): Promise<Stat[]>

@@ -1,8 +1,10 @@
 import * as path from 'path'
 
-import { Files, NPM, Project, Registry, UpdaterType } from './Core'
+import { Files, Log, Logger, NPM, Project, Registry, UpdaterType } from './Core'
 
 export class Chest {
+  private static readonly Log: Log = Logger('chest')
+
   public static async run(root: string, ...args: string[]): Promise<void> {
     const project = await Chest.project(root)
     const projects = await Chest.projects(project)
@@ -23,7 +25,8 @@ export class Chest {
     const npmfile = path.join(root, 'package.json')
 
     if (await Files.exists(npmfile) === false) {
-      throw new Error(`failed to find ${npmfile} in ${root}`)
+      Chest.Log.error(new Error(`failed to find ${npmfile} in ${root}`))
+      return Project.InvalidProject
     }
 
     const npm = await Files.json<NPM>(npmfile)

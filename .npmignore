@@ -1,4 +1,5 @@
 .nyc_output/
+artifacts/
 node_modules/
 src/
 testables/
