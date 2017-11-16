@@ -1,4 +1,5 @@
 .nyc_output/
+artifacts/
 node_modules/
 src/
 testables/
@@ -7,6 +8,7 @@ testables/
 
 .npmignore
 .travis.yml
+chest-temp.png
 mocha.opts
 tsconfig.json
 tslint.json

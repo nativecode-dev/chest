@@ -4,7 +4,7 @@ import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
 
 import { Chest } from './Chest'
-import { Files, Registry } from './Core'
+import { Files, Project, Registry } from './Core'
 
 const expect = chai.expect
 
@@ -35,9 +35,9 @@ describe('when using RootProject to load a project', () => {
     expect(projects[0].owner).to.not.equal(undefined)
   })
 
-  it('should throw error when single project does not exist', async () => {
+  it('should return static InvalidProject when single project does not exist', async () => {
     const directory = Files.join(process.cwd(), 'testables', 'nonexistant')
-    Chest.project(directory).then(project => Chest.projects(project).should.eventually.throw())
+    Chest.project(directory).then(project => Chest.projects(project).should.eventually.equal(Project.InvalidProject))
   })
 
   it('should throw error when workspace project has no child projects', async () => {
@@ -45,14 +45,16 @@ describe('when using RootProject to load a project', () => {
     Chest.project(directory).then(project => Chest.projects(project).should.eventually.throw())
   })
 
-  it('should run scripts for single project', () => {
+  it('should run scripts for single project', (done) => {
     const directory = Files.join(process.cwd(), 'testables', 'single')
-    Chest.run(directory, ...Object.keys(Registry.all()))
+    const args = Object.keys(Registry.all())
+    Chest.run(directory, ...args).then(() => done())
   })
 
-  it('should run scripts for workspace project', () => {
+  it('should run scripts for workspace project', (done) => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces')
-    Chest.run(directory, ...Object.keys(Registry.all()))
+    const args = Object.keys(Registry.all())
+    Chest.run(directory, ...args).then(() => done())
   })
 
 })

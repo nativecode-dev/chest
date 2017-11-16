@@ -11,6 +11,10 @@ export class Registry {
     return Object.assign({}, this.registrations)
   }
 
+  public static contains(name: string): boolean {
+    return this.registrations[name.toLowerCase()] !== undefined
+  }
+
   public static execute(root: string, ...args: string[]): Promise<void[]> {
     return Promise.all(
       args.map(arg => arg.toLowerCase())
@@ -20,10 +24,15 @@ export class Registry {
 
   public static get(name: string): Updater {
     const key = name.toLowerCase()
+
     if (this.registrations[key]) {
       return this.registrations[key]
     }
 
     throw new Error(`no registered updaters named ${name}`)
+  }
+
+  public static names(): string[] {
+    return Object.keys(this.registrations)
   }
 }
