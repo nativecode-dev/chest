@@ -7,7 +7,7 @@ import { Files } from './Files'
 
 const expect = chai.expect
 
-describe('', () => {
+describe('when working with files', () => {
 
   before(async () => {
     const artifacts = Files.join(process.cwd(), 'artifacts')
@@ -21,7 +21,7 @@ describe('', () => {
 
   it('should write file', () => {
     const filename = Files.join(process.cwd(), 'artifacts', 'test.json')
-    Files.writefile(filename, {}).should.eventually.not.throw()
+    return Files.writefile(filename, {})
   })
 
 })

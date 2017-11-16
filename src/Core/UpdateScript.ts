@@ -48,11 +48,14 @@ export abstract class UpdateScript implements Updater {
   protected run(project: Project, command: string, ...args: string[]): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.log.debug('run', project.name, command, ...args)
+
       const child = cp.exec(`${command} ${args.join(' ')}`, { cwd: project.path }, error => {
         if (error) this.log.error(error)
       })
+
       child.stderr.on('data', data => this.args(project, process.stderr, data).map(lines => lines).forEach(args => this.log.error(...args)))
       child.stdout.on('data', data => this.args(project, process.stdout, data).map(lines => lines).forEach(args => this.log.task(...args)))
+
       child.addListener('exit', (code: number, signal: string) => {
         if (code === 0) {
           resolve()

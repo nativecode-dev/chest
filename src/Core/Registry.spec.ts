@@ -1,14 +1,12 @@
 import 'mocha'
 
-import * as chai from 'chai'
-import * as chaiAsPromised from 'chai-as-promised'
+import { expect } from 'chai'
 
 import { Files } from './Files'
 import { UpdaterType } from './Interfaces'
 import { Registry } from './Registry'
 import { UpdateScript } from './UpdateScript'
 
-const expect = chai.expect
 const ScriptName = Files.extensionless(__filename)
 const RootScriptName = `${ScriptName}-root`
 const ProjectsScriptName = `${ScriptName}-projects`
@@ -25,12 +23,7 @@ class DoesNothingGoesNowhereProjects extends UpdateScript {
   }
 }
 
-describe('', () => {
-
-  beforeEach(() => {
-    chai.should()
-    chai.use(chaiAsPromised)
-  })
+describe('when using the script registry', () => {
 
   it('should return registered script names', () => {
     expect(Registry.names().length).to.be.gt(0)
@@ -44,7 +37,6 @@ describe('', () => {
   })
 
   it('should throw error when calling "get" and script does not exist', () => {
-    expect(() => Registry.get('invalid')).to.throw(Error)
+    expect(() => Registry.get('invalid')).to.throw()
   })
-
 })
