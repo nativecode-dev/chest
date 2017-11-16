@@ -35,26 +35,29 @@ describe('when using RootProject to load a project', () => {
     expect(projects[0].owner).to.not.equal(undefined)
   })
 
-  it('should return static InvalidProject when single project does not exist', async () => {
+  it('should return static InvalidProject when single project does not exist', () => {
     const directory = Files.join(process.cwd(), 'testables', 'nonexistant')
-    Chest.project(directory).then(project => Chest.projects(project).should.eventually.equal(Project.InvalidProject))
+
+    return Chest.project(directory).then(project => expect(project).to.equal(Project.InvalidProject))
   })
 
-  it('should throw error when workspace project has no child projects', async () => {
+  it('should throw error when workspace project has no child projects', () => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces-invalid')
-    Chest.project(directory).then(project => Chest.projects(project).should.eventually.throw())
+    return Chest.project(directory).then(async project => {
+      const projects = await Chest.projects(project)
+      expect(projects).to.deep.equal([Project.InvalidProject])
+    })
   })
 
-  it('should run scripts for single project', (done) => {
+  it('should run scripts for single project', () => {
     const directory = Files.join(process.cwd(), 'testables', 'single')
     const args = Object.keys(Registry.all())
-    Chest.run(directory, ...args).then(() => done())
+    return Chest.run(directory, ...args)
   })
 
-  it('should run scripts for workspace project', (done) => {
+  it('should run scripts for workspace project', () => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces')
     const args = Object.keys(Registry.all())
-    Chest.run(directory, ...args).then(() => done())
+    return Chest.run(directory, ...args)
   })
-
 })

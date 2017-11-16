@@ -25,12 +25,17 @@ class Script extends UpdateScript {
   public async exec(rootpath: string): Promise<void> {
     const tsconfigfile = path.join(rootpath, 'tsconfig.json')
     const packagedir = path.join(rootpath, 'node_modules')
+    this.log.debug('exec', this.name, rootpath, packagedir)
 
     if (await Files.exists(tsconfigfile) && await Files.exists(packagedir)) {
       const packagedirs = await Files.listdirs(packagedir)
       const tsconfig = await Files.json<any>(tsconfigfile)
 
-      const dependencies = await Promise.all(packagedirs.map(async packagedir => await this.map(packagedir)))
+      const dependencies = await Promise.all(packagedirs.map(packagedir => {
+        this.log.debug('dependencies', packagedir)
+        return this.dependencies(packagedir)
+      }))
+
       const typings = dependencies.reduce((previous, current) => previous.concat(current.filter(c => !!c.typings)), [])
 
       tsconfig.compilerOptions.types = typings.map(typing => typing.npmname).sort()
@@ -44,13 +49,13 @@ class Script extends UpdateScript {
     }
   }
 
-  private async map(packagedir: string): Promise<Dependency[]> {
+  private async dependencies(packagedir: string): Promise<Dependency[]> {
     const dirname = path.basename(packagedir)
 
     if (dirname[0] === '@') {
       const scopedirs = await Files.listdirs(packagedir)
 
-      return await Promise.all(scopedirs
+      return Promise.all(scopedirs
         .map(scope => [scope, path.join(scope, 'package.json')])
         .map(async ([scope, scopepath]): Promise<Dependency> => {
           const npm = await Files.json<NPM>(path.join(scope, 'package.json'))

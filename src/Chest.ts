@@ -25,7 +25,7 @@ export class Chest {
     const npmfile = path.join(root, 'package.json')
 
     if (await Files.exists(npmfile) === false) {
-      Chest.Log.error(new Error(`failed to find ${npmfile} in ${root}`))
+      Chest.Log.error(new Error(`failed to find ${npmfile} in [${root}]`))
       return Project.InvalidProject
     }
 
@@ -36,6 +36,7 @@ export class Chest {
   public static async projects(owner: Project): Promise<Project[]> {
     const project = await Chest.project(owner.path)
     const npm = await project.package
+    this.Log.debug('project', project.name)
 
     if (npm.private && npm.workspace) {
       return npm.workspace.map(workspaceRoot => Chest.workspaces(project, workspaceRoot))
@@ -49,15 +50,18 @@ export class Chest {
     workspaceRoot = Files.join(owner.path, workspaceRoot.substring(0, workspaceRoot.indexOf('/*')))
 
     if (await Files.exists(workspaceRoot) === false) {
-      throw new Error(`failed to find workspace ${workspaceRoot} in ${owner.name}`)
+      Chest.Log.error(new Error(`[workspace] failed to find ${workspaceRoot} in [${owner.name}]`))
+      return [Project.InvalidProject]
     }
 
     const projects = await Files.listdirs(workspaceRoot)
 
-    return Promise.all(projects.map(async project => {
-      const npmfile = path.join(project, 'package.json')
+    return Promise.all(projects.map(async projectPath => {
+      const npmfile = path.join(projectPath, 'package.json')
       const npm = await Files.json<NPM>(npmfile)
-      return new Project(npm.name, project, owner)
+      const project = new Project(npm.name, projectPath, owner)
+      this.Log.debug('project.workspace', owner.name, '->', project.name)
+      return project
     }))
   }
 }
