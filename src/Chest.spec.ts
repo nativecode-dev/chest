@@ -45,14 +45,14 @@ describe('when using RootProject to load a project', () => {
     Chest.project(directory).then(project => Chest.projects(project).should.eventually.throw())
   })
 
-  it('should run scripts for single project', () => {
+  it('should run scripts for single project', (done) => {
     const directory = Files.join(process.cwd(), 'testables', 'single')
-    Chest.run(directory, ...Object.keys(Registry.all()))
+    Chest.run(directory, ...Object.keys(Registry.all())).then(() => done())
   })
 
-  it('should run scripts for workspace project', () => {
+  it('should run scripts for workspace project', (done) => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces')
-    Chest.run(directory, ...Object.keys(Registry.all()))
+    Chest.run(directory, ...Object.keys(Registry.all())).then(() => done())
   })
 
 })

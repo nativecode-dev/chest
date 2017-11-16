@@ -24,8 +24,8 @@ class Script extends UpdateScript {
   }
 
   public async workspace(project: Project): Promise<void> {
-    const source = await project.package
-    const target = await project.owner.package
+    const source = await project.owner.package
+    const target = await project.package
 
     target.author = source.author
     target.bugs = source.bugs
@@ -37,7 +37,7 @@ class Script extends UpdateScript {
     const filename = path.join(project.path, 'package.json')
 
     if (this.testing) {
-      this.log.task('updated package info', filename, target)
+      this.log.task('updated package info', filename, JSON.stringify(target, null, 2))
     } else {
       await Files.save(filename, target)
       this.log.task('updated package info', filename)

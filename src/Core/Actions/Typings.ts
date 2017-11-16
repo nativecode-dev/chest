@@ -36,7 +36,7 @@ class Script extends UpdateScript {
       tsconfig.compilerOptions.types = typings.map(typing => typing.npmname).sort()
 
       if (this.testing) {
-        this.log.task('updated types', tsconfigfile, tsconfig)
+        this.log.task('updated types', tsconfigfile, JSON.stringify(tsconfig, null, 2))
       } else {
         await Files.save(tsconfigfile, tsconfig)
         this.log.task('updated types', tsconfigfile)
