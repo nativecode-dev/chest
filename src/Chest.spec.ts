@@ -49,13 +49,13 @@ describe('when using RootProject to load a project', () => {
     })
   })
 
-  it('should run scripts for single project', (done) => {
+  it('should run scripts for single project', () => {
     const directory = Files.join(process.cwd(), 'testables', 'single')
     const args = Object.keys(Registry.all())
     return Chest.run(directory, ...args)
   })
 
-  it('should run scripts for workspace project', (done) => {
+  it('should run scripts for workspace project', () => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces')
     const args = Object.keys(Registry.all())
     return Chest.run(directory, ...args)
