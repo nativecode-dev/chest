@@ -38,10 +38,39 @@ class Script extends UpdateScript {
 
     const tsconfig = await project.json<TsConfig>('tsconfig.json')
     tsconfig.compilerOptions.types = await this.gatherTypeDefinitions(project)
+
+    if (this.testing) {
+      this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
+    } else {
+      await project.save('tsconfig.json', tsconfig)
+      this.log.task('tsconfig')
+    }
   }
 
-  private gatherTypeDefinitions(project: Project): Promise<string[]> {
-    return Promise.resolve([])
+  private async gatherTypeDefinitions(project: Project): Promise<string[]> {
+    const npm = await project.package
+    let dependencies: string[] = []
+
+    if (npm.dependencies) {
+      dependencies = dependencies.concat(Object.keys(npm.dependencies))
+    }
+
+    if (npm.devDependencies) {
+      dependencies = dependencies.concat(Object.keys(npm.devDependencies))
+    }
+
+    const modulesPath = Files.join(project.path, 'node_modules')
+
+    return Promise.all(dependencies.map(async dependency => {
+      const dependencyPath = Files.join(modulesPath, dependency)
+      if (await Files.exists(dependencyPath)) {
+        const npm = await Files.json<NPM>(dependencyPath)
+        if (npm.types || npm.typings) {
+          return dependency
+        }
+      }
+      return ''
+    })).then(values => values.filter(value => value))
   }
 }
 

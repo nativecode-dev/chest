@@ -53,8 +53,17 @@ export abstract class UpdateScript implements Updater {
         if (error) this.log.error(error)
       })
 
-      child.stderr.on('data', data => this.args(project, process.stderr, data).map(lines => lines).forEach(args => this.log.error(...args)))
-      child.stdout.on('data', data => this.args(project, process.stdout, data).map(lines => lines).forEach(args => this.log.task(...args)))
+      child.stderr.on('data', data =>
+        this.args(project, process.stderr, data)
+          .map(lines => lines)
+          .forEach(args => this.log.error(...args))
+      )
+
+      child.stdout.on('data', data =>
+        this.args(project, process.stdout, data)
+          .map(lines => lines)
+          .forEach(args => this.log.task(...args))
+      )
 
       child.addListener('exit', (code: number, signal: string) => {
         if (code === 0) {

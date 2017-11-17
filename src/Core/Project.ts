@@ -68,6 +68,10 @@ export class Project {
     return Files.json<T>(Files.join(this.path, filename))
   }
 
+  public save<T>(filename: string, data: T): Promise<void> {
+    return Files.save(Files.join(this.path, filename), data)
+  }
+
   private async loadChildProjects(npm: NPM): Promise<Project> {
     const lernafile = Files.join(this.path, 'lerna.json')
     if (await Files.exists(lernafile)) {
