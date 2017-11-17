@@ -41,7 +41,7 @@ class Script extends UpdateScript {
       const declarations: string[] = []
 
       await Promise.all(project.children.map(async child => {
-        const dependencies = await this.gatherTypeDefinitions(project)
+        const dependencies = await this.gatherTypeDefinitions(child)
         dependencies.forEach(dependency => declarations.push(dependency))
       })).then(async () => {
         tsconfig.compilerOptions.types = declarations.sort()
