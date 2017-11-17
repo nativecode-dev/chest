@@ -66,7 +66,7 @@ class Script extends UpdateScript {
     const modulesPath = Files.join(project.path, 'node_modules')
 
     return Promise.all(dependencies.map(async dependency => {
-      const dependencyPath = Files.join(modulesPath, dependency)
+      const dependencyPath = Files.join(modulesPath, dependency, 'package.json')
       if (await Files.exists(dependencyPath)) {
         const npm = await Files.json<NPM>(dependencyPath)
         if (npm.types || npm.typings) {
