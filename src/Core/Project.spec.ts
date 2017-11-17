@@ -31,4 +31,5 @@ describe('when loading projects', () => {
     expect(project.children[0].owner).to.not.equal(undefined)
     expect(project.children[1].owner).to.not.equal(undefined)
   })
+
 })
