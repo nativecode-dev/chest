@@ -28,11 +28,7 @@ describe('when loading projects', () => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces')
     const project = await Project.load(directory)
     expect(project.children.length).to.equal(2)
-
-    expect(project.children[0].name).to.equal('simple-package')
     expect(project.children[0].owner).to.not.equal(undefined)
-
-    expect(project.children[1].name).to.equal('simple-project')
     expect(project.children[1].owner).to.not.equal(undefined)
   })
 })
