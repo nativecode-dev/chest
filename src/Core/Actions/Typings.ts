@@ -43,16 +43,16 @@ class Script extends UpdateScript {
       await Promise.all(project.children.map(async child => {
         const dependencies = await this.gatherTypeDefinitions(project)
         dependencies.forEach(dependency => declarations.push(dependency))
-      }))
+      })).then(async () => {
+        tsconfig.compilerOptions.types = declarations.sort()
 
-      tsconfig.compilerOptions.types = declarations.sort()
-
-      if (this.testing) {
-        this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
-      } else {
-        await project.save('tsconfig.json', tsconfig)
-        this.log.task('tsconfig')
-      }
+        if (this.testing) {
+          this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
+        } else {
+          await project.save('tsconfig.json', tsconfig)
+          this.log.task('tsconfig')
+        }
+      })
     } catch (error) {
       this.log.error(error)
     }
@@ -74,9 +74,11 @@ class Script extends UpdateScript {
 
     return Promise.all(dependencies.map(async dependency => {
       const dependencyPath = Files.join(modulesPath, dependency, 'package.json')
+      this.log.debug('dependencies', dependencyPath)
       if (await Files.exists(dependencyPath)) {
         const npm = await Files.json<NPM>(dependencyPath)
         if (npm.types || npm.typings) {
+          this.log.debug('found dependency', dependency)
           return dependency
         }
       }
