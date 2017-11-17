@@ -1,3 +1,3 @@
-# What issue does this fix/feature?
+## What issue does this fix/feature?
 
-# What tests cover the fix/feature?
+## What tests cover the fix/feature?
