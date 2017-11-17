@@ -28,22 +28,26 @@ class Script extends UpdateScript {
   }
 
   public async exec(rootpath: string): Promise<void> {
-    this.log.task('exec', rootpath)
-    const project = await Project.load(rootpath)
+    try {
+      this.log.task('exec', rootpath)
+      const project = await Project.load(rootpath)
 
-    if (project === Project.InvalidProject) {
-      this.log.error(`failed to load any projects at ${rootpath}`)
-      return
-    }
+      if (project === Project.InvalidProject) {
+        this.log.error(`failed to load any projects at ${rootpath}`)
+        return
+      }
 
-    const tsconfig = await project.json<TsConfig>('tsconfig.json')
-    tsconfig.compilerOptions.types = await this.gatherTypeDefinitions(project)
+      const tsconfig = await project.json<TsConfig>('tsconfig.json')
+      tsconfig.compilerOptions.types = await this.gatherTypeDefinitions(project)
 
-    if (this.testing) {
-      this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
-    } else {
-      await project.save('tsconfig.json', tsconfig)
-      this.log.task('tsconfig')
+      if (this.testing) {
+        this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
+      } else {
+        await project.save('tsconfig.json', tsconfig)
+        this.log.task('tsconfig')
+      }
+    } catch (error) {
+      this.log.error(error)
     }
   }
 
