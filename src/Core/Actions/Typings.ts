@@ -38,7 +38,14 @@ class Script extends UpdateScript {
       }
 
       const tsconfig = await project.json<TsConfig>('tsconfig.json')
-      tsconfig.compilerOptions.types = await this.gatherTypeDefinitions(project)
+      const declarations: string[] = []
+
+      await Promise.all(project.children.map(async child => {
+        const dependencies = await this.gatherTypeDefinitions(project)
+        dependencies.forEach(dependency => declarations.push(dependency))
+      }))
+
+      tsconfig.compilerOptions.types = declarations.sort()
 
       if (this.testing) {
         this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
