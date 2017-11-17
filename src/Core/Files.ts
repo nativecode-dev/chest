@@ -8,6 +8,10 @@ export interface Stat {
 }
 
 class InternalFiles {
+  public basename(filepath: string): string {
+    return path.basename(filepath)
+  }
+
   public exists(filepath: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       fs.exists(filepath, (exists: boolean) => resolve(exists))
@@ -121,6 +125,7 @@ class InternalFiles {
 }
 
 export interface Files {
+  basename(filepath: string): string
   exists(filepath: string): Promise<boolean>
   extensionless(filename: string): string
   join(...args: string[]): string

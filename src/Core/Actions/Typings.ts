@@ -1,4 +1,5 @@
 import * as path from 'path'
+import { CompilerOptions } from 'typescript'
 import { Files, Logger, NPM, Project, Registry, Updater, UpdateScript, UpdaterType } from '../index'
 
 const ScriptName = Files.extensionless(__filename)
@@ -13,6 +14,10 @@ interface Dependency {
   typings?: string
 }
 
+interface TsConfig {
+  compilerOptions: CompilerOptions
+}
+
 /*
  * Updates the "types" property of "tsconfig.json" files by
  * looking for types from @types.
@@ -23,67 +28,49 @@ class Script extends UpdateScript {
   }
 
   public async exec(rootpath: string): Promise<void> {
-    const tsconfigfile = path.join(rootpath, 'tsconfig.json')
-    const packagedir = path.join(rootpath, 'node_modules')
-    this.log.debug('exec', this.name, rootpath, packagedir)
+    this.log.task('exec', rootpath)
+    const project = await Project.load(rootpath)
 
-    if (await Files.exists(tsconfigfile) && await Files.exists(packagedir)) {
-      const packagedirs = await Files.listdirs(packagedir)
-      const tsconfig = await Files.json<any>(tsconfigfile)
+    if (project === Project.InvalidProject) {
+      this.log.error(`failed to load any projects at ${rootpath}`)
+      return
+    }
 
-      const dependencies = await Promise.all(packagedirs.map(packagedir => {
-        this.log.debug('dependencies', packagedir)
-        return this.dependencies(packagedir)
-      }))
+    const tsconfig = await project.json<TsConfig>('tsconfig.json')
+    tsconfig.compilerOptions.types = await this.gatherTypeDefinitions(project)
 
-      const typings = dependencies.reduce((previous, current) => previous.concat(current.filter(c => !!c.typings)), [])
-
-      tsconfig.compilerOptions.types = typings.map(typing => typing.npmname).sort()
-
-      if (this.testing) {
-        this.log.task('updated types', tsconfigfile, JSON.stringify(tsconfig, null, 2))
-      } else {
-        await Files.save(tsconfigfile, tsconfig)
-        this.log.task('updated types', tsconfigfile)
-      }
+    if (this.testing) {
+      this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
+    } else {
+      await project.save('tsconfig.json', tsconfig)
+      this.log.task('tsconfig')
     }
   }
 
-  private async dependencies(packagedir: string): Promise<Dependency[]> {
-    const dirname = path.basename(packagedir)
+  private async gatherTypeDefinitions(project: Project): Promise<string[]> {
+    const npm = await project.package
+    let dependencies: string[] = []
 
-    if (dirname[0] === '@') {
-      const scopedirs = await Files.listdirs(packagedir)
-
-      return Promise.all(scopedirs
-        .map(scope => [scope, path.join(scope, 'package.json')])
-        .map(async ([scope, scopepath]): Promise<Dependency> => {
-          const npm = await Files.json<NPM>(path.join(scope, 'package.json'))
-
-          return {
-            filename: 'package.json',
-            filepath: scope,
-            npmname: npm.name,
-            scope: dirname,
-            typings: npm.types || npm.typings || npm.typeScriptVersion ? 'index.d.ts' : undefined,
-          }
-        }))
+    if (npm.dependencies) {
+      dependencies = dependencies.concat(Object.keys(npm.dependencies))
     }
 
-    const packagefile = path.join(packagedir, 'package.json')
-
-    if (await Files.exists(packagefile)) {
-      const npm = await Files.json<NPM>(packagefile)
-
-      return [{
-        filename: 'package.json',
-        filepath: packagedir,
-        npmname: npm.name,
-        typings: npm.types || npm.typings || npm.typeScriptVersion ? 'index.d.ts' : undefined,
-      }]
+    if (npm.devDependencies) {
+      dependencies = dependencies.concat(Object.keys(npm.devDependencies))
     }
 
-    return []
+    const modulesPath = Files.join(project.path, 'node_modules')
+
+    return Promise.all(dependencies.map(async dependency => {
+      const dependencyPath = Files.join(modulesPath, dependency)
+      if (await Files.exists(dependencyPath)) {
+        const npm = await Files.json<NPM>(dependencyPath)
+        if (npm.types || npm.typings) {
+          return dependency
+        }
+      }
+      return ''
+    })).then(values => values.filter(value => value))
   }
 }
 
