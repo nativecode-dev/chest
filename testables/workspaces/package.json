@@ -2,7 +2,7 @@
   "description": "project with workspaces",
   "name": "project-workspaces",
   "private": true,
-  "workspace": [
+  "workspaces": [
     "packages/*",
     "projects/*"
   ],

@@ -28,34 +28,33 @@ class Script extends UpdateScript {
   }
 
   public async exec(rootpath: string): Promise<void> {
-    try {
-      this.log.task('exec', rootpath)
-      const project = await Project.load(rootpath)
+    this.log.task('exec', rootpath)
+    const project = await Project.load(rootpath)
 
-      if (project === Project.InvalidProject) {
-        this.log.error(`failed to load any projects at ${rootpath}`)
-        return
-      }
+    if (project === Project.InvalidProject) {
+      this.log.error(`failed to load any projects at ${rootpath}`)
+      return
+    }
 
-      const tsconfig = await project.json<TsConfig>('tsconfig.json')
-      const declarations: string[] = []
+    const tsconfig = await project.json<TsConfig>('tsconfig.json')
+    const definitions: string[] = []
+    const deps = project.children.map(async child => {
+      this.log.debug('child project', child.name)
+      const dependencies = await this.gatherTypeDefinitions(child)
+      dependencies.forEach(dependency => definitions.push(dependency))
+    })
 
-      await Promise.all(project.children.map(async child => {
-        const dependencies = await this.gatherTypeDefinitions(child)
-        dependencies.forEach(dependency => declarations.push(dependency))
-      })).then(async () => {
-        tsconfig.compilerOptions.types = declarations.sort()
+    return Promise.all(deps)
+      .then(async () => {
+        tsconfig.compilerOptions.types = Array.from(new Set(definitions)).sort()
 
         if (this.testing) {
-          this.log.task('tsconfig', JSON.stringify(tsconfig, null, 2))
+          this.log.task('tsconfig', project.path, JSON.stringify(tsconfig, null, 2))
         } else {
           await project.save('tsconfig.json', tsconfig)
-          this.log.task('tsconfig')
+          this.log.task('tsconfig', project.path)
         }
       })
-    } catch (error) {
-      this.log.error(error)
-    }
   }
 
   private async gatherTypeDefinitions(project: Project): Promise<string[]> {
@@ -70,20 +69,28 @@ class Script extends UpdateScript {
       dependencies = dependencies.concat(Object.keys(npm.devDependencies))
     }
 
-    const modulesPath = Files.join(project.path, 'node_modules')
+    const owner = project.owner || project
+    const modulesPath = Files.join(owner.path, 'node_modules')
 
-    return Promise.all(dependencies.map(async dependency => {
+    const deps = dependencies.map(async dependency => {
       const dependencyPath = Files.join(modulesPath, dependency, 'package.json')
       this.log.debug('dependencies', dependencyPath)
+
       if (await Files.exists(dependencyPath)) {
         const npm = await Files.json<NPM>(dependencyPath)
         if (npm.types || npm.typings) {
           this.log.debug('found dependency', dependency)
           return dependency
         }
+      } else {
+        this.log.debug('failed to find', dependencyPath)
       }
       return ''
-    })).then(values => values.filter(value => value))
+    })
+
+    return Promise.all(deps)
+      .then(values => values.filter(value => value))
+      .then(values => Array.from(new Set<string>(values)))
   }
 }
 

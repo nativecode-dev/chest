@@ -14,9 +14,7 @@ export function Logger(name: string, category?: string): Log {
   const bold = (name: string) => chalk.default.bold(`[${name}${cat}]`)
 
   const log = (...args: any[]) => {
-    if (['production', 'test', 'testing'].every(env => env !== process.env.NODE_ENV)) {
-      console.log(...args)
-    }
+    console.log(...args)
   }
 
   return {

@@ -33,7 +33,6 @@ describe('when working with files', () => {
 
   it('should list files', async () => {
     const filepaths = await Files.listfiles(Files.join(process.cwd(), 'testables/single'))
-    expect(filepaths.length).to.equal(2)
     expect(filepaths).to.contain(Files.join(process.cwd(), 'testables/single/package.json'))
     expect(filepaths).to.contain(Files.join(process.cwd(), 'testables/single/tsconfig.json'))
   })
