@@ -16,5 +16,5 @@ export interface NPM {
   typeScriptVersion: string,
   typings?: string
   version: string
-  workspace?: string[]
+  workspaces?: string[]
 }

@@ -56,7 +56,7 @@ export class Project {
     const npm = await Files.json<NPM>(npmfile)
     const project = new Project(npm.name, rootpath)
 
-    if (npm.private && npm.workspace) {
+    if (npm.private && npm.workspaces) {
       const result = await project.loadChildProjects(npm)
       return result
     }
@@ -98,8 +98,8 @@ export class Project {
 
   private async loadYarnWorkspaces(project: Project): Promise<Project> {
     const npm = await this.package
-    if (npm.workspace) {
-      return Promise.all(npm.workspace.map(async workspace => {
+    if (npm.workspaces) {
+      return Promise.all(npm.workspaces.map(async workspace => {
         const workspaceName = workspace.substring(0, workspace.indexOf('/*'))
         const workspacePath = Files.join(project.path, workspaceName)
         const children = await this.loadProjects(workspacePath)

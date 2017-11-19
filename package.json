@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "./lib/CLI.js",
   "typings": "./lib/index.d.ts",
-  "version": "2.0.0-alpha-12",
+  "version": "2.0.0-alpha-14",
   "dependencies": {
     "chalk": "^2.3.0"
   },
