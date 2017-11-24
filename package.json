@@ -56,12 +56,11 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "lint": "tslint src/**/*.ts",
-    "prebuild": "rimraf lib && rimraf artifacts",
-    "postbuild": "bin-shebang && yarn run lint",
-    "test": "cross-env NODE_ENV=test nyc mocha --opts mocha.opts",
+    "prebuild": "rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
+    "postbuild": "bin-shebang",
+    "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
-    "testonly": "cross-env NODE_ENV=test nyc mocha --opts mocha.opts",
+    "testonly": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   }
 }

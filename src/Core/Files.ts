@@ -13,7 +13,7 @@ class InternalFiles {
   }
 
   public deepdirs(filepath: string): Promise<string[]> {
-    return Files.listdirs(filepath)
+    return this.listdirs(filepath)
       .then(dirs => dirs.map(dir => this.deepdirs(dir)))
       .then(promises => promises.reduce((previous, current) =>
         new Promise<string[]>((resolve, reject) =>

@@ -12,7 +12,7 @@ export class Registry {
   }
 
   public static contains(name: string): boolean {
-    return this.registrations[name.toLowerCase()] !== undefined
+    return !!this.registrations[name.toLowerCase()]
   }
 
   public static execute(root: string, ...args: string[]): Promise<void[]> {

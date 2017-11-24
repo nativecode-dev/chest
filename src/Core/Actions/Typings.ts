@@ -1,18 +1,5 @@
-import * as path from 'path'
 import { CompilerOptions } from 'typescript'
-import { Files, Logger, NPM, Project, Registry, Updater, UpdateScript, UpdaterType } from '../index'
-
-const ScriptName = Files.extensionless(__filename)
-const log = Logger(ScriptName)
-const prefix = '@types'
-
-interface Dependency {
-  filename: string
-  filepath: string
-  npmname: string
-  scope?: string
-  typings?: string
-}
+import { Files, NPM, Project, Registry, UpdateScript, UpdaterType } from '../index'
 
 interface TsConfig {
   compilerOptions: CompilerOptions
@@ -23,8 +10,9 @@ interface TsConfig {
  * looking for types from @types.
  **/
 class Script extends UpdateScript {
+  public static Name = Files.extensionless(__filename)
   constructor() {
-    super(ScriptName, UpdaterType.Root)
+    super(Script.Name, UpdaterType.Root)
   }
 
   public async exec(rootpath: string): Promise<void> {
@@ -94,4 +82,4 @@ class Script extends UpdateScript {
   }
 }
 
-Registry.add(ScriptName, new Script())
+Registry.add(Script.Name, new Script())

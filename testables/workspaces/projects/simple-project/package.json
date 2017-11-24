@@ -2,7 +2,7 @@
   "dependencies": {
     "chalk": "*"
   },
-  "description": "simple project",
+  "description": "project with workspaces",
   "devDependencies": {
     "@types/chalk": "*"
   },
