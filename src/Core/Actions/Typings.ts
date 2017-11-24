@@ -58,7 +58,7 @@ class Script extends UpdateScript {
   }
 
   private async gatherTypeDefinitions(project: Project): Promise<string[]> {
-    const npm = await project.package
+    const npm = await project.npm
     let dependencies: string[] = []
 
     if (npm.dependencies) {

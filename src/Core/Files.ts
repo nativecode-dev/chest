@@ -12,10 +12,25 @@ class InternalFiles {
     return path.basename(filepath)
   }
 
+  public deepdirs(filepath: string): Promise<string[]> {
+    return Files.listdirs(filepath)
+      .then(dirs => dirs.map(dir => this.deepdirs(dir)))
+      .then(promises => promises.reduce((previous, current) =>
+        new Promise<string[]>((resolve, reject) =>
+          previous.then(values => current.then(inner =>
+            resolve(values.concat(inner))))
+        ), Promise.resolve([]))
+      )
+  }
+
   public exists(filepath: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       fs.exists(filepath, (exists: boolean) => resolve(exists))
     })
+  }
+
+  public ext(filepath: string): string {
+    return path.extname(filepath)
   }
 
   public extensionless(filename: string): string {
@@ -126,7 +141,9 @@ class InternalFiles {
 
 export interface Files {
   basename(filepath: string): string
+  deepdirs(rootpath: string): Promise<string[]>
   exists(filepath: string): Promise<boolean>
+  ext(filepath: string): string
   extensionless(filename: string): string
   join(...args: string[]): string
   json<T>(filepath: string): Promise<T>

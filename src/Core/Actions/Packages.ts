@@ -25,8 +25,8 @@ class Script extends UpdateScript {
 
   public async workspace(project: Project): Promise<void> {
     if (project.owner) {
-      const source = await project.owner.package
-      const target = await project.package
+      const source = await project.owner.npm
+      const target = await project.npm
 
       target.author = source.author
       target.bugs = source.bugs

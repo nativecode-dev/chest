@@ -41,8 +41,11 @@
     "include": [
       "src/**/*.ts"
     ],
-    "instrument": true,
-    "sourceMap": true
+		"instrument": true,
+		"report-dir": ".cache/coverage",
+		"reporter": "text",
+		"sourceMap": true,
+		"temp-directory": ".cache/nyc"
   },
   "publishConfig": {
     "access": "public"
@@ -58,6 +61,7 @@
     "postbuild": "bin-shebang && yarn run lint",
     "test": "cross-env NODE_ENV=test nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
+    "testonly": "cross-env NODE_ENV=test nyc mocha --opts mocha.opts",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   }
 }

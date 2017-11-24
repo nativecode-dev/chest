@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "declaration": true,
-    "diagnostics": true,
+    "diagnostics": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
