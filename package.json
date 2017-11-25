@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "./lib/CLI.js",
   "typings": "./lib/index.d.ts",
-  "version": "2.0.0-alpha-14",
+  "version": "2.0.0-development",
   "dependencies": {
     "chalk": "^2.3.0"
   },
@@ -23,11 +23,13 @@
     "mocha": "^4.0.1",
     "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
+    "semantic-release-cli": "^3.2.6",
     "ts-node": "^3.3.0",
     "tsconfig-paths": "^2.3.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.1",
+    "semantic-release": "^8.2.0"
   },
   "nyc": {
     "all": true,
@@ -41,11 +43,11 @@
     "include": [
       "src/**/*.ts"
     ],
-		"instrument": true,
-		"report-dir": ".cache/coverage",
-		"reporter": "text",
-		"sourceMap": true,
-		"temp-directory": ".cache/nyc"
+    "instrument": true,
+    "report-dir": ".cache/coverage",
+    "reporter": "text",
+    "sourceMap": true,
+    "temp-directory": ".cache/nyc"
   },
   "publishConfig": {
     "access": "public"
@@ -61,6 +63,7 @@
     "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
     "testonly": "cross-env DEBUG= nyc mocha --opts mocha.opts",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   }
 }

@@ -1,21 +1,11 @@
-cache: yarn
 language: node_js
+cache:
+  directories:
+    - ~/.npm
 node_js:
   - node
-  - '8'
-  - '6'
-os:
-  - linux
-deploy:
-  provider: npm
-  email: support@nativecode.com
-  api_key:
-    secure: >-
-      OhNMsrMIkJlReUcs0Zu/0bnnQ0faivy32E2GBhIQt6wM+BaPmPHhvlr2v3846EBGafBQYWlj3IdpKYI1F+/kCgdJnAiY41mNuWUnxjMoNxSUI3rjaTYUsMkPgte7OMGfv1Vlc+qVzRlgaff/NeDjrC3TjDlpSRXzlLDw2zhQPWbqSsTLNhfZqxbanXsUt0cIV6hZsC0Jyo+VAuJ+6OxN8Jo0vehCNY5yvceX/k2J4OgZ4NP/o0m4DH8g6ltUbCmGwtzM1oYsu4KYOHnvPcILRvsJsw2Y72edREjJvpgwU1fHRvniQC+al3UAeW5EPZdaAUvOtb/ZLZAjnXhX1lKzfBO72vBUI1mPKAc/prV1pwokJeFiuLeJomfxAKSFObu1g8HHQhsbg86IT63KQlIdm+FTDRnVdrMV4tGuYudbRrAU38JWes5XRJ6Rx//poMcp5MLdAq9ZzapMjQ9LOEYnxw1oFBxwn7rCP9QcFp60c2GWn6Ury86ZGI2OwrPIq4Uef/X28PS985lePS/+YugiXaeAwmtwgBYZapEPSg08CSBhsj2ORNFUDN/7GkuGryDcMMoP1+BwdgWuUCwzicFh4XiutUw5g9MhNINT5JF3Q84FNgrK+U/Wkw10ARud38q3aSo3U6+WdhqXEZTpU4t5eAGUXmwcQgmF3E0l1Pny6Ls=
-  on:
-    branch: master
-    tag: next
-    repo: nativecode-dev/chest
-  skip_cleanup: true
 after_success:
-  - npm run coveralls
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
