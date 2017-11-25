@@ -9,7 +9,16 @@ import { Registry } from './Registry'
 
 const expect = chai.expect
 
+const testables = Files.join(process.cwd(), 'testables')
+const single = Files.join(testables, 'single')
+const workspaces = Files.join(testables, 'workspaces')
+
 describe('when loading projects', () => {
+
+  before(() => {
+    const script = Registry.get('yarn')
+    return script.exec(single).then(() => script.exec(workspaces))
+  })
 
   beforeEach(() => {
     chai.should()

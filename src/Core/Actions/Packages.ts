@@ -28,6 +28,7 @@ class Script extends UpdateScript {
       const filename = path.join(project.path, 'package.json')
 
       if (this.testing) {
+        /* istanbul ignore next */
         this.log.task('workspace', filename, JSON.stringify(target, null, 2))
       } else {
         await Files.save(filename, target)

@@ -1,6 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
+import { Log, Logger } from './Logger'
+
 export interface Stat {
   dir: boolean
   file: boolean
@@ -8,6 +10,8 @@ export interface Stat {
 }
 
 class InternalFiles {
+  private readonly log: Log = Logger('files')
+
   public basename(filepath: string): string {
     return path.basename(filepath)
   }
@@ -15,18 +19,21 @@ class InternalFiles {
   public deepdirs(filepath: string): Promise<string[]> {
     return this.listdirs(filepath)
       .then(dirs => dirs.map(dir => this.deepdirs(dir)))
-      .then(promises => promises.reduce((previous, current) =>
-        new Promise<string[]>((resolve, reject) =>
-          previous.then(values => current.then(inner =>
-            resolve(values.concat(inner))))
-        ), Promise.resolve([]))
-      )
+      .then(dirs => dirs.reduce((previous, current) => {
+        return previous.then(outer => current.then(inner => outer.concat(inner)))
+      }, Promise.all([filepath])))
+  }
+
+  public deepfiles(filepath: string): Promise<string[]> {
+    return this.listdirs(filepath)
+      .then(dirs => dirs.map(dir => this.deepfiles(dir)))
+      .then(dirs => dirs.reduce((previous, current) => {
+        return previous.then(outer => current.then(inner => outer.concat(inner)))
+      }, this.listfiles(filepath)))
   }
 
   public exists(filepath: string): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
-      fs.exists(filepath, (exists: boolean) => resolve(exists))
-    })
+    return new Promise<boolean>((resolve, reject) => fs.exists(filepath, (exists: boolean) => resolve(exists)))
   }
 
   public ext(filepath: string): string {
@@ -45,6 +52,7 @@ class InternalFiles {
 
   public async json<T>(filepath: string): Promise<T> {
     if (await this.exists(filepath)) {
+      this.log.debug('json', filepath)
       const buffer = await this.readfile(filepath)
       return JSON.parse(buffer.toString())
     }
@@ -142,6 +150,7 @@ class InternalFiles {
 export interface Files {
   basename(filepath: string): string
   deepdirs(rootpath: string): Promise<string[]>
+  deepfiles(rootpath: string): Promise<string[]>
   exists(filepath: string): Promise<boolean>
   ext(filepath: string): string
   extensionless(filename: string): string

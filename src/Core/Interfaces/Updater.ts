@@ -1,9 +1,5 @@
+import { UpdaterType } from './UpdaterType'
 import { Project } from '../Project'
-
-export enum UpdaterType {
-  Root = 'root',
-  Projects = 'projects',
-}
 
 export interface Updater {
   name: string

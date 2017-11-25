@@ -39,4 +39,9 @@ describe('when using the script registry', () => {
   it('should throw error when calling "get" and script does not exist', () => {
     expect(() => Registry.get('invalid')).to.throw()
   })
+
+  it('should throw error when given unregistered scripts', () => {
+    expect(() => Registry.execute(process.cwd(), 'invalid')).to.throw()
+  })
+
 })
