@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
-    "types": []
+    "types": [
+      "chalk"
+    ]
   }
 }
