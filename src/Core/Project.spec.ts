@@ -31,7 +31,7 @@ describe('when loading projects', () => {
     expect(project.children.length).to.equal(0)
     expect(project.name).to.equal('project-single')
     expect(project.path).to.equal(directory)
-  })
+  }).timeout(5000)
 
   it('should load yarn workspace project', async () => {
     const directory = Files.join(process.cwd(), 'testables', 'workspaces')
@@ -39,6 +39,6 @@ describe('when loading projects', () => {
     expect(project.children.length).to.equal(2)
     expect(project.children[0].owner).to.not.equal(undefined)
     expect(project.children[1].owner).to.not.equal(undefined)
-  })
+  }).timeout(5000)
 
 })
