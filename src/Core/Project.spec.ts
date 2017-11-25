@@ -1,5 +1,4 @@
-import 'mocha'
-
+import * as mocha from 'mocha'
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
 
@@ -16,9 +15,9 @@ const workspaces = Files.join(testables, 'workspaces')
 const TIMEOUT = 10000
 
 describe('when loading projects', () => {
-  this.timeout(TIMEOUT)
 
-  before(() => {
+  before(function (this: mocha.IHookCallbackContext) {
+    this.timeout(TIMEOUT)
     const script = Registry.get('yarn')
     return script.exec(single).then(() => script.exec(workspaces))
   })
