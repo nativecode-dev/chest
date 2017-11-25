@@ -16,6 +16,7 @@ const workspaces = Files.join(testables, 'workspaces')
 const TIMEOUT = 10000
 
 describe('when loading projects', () => {
+  this.timeout(TIMEOUT)
 
   before(() => {
     const script = Registry.get('yarn')
