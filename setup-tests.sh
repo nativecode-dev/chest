@@ -1,10 +1,11 @@
 #!/bin/bash
 
-cd testables
+YARN=`which yarn`
 
-cd single
-yarn
+cd testables/single
+$YARN
 
-cd ..
-cd workspaces
-yarn
+cd ../workspaces
+$YARN
+
+cd..
