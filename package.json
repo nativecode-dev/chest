@@ -58,11 +58,12 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "prebuild": "rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
+    "prebuild": "rimraf .cache && rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
     "postbuild": "bin-shebang",
     "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
     "testonly": "cross-env DEBUG= nyc mocha --opts mocha.opts",
+    "pretestonly": "yarn run prebuild",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   }

@@ -1,8 +1,11 @@
 {
   "dependencies": {
-    "chalk": "*"
+    "chalk": "^2.3.0"
   },
   "description": "single project",
+  "devDependencies": {
+    "@types/chalk": "^2.2.0"
+  },
   "name": "project-single",
   "version": "1.0.0"
 }

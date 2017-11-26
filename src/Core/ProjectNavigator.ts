@@ -8,8 +8,16 @@ export class ProjectNavigator {
     this.project = project
   }
 
+  public get js(): Promise<string[]> {
+    return this.filterByExtension(this.project.path, '.js')
+  }
+
   public get json(): Promise<string[]> {
     return this.filterByExtension(this.project.path, '.json')
+  }
+
+  public get jsx(): Promise<string[]> {
+    return this.filterByExtension(this.project.path, '.jsx')
   }
 
   public get ts(): Promise<string[]> {
