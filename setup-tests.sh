@@ -5,5 +5,6 @@ cd testables
 cd single
 yarn
 
-cd ..\workspaces
+cd ..
+cd workspaces
 yarn
