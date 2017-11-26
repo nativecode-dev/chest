@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "chalk": "*"
+    "chalk": "^2.3.0"
   },
   "description": "project with workspaces",
   "devDependencies": {
-    "@types/chalk": "*"
+    "@types/chalk": "^2.2.0"
   },
   "name": "simple-project",
   "version": "1.0.0"
