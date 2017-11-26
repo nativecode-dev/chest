@@ -7,10 +7,14 @@ testables/
 
 *.log
 
+.gitignore
 .npmignore
+.npmrc
 .travis.yml
 chest-temp.png
+deploy.enc
 mocha.opts
+setup-tests.sh
 tsconfig.json
 tslint.json
 yarn.lock
