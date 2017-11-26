@@ -10,6 +10,7 @@
     "chalk": "^2.3.0"
   },
   "devDependencies": {
+    "@alrra/travis-scripts": "^3.0.1",
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/chalk": "^2.2.0",
@@ -23,13 +24,13 @@
     "mocha": "^4.0.1",
     "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
+    "semantic-release": "^8.2.0",
     "semantic-release-cli": "^3.2.6",
     "ts-node": "^3.3.0",
     "tsconfig-paths": "^2.3.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.6.1",
-    "semantic-release": "^8.2.0"
+    "typescript": "^2.6.1"
   },
   "nyc": {
     "all": true,
@@ -65,6 +66,8 @@
     "testonly": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretestonly": "yarn run prebuild",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "travis-coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
+    "travis-release": "semantic-release pre && npm publish && semantic-release post",
+    "travis-ssh": "set-up-ssh --key \"$encrypted_7baae619033b_key\" --iv \"$encrypted_7baae619033b_iv\" --path-encrypted-key \"deploy.enc\""
   }
 }
