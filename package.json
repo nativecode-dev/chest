@@ -60,7 +60,7 @@
     "build": "tsc --project tsconfig.json",
     "prebuild": "rimraf .cache && rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
     "postbuild": "bin-shebang",
-    "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
+    "test": "sh setup-tests.sh && cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
     "testonly": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretestonly": "yarn run prebuild",
