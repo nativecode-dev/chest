@@ -52,6 +52,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "release": {
+    "branch": "master"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nativecode-dev/chest"

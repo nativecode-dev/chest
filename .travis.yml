@@ -3,10 +3,6 @@ language: node_js
 node_js:
   - '8'
 os: linux
-stages:
-  - test
-  - name: deploy
-    if: (branch = "master") AND type != pull_request AND tag IS blank
 after_failure:
   - ls -lah --color=auto
 after_success:
