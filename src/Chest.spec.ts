@@ -26,4 +26,5 @@ describe('when loading projects', () => {
     const args = Object.keys(Registry.all())
     return Chest.run(directory, ...args)
   })
+
 })

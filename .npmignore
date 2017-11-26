@@ -1,4 +1,4 @@
-.nyc_output/
+.cache/
 artifacts/
 docs/
 node_modules/

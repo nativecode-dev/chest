@@ -38,7 +38,7 @@ export class Project {
     return this._owner
   }
 
-  public get package(): Promise<NPM> {
+  public get npm(): Promise<NPM> {
     return Files.json<NPM>(Files.join(this.path, 'package.json'))
   }
 
@@ -97,7 +97,7 @@ export class Project {
   }
 
   private async loadYarnWorkspaces(project: Project): Promise<Project> {
-    const npm = await this.package
+    const npm = await this.npm
     if (npm.workspaces) {
       return Promise.all(npm.workspaces.map(async workspace => {
         const workspaceName = workspace.substring(0, workspace.indexOf('/*'))
@@ -113,7 +113,6 @@ export class Project {
   private async loadProjects(workspacePath: string): Promise<Project[]> {
     const projects = await Files.listdirs(workspacePath)
     return Promise.all(projects.map(async projectPath => {
-      const projectName = Files.basename(projectPath)
       const npmfile = Files.join(projectPath, 'package.json')
       const npm = await Files.json<NPM>(npmfile)
       const child = new Project(npm.name, projectPath, this)

@@ -1,18 +1,5 @@
-import * as path from 'path'
 import { CompilerOptions } from 'typescript'
-import { Files, Logger, NPM, Project, Registry, Updater, UpdateScript, UpdaterType } from '../index'
-
-const ScriptName = Files.extensionless(__filename)
-const log = Logger(ScriptName)
-const prefix = '@types'
-
-interface Dependency {
-  filename: string
-  filepath: string
-  npmname: string
-  scope?: string
-  typings?: string
-}
+import { Files, NPM, Project, Registry, UpdateScript, UpdaterType } from '../index'
 
 interface TsConfig {
   compilerOptions: CompilerOptions
@@ -23,75 +10,44 @@ interface TsConfig {
  * looking for types from @types.
  **/
 class Script extends UpdateScript {
+  public static Name = Files.extensionless(__filename)
+
   constructor() {
-    super(ScriptName, UpdaterType.Root)
+    super(Script.Name, UpdaterType.Root)
   }
 
-  public async exec(rootpath: string): Promise<void> {
-    this.log.task('exec', rootpath)
-    const project = await Project.load(rootpath)
-
-    if (project === Project.InvalidProject) {
-      this.log.error(`failed to load any projects at ${rootpath}`)
-      return
-    }
-
-    const tsconfig = await project.json<TsConfig>('tsconfig.json')
-    const definitions: string[] = []
-    const deps = project.children.map(async child => {
-      this.log.debug('child project', child.name)
-      const dependencies = await this.gatherTypeDefinitions(child)
-      dependencies.forEach(dependency => definitions.push(dependency))
-    })
-
-    return Promise.all(deps)
-      .then(async () => {
-        tsconfig.compilerOptions.types = Array.from(new Set(definitions)).sort()
-
-        if (this.testing) {
-          this.log.task('tsconfig', project.path, JSON.stringify(tsconfig, null, 2))
-        } else {
-          await project.save('tsconfig.json', tsconfig)
-          this.log.task('tsconfig', project.path)
-        }
-      })
+  public exec(rootpath: string): Promise<void> {
+    return Project.load(rootpath)
+      .then(project =>
+        this.declarations([project, ...project.children])
+          .then(typings => this.typings(project, typings))
+      )
+      .then(() => void (0))
   }
 
-  private async gatherTypeDefinitions(project: Project): Promise<string[]> {
-    const npm = await project.package
-    let dependencies: string[] = []
+  private declarations(projects: Project[]): Promise<string[]> {
+    return Promise.all(projects.map(project => project.npm))
+      .then(npms => npms.map(npm => this.dependencies(npm)))
+      .then(deps => deps.reduce((previous, current) => previous.concat(current), []))
+      .then(deps => Array.from(new Set(deps)))
+  }
 
-    if (npm.dependencies) {
-      dependencies = dependencies.concat(Object.keys(npm.dependencies))
-    }
+  private dependencies(npm: NPM): string[] {
+    const deps = Object.keys(npm.dependencies || {})
+    const devs = Object.keys(npm.devDependencies || {})
+    return Array.from(new Set([...deps, ...devs]))
+  }
 
-    if (npm.devDependencies) {
-      dependencies = dependencies.concat(Object.keys(npm.devDependencies))
-    }
-
-    const owner = project.owner || project
-    const modulesPath = Files.join(owner.path, 'node_modules')
-
-    const deps = dependencies.map(async dependency => {
-      const dependencyPath = Files.join(modulesPath, dependency, 'package.json')
-      this.log.debug('dependencies', dependencyPath)
-
-      if (await Files.exists(dependencyPath)) {
-        const npm = await Files.json<NPM>(dependencyPath)
-        if (npm.types || npm.typings) {
-          this.log.debug('found dependency', dependency)
-          return dependency
-        }
-      } else {
-        this.log.debug('failed to find', dependencyPath)
-      }
-      return ''
-    })
-
-    return Promise.all(deps)
-      .then(values => values.filter(value => value))
-      .then(values => Array.from(new Set<string>(values)))
+  private typings(project: Project, typings: string[]): Promise<void> {
+    return Promise.all(typings.map(typing => Files.join(project.path, 'node_modules', typing, 'package.json')))
+      .then(typings => Promise.all(typings.map(typing => Files.json<NPM>(typing))))
+      .then(npms => npms.filter(npm => npm.types || npm.typings).map(npm => npm.name))
+      .then(typings => project.json<TsConfig>('tsconfig.json').then(tsconfig => {
+        tsconfig.compilerOptions.types = typings
+        return tsconfig
+      }))
+      .then(tsconfig => this.testing ? Files.save('tsconfig.json', tsconfig) : Promise.resolve())
   }
 }
 
-Registry.add(ScriptName, new Script())
+Registry.add(Script.Name, new Script())

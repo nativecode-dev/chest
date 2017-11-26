@@ -12,14 +12,11 @@ export class Registry {
   }
 
   public static contains(name: string): boolean {
-    return this.registrations[name.toLowerCase()] !== undefined
+    return !!this.registrations[name.toLowerCase()]
   }
 
   public static execute(root: string, ...args: string[]): Promise<void[]> {
-    return Promise.all(
-      args.map(arg => arg.toLowerCase())
-        .map(name => this.registrations[name].exec(root))
-    )
+    return Promise.all(args.map(arg => arg.toLowerCase()).map(name => this.registrations[name].exec(root)))
   }
 
   public static get(name: string): Updater {

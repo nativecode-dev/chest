@@ -1,7 +1,7 @@
 import * as cp from 'child_process'
 import * as path from 'path'
 
-import { Files, Log, Logger, NPM, Project, Updater, UpdaterType } from './index'
+import { Files, Log, Logger, Project, Updater, UpdaterType } from './index'
 
 export abstract class UpdateScript implements Updater {
   protected readonly log: Log
@@ -35,14 +35,9 @@ export abstract class UpdateScript implements Updater {
     return Promise.resolve()
   }
 
-  protected async npm<NPM>(basepath: string): Promise<NPM> {
+  protected npm<NPM>(basepath: string): Promise<NPM> {
     const filename = path.join(basepath, 'package.json')
-
-    if (await Files.exists(filename)) {
-      return Files.json<NPM>(filename)
-    }
-
-    throw Error(`could not find 'package.json' in ${basepath}`)
+    return Files.exists(filename).then(() => Files.json<NPM>(filename))
   }
 
   protected run(project: Project, command: string, ...args: string[]): Promise<void> {
@@ -83,6 +78,7 @@ export abstract class UpdateScript implements Updater {
     if (data instanceof Buffer) {
       return format(data.toString().replace('\r', '').split('\n'))
     }
+
     return format(data.replace('\r', '').split('\n'))
   }
 }
