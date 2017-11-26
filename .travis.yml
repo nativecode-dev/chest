@@ -1,7 +1,9 @@
 cache: yarn
 language: node_js
 node_js:
+  - node
   - '8'
+  - '6'
 os: linux
 after_failure:
   - ls -lah --color=auto
