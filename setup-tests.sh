@@ -8,4 +8,4 @@ $YARN
 cd ../workspaces
 $YARN
 
-cd..
+cd ..
