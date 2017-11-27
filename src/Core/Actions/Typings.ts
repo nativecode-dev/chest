@@ -1,9 +1,4 @@
-import { CompilerOptions } from 'typescript'
-import { Files, NPM, Project, Registry, UpdateScript, UpdaterType } from '../index'
-
-interface TsConfig {
-  compilerOptions: CompilerOptions
-}
+import { Files, NPM, Project, Registry, TypeScriptOptions, UpdateScript, UpdaterType } from '../index'
 
 /*
  * Updates the "types" property of "tsconfig.json" files by
@@ -16,13 +11,13 @@ class Script extends UpdateScript {
     super(Script.Name, UpdaterType.Root)
   }
 
-  public exec(rootpath: string): Promise<void> {
+  public exec(rootpath: string): Promise<Project> {
     return Project.load(rootpath)
       .then(project =>
         this.declarations([project, ...project.children])
           .then(typings => this.typings(project, typings))
+          .then(() => project)
       )
-      .then(() => void (0))
   }
 
   private declarations(projects: Project[]): Promise<string[]> {
@@ -41,12 +36,12 @@ class Script extends UpdateScript {
   private typings(project: Project, typings: string[]): Promise<void> {
     return Promise.all(typings.map(typing => Files.join(project.path, 'node_modules', typing, 'package.json')))
       .then(typings => Promise.all(typings.map(typing => Files.json<NPM>(typing))))
-      .then(npms => npms.filter(npm => npm.types || npm.typings).map(npm => npm.name))
-      .then(typings => project.json<TsConfig>('tsconfig.json').then(tsconfig => {
-        tsconfig.compilerOptions.types = typings
+      .then(npms => npms.filter(npm => npm.types || npm.typings || npm.typeScriptVersion).map(npm => npm.name))
+      .then(typings => project.json<TypeScriptOptions>('tsconfig.json').then(tsconfig => {
+        tsconfig.compilerOptions.types = typings.sort()
         return tsconfig
       }))
-      .then(tsconfig => this.testing ? Promise.resolve() : Files.save('tsconfig.json', tsconfig))
+      .then(tsconfig => project.save('tsconfig.json', tsconfig))
   }
 }
 

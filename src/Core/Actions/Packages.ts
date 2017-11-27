@@ -13,7 +13,7 @@ class Script extends UpdateScript {
     super(Script.Name, UpdaterType.Projects)
   }
 
-  public async workspace(project: Project): Promise<void> {
+  public async workspace(project: Project): Promise<Project> {
     if (project.owner) {
       const source = await project.owner.npm
       const target = await project.npm
@@ -35,6 +35,8 @@ class Script extends UpdateScript {
         this.log.task('workspace', filename)
       }
     }
+
+    return project
   }
 }
 

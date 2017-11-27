@@ -4,8 +4,8 @@ import { Project } from '../Project'
 export interface Updater {
   name: string
   type: UpdaterType
-  exec(rootpath: string): Promise<void>
-  workspace(project: Project): Promise<void>
+  exec(rootpath: string): Promise<Project>
+  workspace(project: Project): Promise<Project>
 }
 
 export type Updaters = {
