@@ -1,5 +1,5 @@
 import { Files } from './Files'
-import { LernaConfig, NPM } from './Interfaces'
+import { NPM } from './Interfaces'
 import { Log, Logger } from './Logger'
 
 export class Project {
@@ -40,22 +40,10 @@ export class Project {
     return this._path
   }
 
-  public static async load(rootpath: string): Promise<Project> {
-    const npmfile = Files.join(rootpath, 'package.json')
-
-    if (await Files.exists(npmfile) === false) {
-      return Project.InvalidProject
-    }
-
-    const npm = await Files.json<NPM>(npmfile)
-    const project = new Project(npm.name, rootpath)
-
-    if (npm.private && npm.workspaces) {
-      const result = await project.loadChildProjects(npm)
-      return result
-    }
-
-    return project
+  public static load(rootpath: string): Promise<Project> {
+    return Files.json<NPM>(Files.join(rootpath, 'package.json'))
+      .then(npm => ({ npm, project: new Project(npm.name, rootpath) }))
+      .then(load => load.project.workspaces(load.npm).then(() => load.project))
   }
 
   public json<T>(filename: string): Promise<T> {
@@ -66,31 +54,11 @@ export class Project {
     return Files.save(Files.join(this.path, filename), data)
   }
 
-  private async loadChildProjects(npm: NPM): Promise<Project> {
-    const lernafile = Files.join(this.path, 'lerna.json')
-    if (await Files.exists(lernafile)) {
-      this.log.debug('lerna-packages', this.path)
-      return this.loadLernaPackages(lernafile, this)
-    }
-    this.log.debug('yarn-workspaces', this.path)
-    return this.loadYarnWorkspaces(this)
+  private workspaces(npm: NPM): Promise<Project> {
+    return this.yarn(this)
   }
 
-  private async loadLernaPackages(filepath: string, project: Project): Promise<Project> {
-    const lerna = await Files.json<LernaConfig>(filepath)
-    if (lerna.packages && lerna.useWorkspaces) {
-      lerna.packages.forEach(async workspace => {
-        const workspaceName = workspace.substring(0, workspace.indexOf('/*'))
-        const workspacePath = Files.join(project.path, workspaceName)
-        const children = await this.loadProjects(workspacePath)
-        children.forEach(child => this.children.push(child))
-        this.log.debug('lerna-package', workspaceName)
-      })
-    }
-    return this
-  }
-
-  private async loadYarnWorkspaces(project: Project): Promise<Project> {
+  private async yarn(project: Project): Promise<Project> {
     const npm = await this.npm
     if (npm.workspaces) {
       return Promise.all(npm.workspaces.map(async workspace => {

@@ -14,6 +14,9 @@ describe('when working with files', () => {
   const invalidFile = Files.join(artifacts, 'invalid', 'invalid.json')
   const nonexistant = Files.join(process.cwd(), 'nonexistant')
   const testables = Files.join(process.cwd(), 'testables')
+  const invalid = Files.join(testables, 'workspaces-invalid')
+  const lerna = Files.join(testables, 'workspaces-lerna')
+  const single = Files.join(testables, 'single')
   const workspaces = Files.join(testables, 'workspaces')
 
   before(async () => {
@@ -27,10 +30,11 @@ describe('when working with files', () => {
 
   it('should list directories', async () => {
     const directories = await Files.listdirs(testables)
-    expect(directories.length).to.equal(3)
-    expect(directories).to.contain(Files.join(process.cwd(), 'testables/single'))
-    expect(directories).to.contain(Files.join(process.cwd(), 'testables/workspaces'))
-    expect(directories).to.contain(Files.join(process.cwd(), 'testables/workspaces-invalid'))
+    expect(directories.length).to.equal(4)
+    expect(directories).to.contain(lerna)
+    expect(directories).to.contain(invalid)
+    expect(directories).to.contain(single)
+    expect(directories).to.contain(workspaces)
   })
 
   it('should throw error when listing directories', (done) => {
