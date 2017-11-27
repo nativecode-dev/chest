@@ -19,8 +19,8 @@ export abstract class UpdateScript implements Updater {
   }
 
   public get testing(): boolean {
-    const env = process.env.NODE_ENV || ''
-    return ['test', 'testing'].some(value => value === env.toLowerCase())
+    const env = (process.env.NODE_ENV || '').toLowerCase()
+    return ['test', 'testing'].some(value => value === env)
   }
 
   public get type(): UpdaterType {

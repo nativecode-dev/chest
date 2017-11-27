@@ -68,6 +68,7 @@
     "testonly": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretestonly": "yarn run prebuild",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "typedefs": "ts-node src/CLI typings",
     "travis-coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
     "travis-release": "semantic-release pre && npm publish && semantic-release post",
     "travis-ssh": "set-up-ssh --key \"$encrypted_7baae619033b_key\" --iv \"$encrypted_7baae619033b_iv\" --path-encrypted-key \"deploy.enc\""
