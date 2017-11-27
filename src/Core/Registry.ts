@@ -1,4 +1,5 @@
 import { Dictionary, Updater, Updaters } from './Interfaces'
+import { Project } from './Project'
 
 export class Registry {
   private static readonly registrations: Updaters = {}
@@ -15,7 +16,7 @@ export class Registry {
     return !!this.registrations[name.toLowerCase()]
   }
 
-  public static execute(root: string, ...args: string[]): Promise<void[]> {
+  public static execute(root: string, ...args: string[]): Promise<Project[]> {
     return Promise.all(args.map(arg => arg.toLowerCase()).map(name => this.registrations[name].exec(root)))
   }
 

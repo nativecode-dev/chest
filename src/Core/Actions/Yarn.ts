@@ -10,8 +10,8 @@ export class Yarn extends UpdateScript {
     super(Yarn.Name, UpdaterType.Root)
   }
 
-  public exec(rootpath: string): Promise<void> {
-    return Project.load(rootpath).then(project => this.run(project, 'yarn'))
+  public exec(rootpath: string): Promise<Project> {
+    return Project.load(rootpath).then(project => this.run(project, 'yarn').then(() => project))
   }
 }
 

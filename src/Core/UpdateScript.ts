@@ -27,12 +27,12 @@ export abstract class UpdateScript implements Updater {
     return this._type
   }
 
-  public exec(rootpath: string): Promise<void> {
-    return Promise.resolve()
+  public exec(rootpath: string): Promise<Project> {
+    return Promise.resolve(Project.InvalidProject)
   }
 
-  public workspace(project: Project): Promise<void> {
-    return Promise.resolve()
+  public workspace(project: Project): Promise<Project> {
+    return Promise.resolve(Project.InvalidProject)
   }
 
   protected npm<NPM>(basepath: string): Promise<NPM> {
