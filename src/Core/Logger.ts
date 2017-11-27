@@ -14,14 +14,14 @@ export function Logger(name: string, category?: string): Log {
   const bold = (name: string) => chalk.default.bold(`[${name}${cat}]`)
 
   const log = (...args: any[]) => {
-    if (process.env.DEBUG) {
+    if (process.env.DEBUG && process.env.NODE_ENV === 'development') {
       console.log(...args)
     }
   }
 
   return {
     debug: (...args: any[]): void => {
-      log(chalk.default.yellow.inverse(bold(name), ...args))
+      log(chalk.default.yellow(bold(name), ...args))
     },
     error: (...args: any[]): void => {
       log(chalk.default.red.inverse(bold(name), ...args))

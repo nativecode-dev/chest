@@ -15,7 +15,8 @@ export class Yarn extends UpdateScript {
   }
 
   protected workspace(project: Project): Promise<Project> {
-    return this.run(project, 'yarn').then(() => project)
+    return super.exec(project)
+      .then(project => this.run(project, 'yarn').then(() => project))
   }
 }
 

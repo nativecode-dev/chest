@@ -24,6 +24,10 @@
     "strictNullChecks": true,
     "target": "es2015",
     "types": [
+      "@types/chai",
+      "@types/chai-as-promised",
+      "@types/mocha",
+      "@types/node",
       "chalk",
       "tslint",
       "typescript"

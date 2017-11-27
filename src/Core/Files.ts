@@ -10,7 +10,7 @@ export interface Stat {
 }
 
 class InternalFiles {
-  private readonly log: Log = Logger('files')
+  private readonly log: Log = Logger('chest:files')
 
   public basename(filepath: string): string {
     return path.basename(filepath)

@@ -9,7 +9,7 @@ export abstract class UpdateScript implements Updater {
 
   constructor(name: string) {
     this._name = name
-    this.log = Logger(name)
+    this.log = Logger(`chest:${name}`)
   }
 
   public get name(): string {
@@ -22,13 +22,21 @@ export abstract class UpdateScript implements Updater {
   }
 
   public exec(project: Project): Promise<Project> {
-    return project.children && project.children.length
-      ? Promise.all(project.children.map(child => this.workspace(child))).then(() => project)
-      : Promise.resolve(project)
+    return (
+      project.children && project.children.length
+        ? Promise.all(
+          project.children.map(child => this.workspace(child).then(proj => this.log.task(proj.name)))
+        ).then(() => project)
+        : Promise.resolve(project)
+    )
+      .then(() => this.log.task(this.name, project.name))
+      .then(() => project)
   }
 
   protected workspace(project: Project): Promise<Project> {
-    return Promise.resolve(Project.InvalidProject)
+    return Promise.resolve(project)
+      .then(() => this.log.task(this.name, project.name))
+      .then(() => project)
   }
 
   protected npm<NPM>(basepath: string): Promise<NPM> {
