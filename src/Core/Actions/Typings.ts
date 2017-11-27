@@ -34,7 +34,10 @@ class Script extends UpdateScript {
   private mergedeps(npm: NPM): string[] {
     const deps = Object.keys(npm.dependencies || {})
     const devs = Object.keys(npm.devDependencies || {})
-    return Array.from(new Set([...deps, ...devs])).sort()
+    return Array.from(new Set([...deps, ...devs])).sort().map(dependency => {
+      this.log.info('mergedeps', npm.name, dependency)
+      return dependency
+    })
   }
 
   private typings(project: Project, typings: string[]): Promise<void> {
