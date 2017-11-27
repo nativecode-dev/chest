@@ -1,17 +1,15 @@
 import * as cp from 'child_process'
 import * as path from 'path'
 
-import { Files, Log, Logger, Project, Updater, UpdaterType } from './index'
+import { Files, Log, Logger, Project, Updater } from './index'
 
 export abstract class UpdateScript implements Updater {
   protected readonly log: Log
   private readonly _name: string
-  private readonly _type: UpdaterType
 
-  constructor(name: string, type: UpdaterType) {
+  constructor(name: string) {
     this._name = name
-    this._type = type
-    this.log = Logger(name)
+    this.log = Logger(`chest:${name}`)
   }
 
   public get name(): string {
@@ -23,16 +21,22 @@ export abstract class UpdateScript implements Updater {
     return ['test', 'testing'].some(value => value === env)
   }
 
-  public get type(): UpdaterType {
-    return this._type
+  public exec(project: Project): Promise<Project> {
+    return (
+      project.children && project.children.length
+        ? Promise.all(
+          project.children.map(child => this.workspace(child).then(proj => this.log.task(proj.name)))
+        ).then(() => project)
+        : Promise.resolve(project)
+    )
+      .then(() => this.log.task(this.name, project.name))
+      .then(() => project)
   }
 
-  public exec(rootpath: string): Promise<Project> {
-    return Promise.resolve(Project.InvalidProject)
-  }
-
-  public workspace(project: Project): Promise<Project> {
-    return Promise.resolve(Project.InvalidProject)
+  protected workspace(project: Project): Promise<Project> {
+    return Promise.resolve(project)
+      .then(() => this.log.task(this.name, project.name))
+      .then(() => project)
   }
 
   protected npm<NPM>(basepath: string): Promise<NPM> {

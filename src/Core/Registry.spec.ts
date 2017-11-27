@@ -3,7 +3,6 @@ import 'mocha'
 import { expect } from 'chai'
 
 import { Files } from './Files'
-import { UpdaterType } from './Interfaces'
 import { Registry } from './Registry'
 import { UpdateScript } from './UpdateScript'
 
@@ -13,13 +12,13 @@ const ProjectsScriptName = `${ScriptName}-projects`
 
 class DoesNothingGoesNowhereRoot extends UpdateScript {
   constructor() {
-    super(RootScriptName, UpdaterType.Root)
+    super(RootScriptName)
   }
 }
 
 class DoesNothingGoesNowhereProjects extends UpdateScript {
   constructor() {
-    super(ProjectsScriptName, UpdaterType.Projects)
+    super(ProjectsScriptName)
   }
 }
 
@@ -38,10 +37,6 @@ describe('when using the script registry', () => {
 
   it('should throw error when calling "get" and script does not exist', () => {
     expect(() => Registry.get('invalid')).to.throw()
-  })
-
-  it('should throw error when given unregistered scripts', () => {
-    expect(() => Registry.execute(process.cwd(), 'invalid')).to.throw()
   })
 
 })

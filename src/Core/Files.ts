@@ -10,7 +10,7 @@ export interface Stat {
 }
 
 class InternalFiles {
-  private readonly log: Log = Logger('files')
+  private readonly log: Log = Logger('chest:files')
 
   public basename(filepath: string): string {
     return path.basename(filepath)
@@ -50,13 +50,12 @@ class InternalFiles {
     return path.join(...args)
   }
 
-  public async json<T>(filepath: string): Promise<T> {
-    if (await this.exists(filepath)) {
-      const buffer = await this.readfile(filepath)
-      return JSON.parse(buffer.toString())
-    }
-
-    throw new Error(`requested file ${filepath} does not exist`)
+  public json<T>(filepath: string): Promise<T> {
+    return this.exists(filepath).then(exists => {
+      return exists
+        ? this.readfile(filepath).then(buffer => JSON.parse(buffer.toString()))
+        : Promise.reject(new Error(`requested file ${filepath} does not exist`))
+    })
   }
 
   public readfile(filepath: string): Promise<Buffer> {
@@ -72,14 +71,12 @@ class InternalFiles {
     })
   }
 
-  public async listdirs(filepath: string): Promise<string[]> {
-    const stats = await this.statfiles(filepath)
-    return stats.filter(stat => stat.dir).map(stat => stat.filename)
+  public listdirs(filepath: string): Promise<string[]> {
+    return this.statfiles(filepath).then(stats => stats.filter(stat => stat.dir).map(stat => stat.filename))
   }
 
-  public async listfiles(filepath: string): Promise<string[]> {
-    const stats = await this.statfiles(filepath)
-    return stats.filter(stat => stat.file).map(stat => stat.filename)
+  public listfiles(filepath: string): Promise<string[]> {
+    return this.statfiles(filepath).then(stats => stats.filter(stat => stat.file).map(stat => stat.filename))
   }
 
   public mkdir(filepath: string): Promise<void> {
@@ -94,11 +91,11 @@ class InternalFiles {
     })
   }
 
-  public async save<T>(filepath: string, data: T): Promise<void> {
-    await this.writefile(filepath, JSON.stringify(data, null, 2))
+  public save<T>(filepath: string, data: T): Promise<void> {
+    return this.writefile(filepath, JSON.stringify(data, null, 2))
   }
 
-  public async statfile(filepath: string): Promise<fs.Stats> {
+  public statfile(filepath: string): Promise<fs.Stats> {
     return new Promise<fs.Stats>((resolve, reject) => {
       fs.stat(filepath, (error: NodeJS.ErrnoException, stats: fs.Stats) => {
         if (error) {

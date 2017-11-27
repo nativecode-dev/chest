@@ -1,7 +1,9 @@
 import 'mocha'
 
 import { expect } from 'chai'
-import { Files, Registry, TypeScriptOptions } from '../index'
+import { Files, Project, Registry, TypeScriptOptions } from '../index'
+
+const TIMEOUT = 5000
 
 const testables = Files.join(process.cwd(), 'testables')
 const single = Files.join(testables, 'single')
@@ -11,16 +13,20 @@ describe('when collecting type declarations', () => {
 
   it('should execute single', () => {
     const script = Registry.get('typings')
-    return script.exec(single)
-      .then(project => project.json<TypeScriptOptions>('tsconfig.json'))
-      .then(json => expect(json.compilerOptions.types).to.contain('chalk'))
-  })
+    return Project.load(single).then(project =>
+      script.exec(project)
+        .then(project => project.json<TypeScriptOptions>('tsconfig.json'))
+        .then(json => expect(json.compilerOptions.types).to.contain('chalk'))
+    )
+  }).timeout(TIMEOUT)
 
   it('should execute workspaces', () => {
     const script = Registry.get('typings')
-    return script.exec(workspaces)
-      .then(project => project.json<TypeScriptOptions>('tsconfig.json'))
-      .then(json => expect(json.compilerOptions.types).to.contain('chalk'))
-  })
+    return Project.load(workspaces).then(project =>
+      script.exec(project)
+        .then(project => project.json<TypeScriptOptions>('tsconfig.json'))
+        .then(json => expect(json.compilerOptions.types).to.contain('chalk'))
+    )
+  }).timeout(TIMEOUT)
 
 })

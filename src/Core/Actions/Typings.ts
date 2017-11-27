@@ -1,4 +1,4 @@
-import { Files, NPM, Project, Registry, TypeScriptOptions, UpdateScript, UpdaterType } from '../index'
+import { Files, NPM, Project, Registry, TypeScriptOptions, UpdateScript } from '../index'
 
 /*
  * Updates the "types" property of "tsconfig.json" files by
@@ -8,16 +8,15 @@ class Script extends UpdateScript {
   public static Name = Files.extensionless(__filename)
 
   constructor() {
-    super(Script.Name, UpdaterType.Root)
+    super(Script.Name)
   }
 
-  public exec(rootpath: string): Promise<Project> {
-    return Project.load(rootpath)
-      .then(project =>
-        this.declarations([project, ...project.children])
-          .then(typings => this.typings(project, typings))
-          .then(() => project)
-      )
+  public exec(project: Project): Promise<Project> {
+    return super.exec(project).then(project =>
+      this.declarations([project, ...project.children])
+        .then(typings => this.typings(project, typings))
+        .then(() => project)
+    )
   }
 
   private declarations(projects: Project[]): Promise<string[]> {
