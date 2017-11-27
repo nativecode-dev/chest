@@ -24,13 +24,9 @@ export abstract class UpdateScript implements Updater {
   public exec(project: Project): Promise<Project> {
     return (
       project.children && project.children.length
-        ? Promise.all(
-          project.children.map(child => this.workspace(child).then(proj => this.log.task(proj.name)))
-        ).then(() => project)
+        ? Promise.all(project.children.map(child => this.workspace(child).then(proj => this.log.task(proj.name)))).then(() => project)
         : Promise.resolve(project)
-    )
-      .then(() => this.log.task(this.name, project.name))
-      .then(() => project)
+    ).then(() => this.log.task(this.name, project.name)).then(() => project)
   }
 
   protected workspace(project: Project): Promise<Project> {

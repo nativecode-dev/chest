@@ -1,12 +1,6 @@
 import { Files } from './Files'
-import { NPM } from './Interfaces'
+import { LernaConfig, NPM } from './Interfaces'
 import { Log, Logger } from './Logger'
-
-interface LernaConfig {
-  packages?: string[]
-  useWorkspaces?: boolean
-  version: string
-}
 
 export class Project {
   public static InvalidProject: Project = new Project('invalid', 'invalid')
@@ -23,7 +17,7 @@ export class Project {
     this._owner = owner
     this._path = path
 
-    this.log = Logger(`chest:project:${this.name}`)
+    this.log = Logger(`chest:${this.name}`)
   }
 
   public get children(): Project[] {

@@ -12,15 +12,20 @@ class Script extends UpdateScript {
   }
 
   public exec(project: Project): Promise<Project> {
-    return super.exec(project).then(project =>
-      this.dependencies([project, ...project.children])
-        .then(typings => this.typings(project, typings))
-        .then(() => project)
-    )
+    return super.exec(project)
+      .then(project =>
+        this.dependencies([project, ...project.children].map(proj => {
+          this.log.info('child', proj.name)
+          return proj
+        })).then(typings => this.typings(project, typings)).then(() => project)
+      )
   }
 
   private dependencies(projects: Project[]): Promise<string[]> {
-    return Promise.all(projects.map(project => project.npm))
+    return Promise.all(projects.map(project => {
+      this.log.task(project.name, project.path)
+      return project.npm
+    }))
       .then(npms => npms.map(npm => this.mergedeps(npm)))
       .then(deps => deps.reduce((previous, current) => previous.concat(current), []))
       .then(deps => Array.from(new Set(deps)).sort())
@@ -34,6 +39,10 @@ class Script extends UpdateScript {
 
   private typings(project: Project, typings: string[]): Promise<void> {
     return Promise.all(typings.map(typing => Files.join(project.path, 'node_modules', typing, 'package.json')))
+      .then(typings => {
+        typings.forEach(typing => this.log.info('typing', typing))
+        return typings
+      })
       .then(typings => Promise.all(typings.map(typing => Files.json<NPM>(typing))))
       .then(npms => {
         npms.forEach(npm => this.log.info('dependency', npm.name))

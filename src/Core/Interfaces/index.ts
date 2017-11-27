@@ -1,4 +1,5 @@
 export * from './Dictionary'
+export * from './LernaConfig'
 export * from './NPM'
 export * from './TypeScriptConfig'
 export * from './Updater'
