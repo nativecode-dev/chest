@@ -1,24 +1,19 @@
-import { Log, Logger, Project, Registry, UpdaterType } from './Core'
+import { Log, Logger, Project, Registry } from './Core'
 
 export class Chest {
   private static readonly log: Log = Logger('chest')
 
-  public static async run(root: string, ...args: string[]): Promise<void> {
-    Chest.log.debug('run', root, ...args)
-
-    const project = await Project.load(root)
+  public static run(cwd: string, ...args: string[]): Promise<void> {
+    Chest.log.debug('run', cwd, args)
     const updaters = Registry.all()
 
-    Object.keys(updaters)
-      .filter(key => args.some(arg => arg.toLowerCase() === key.toLowerCase()))
-      .map(async name => {
-        const updater = updaters[name]
-
-        if (updater.type === UpdaterType.Root) {
-          await updater.exec(root)
-        } else {
-          await Promise.all(project.children.map(child => updater.workspace(child)))
-        }
-      })
+    return Project.load(cwd)
+      .then(project => Promise.all(
+        Object.keys(updaters)
+          .filter(scriptname => args.some(arg => arg.toLowerCase() === scriptname.toLowerCase()))
+          .map(scriptname => updaters[scriptname])
+          .map(script => script.exec(project))
+      ))
+      .then(() => Chest.log.done('done', cwd))
   }
 }

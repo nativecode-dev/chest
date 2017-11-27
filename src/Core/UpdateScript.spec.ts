@@ -2,7 +2,7 @@ import 'mocha'
 
 import { expect } from 'chai'
 
-import { Files, Project, Registry, UpdateScript, UpdaterType } from './index'
+import { Files, Project, Registry, UpdateScript } from './index'
 
 const NullScriptName = 'null-update'
 const NullScriptsName = 'null-updates'
@@ -12,13 +12,13 @@ const workspaces = Files.join(process.cwd(), 'testables', 'workspaces')
 
 class NullUpdateScript extends UpdateScript {
   constructor() {
-    super(NullScriptName, UpdaterType.Root)
+    super(NullScriptName)
   }
 }
 
 class NullUpdateScripts extends UpdateScript {
   constructor() {
-    super(NullScriptsName, UpdaterType.Projects)
+    super(NullScriptsName)
   }
 }
 
@@ -29,11 +29,6 @@ describe('when extending update scripts', () => {
 
   it('should execute in root project', (done) => {
     Registry.get(NullScriptName).exec(testables).then(() => done())
-  })
-
-  it('should execute in workspaces project', (done) => {
-    const script = Registry.get(NullScriptsName)
-    Project.load(workspaces).then(project => script.workspace(project).then(() => done()))
   })
 
 })

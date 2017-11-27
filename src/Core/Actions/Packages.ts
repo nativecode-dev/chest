@@ -1,6 +1,6 @@
 import * as path from 'path'
 
-import { Files, NPM, Project, Registry, UpdateScript, UpdaterType } from '../index'
+import { Files, NPM, Project, Registry, UpdateScript } from '../index'
 
 /*
  * Propogates changes from the root package.json to child
@@ -10,10 +10,10 @@ class Script extends UpdateScript {
   public static readonly Name: string = Files.extensionless(__filename)
 
   constructor() {
-    super(Script.Name, UpdaterType.Projects)
+    super(Script.Name)
   }
 
-  public async workspace(project: Project): Promise<Project> {
+  protected async workspace(project: Project): Promise<Project> {
     if (project.owner) {
       const source = await project.owner.npm
       const target = await project.npm
@@ -26,14 +26,8 @@ class Script extends UpdateScript {
       target.repository = source.repository
 
       const filename = path.join(project.path, 'package.json')
-
-      if (this.testing) {
-        /* istanbul ignore next */
-        this.log.task('workspace', filename, JSON.stringify(target, null, 2))
-      } else {
-        await Files.save(filename, target)
-        this.log.task('workspace', filename)
-      }
+      await Files.save(filename, target)
+      this.log.task('workspace', filename)
     }
 
     return project
