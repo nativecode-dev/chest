@@ -23,7 +23,7 @@ export class Project {
     this._owner = owner
     this._path = path
 
-    this.log = Logger(`project:${this.name}`)
+    this.log = Logger(`chest:project:${this.name}`)
   }
 
   public get children(): Project[] {
