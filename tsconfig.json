@@ -24,8 +24,9 @@
     "strictNullChecks": true,
     "target": "es2015",
     "types": [
-      "@types/node",
-      "chalk"
+      "chalk",
+      "tslint",
+      "typescript"
     ]
   },
   "exclude": [

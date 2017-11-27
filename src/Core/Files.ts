@@ -52,7 +52,6 @@ class InternalFiles {
 
   public async json<T>(filepath: string): Promise<T> {
     if (await this.exists(filepath)) {
-      this.log.debug('json', filepath)
       const buffer = await this.readfile(filepath)
       return JSON.parse(buffer.toString())
     }
@@ -66,6 +65,7 @@ class InternalFiles {
         if (error) {
           reject(error)
         } else {
+          this.log.debug('read-file', filepath)
           resolve(data)
         }
       })
@@ -140,6 +140,7 @@ class InternalFiles {
         if (error) {
           reject(error)
         } else {
+          this.log.debug('write-file', filepath)
           resolve()
         }
       })

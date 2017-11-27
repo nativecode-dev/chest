@@ -9,14 +9,16 @@ export class Chest {
     const project = await Project.load(root)
     const updaters = Registry.all()
 
-    Object.keys(updaters).forEach(async name => {
-      const updater = updaters[name]
+    Object.keys(updaters)
+      .filter(key => args.some(arg => arg.toLowerCase() === key.toLowerCase()))
+      .map(async name => {
+        const updater = updaters[name]
 
-      if (updater.type === UpdaterType.Root) {
-        await updater.exec(root)
-      } else {
-        await Promise.all(project.children.map(child => updater.workspace(child)))
-      }
-    })
+        if (updater.type === UpdaterType.Root) {
+          await updater.exec(root)
+        } else {
+          await Promise.all(project.children.map(child => updater.workspace(child)))
+        }
+      })
   }
 }

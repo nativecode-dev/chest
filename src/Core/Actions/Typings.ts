@@ -46,7 +46,7 @@ class Script extends UpdateScript {
         tsconfig.compilerOptions.types = typings
         return tsconfig
       }))
-      .then(tsconfig => this.testing ? Files.save('tsconfig.json', tsconfig) : Promise.resolve())
+      .then(tsconfig => this.testing ? Promise.resolve() : Files.save('tsconfig.json', tsconfig))
   }
 }
 
