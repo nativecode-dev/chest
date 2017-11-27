@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "types": [
+      "@types/node",
       "chalk"
     ]
   }

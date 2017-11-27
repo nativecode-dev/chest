@@ -1,7 +1,7 @@
 import 'mocha'
 
 import { expect } from 'chai'
-import { Files, Project, Registry, TypeScriptOptions } from '../index'
+import { Files, Project, Registry, TypeScriptConfig } from '../index'
 
 const TIMEOUT = 5000
 
@@ -15,8 +15,8 @@ describe('when collecting type declarations', () => {
     const script = Registry.get('typings')
     return Project.load(single).then(project =>
       script.exec(project)
-        .then(project => project.json<TypeScriptOptions>('tsconfig.json'))
-        .then(json => expect(json.compilerOptions.types).to.contain('chalk'))
+        .then(project => project.json<TypeScriptConfig>('tsconfig.json'))
+        .then(tsconfig => expect(tsconfig.compilerOptions.types).to.have.lengthOf(2))
     )
   }).timeout(TIMEOUT)
 
@@ -24,8 +24,8 @@ describe('when collecting type declarations', () => {
     const script = Registry.get('typings')
     return Project.load(workspaces).then(project =>
       script.exec(project)
-        .then(project => project.json<TypeScriptOptions>('tsconfig.json'))
-        .then(json => expect(json.compilerOptions.types).to.contain('chalk'))
+        .then(project => project.json<TypeScriptConfig>('tsconfig.json'))
+        .then(tsconfig => expect(tsconfig.compilerOptions.types).to.have.lengthOf(2))
     )
   }).timeout(TIMEOUT)
 

@@ -16,17 +16,9 @@ class DoesNothingGoesNowhereRoot extends UpdateScript {
   }
 }
 
-class DoesNothingGoesNowhereProjects extends UpdateScript {
-  constructor() {
-    super(ProjectsScriptName)
-  }
-}
-
 describe('when using the script registry', () => {
 
-  it('should return registered script names', () => {
-    expect(Registry.names().length).to.be.gt(0)
-  })
+  it('should return registered script names', () => expect(Registry.names().length).to.be.gt(0))
 
   it('should register new script object', () => {
     expect(Registry.contains(RootScriptName)).to.equal(false)
@@ -35,8 +27,6 @@ describe('when using the script registry', () => {
     expect(Registry.get(RootScriptName).name).to.equal(RootScriptName)
   })
 
-  it('should throw error when calling "get" and script does not exist', () => {
-    expect(() => Registry.get('invalid')).to.throw()
-  })
+  it('should throw error when calling passing invalid to "get"', () => expect(() => Registry.get('invalid')).to.throw())
 
 })
