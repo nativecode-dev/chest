@@ -1,5 +1,5 @@
 import { Files } from './Files'
-import { LernaConfig, NPM } from './Interfaces'
+import { NPM } from './Interfaces'
 import { Log, Logger } from './Logger'
 
 export class Project {
@@ -55,29 +55,7 @@ export class Project {
   }
 
   private workspaces(npm: NPM): Promise<Project> {
-    /*
-    const lernafile = Files.join(this.path, 'lerna.json')
-
-    if (await Files.exists(lernafile)) {
-      this.log.debug('lerna-packages', this.path)
-      return this.lerna(lernafile, this)
-    }
-    */
     return this.yarn(this)
-  }
-
-  private async lerna(filepath: string, project: Project): Promise<Project> {
-    const lerna = await Files.json<LernaConfig>(filepath)
-    if (lerna.packages && lerna.useWorkspaces) {
-      lerna.packages.forEach(async workspace => {
-        const workspaceName = workspace.substring(0, workspace.indexOf('/*'))
-        const workspacePath = Files.join(project.path, workspaceName)
-        const children = await this.loadProjects(workspacePath)
-        children.forEach(child => this.children.push(child))
-        this.log.debug('lerna-package', workspaceName)
-      })
-    }
-    return this
   }
 
   private async yarn(project: Project): Promise<Project> {
