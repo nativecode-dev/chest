@@ -2,7 +2,7 @@ import * as fs from 'fs'
 
 import { Stat } from './Stat'
 
-export interface IFiles {
+export interface FileSystem {
   basename(filepath: string): string
   deepdirs(rootpath: string): Promise<string[]>
   deepfiles(rootpath: string): Promise<string[]>

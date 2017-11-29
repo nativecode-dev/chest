@@ -1,10 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-import { IFiles, Stat } from './Interfaces'
+import { FileSystem, Stat } from './Interfaces'
 import { Log, Logger } from './Logger'
 
-class InternalFiles {
+class InternalFileSystem implements FileSystem {
   private readonly log: Log = Logger('chest:files')
 
   public basename(filepath: string): string {
@@ -140,4 +140,5 @@ class InternalFiles {
   }
 }
 
-export const Files: IFiles = new InternalFiles()
+const files: FileSystem = new InternalFileSystem()
+export const Files: FileSystem = files

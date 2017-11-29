@@ -10,10 +10,11 @@ export interface Log {
 }
 
 export function Logger(name: string, category?: string): Log {
-  const cat = category ? `:${category}` : ''
+  const cat = `:${category}`
   const bold = (name: string) => chalk.default.bold(`[${name}${cat}]`)
 
   const log = (...args: any[]) => {
+    /* istanbul ignore next */
     if (process.env.DEBUG && process.env.NODE_ENV === 'development') {
       console.log(...args)
     }

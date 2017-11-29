@@ -1,5 +1,5 @@
 export * from './Dictionary'
-export * from './IFiles'
+export * from './FileSystem'
 export * from './LernaConfig'
 export * from './NPM'
 export * from './Stat'
