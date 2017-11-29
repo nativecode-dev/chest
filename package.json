@@ -3,7 +3,7 @@
   "description": "CHEST of me best tools, matey!",
   "bin": "./lib/CLI.js",
   "license": "MIT",
-  "main": "./lib/CLI.js",
+  "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "version": "2.0.0-development",
   "dependencies": {
