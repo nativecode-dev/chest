@@ -1,5 +1,7 @@
 export * from './Dictionary'
+export * from './IFiles'
 export * from './LernaConfig'
 export * from './NPM'
+export * from './Stat'
 export * from './TypeScriptConfig'
 export * from './Updater'
