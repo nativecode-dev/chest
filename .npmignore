@@ -6,6 +6,7 @@ src/
 testables/
 
 *.log
+*.map
 
 .gitignore
 .npmignore
