@@ -11,10 +11,12 @@ export interface FileSystem {
   extensionless(filename: string): string
   join(...args: string[]): string
   json<T>(filepath: string): Promise<T>
-  readfile(filepath: string): Promise<Buffer>
   listdirs(filepath: string): Promise<string[]>
   listfiles(filepath: string): Promise<string[]>
   mkdir(filepath: string): Promise<void>
+  mkdirp(filepath: string): Promise<void>
+  readfile(filepath: string): Promise<Buffer>
+  rename(original: string, filepath: string): Promise<void>
   save<T>(filepath: string, data: T): Promise<void>
   statfile(filepath: string): Promise<fs.Stats>
   statfiles(filepath: string): Promise<Stat[]>

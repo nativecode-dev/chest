@@ -1,3 +1,4 @@
+import * as child_process from 'child_process'
 import * as fs from 'fs'
 import * as path from 'path'
 
@@ -53,19 +54,6 @@ class InternalFileSystem implements FileSystem {
     })
   }
 
-  public readfile(filepath: string): Promise<Buffer> {
-    return new Promise<Buffer>((resolve, reject) => {
-      fs.readFile(filepath, (error: NodeJS.ErrnoException, data: Buffer) => {
-        if (error) {
-          reject(error)
-        } else {
-          this.log.debug('read-file', filepath)
-          resolve(data)
-        }
-      })
-    })
-  }
-
   public listdirs(filepath: string): Promise<string[]> {
     return this.statfiles(filepath).then(stats => stats.filter(stat => stat.dir).map(stat => stat.filename))
   }
@@ -84,6 +72,37 @@ class InternalFileSystem implements FileSystem {
         }
       })
     })
+  }
+
+  public mkdirp(filepath: string): Promise<void> {
+    return new Promise<void>((resolve, reject) =>
+      child_process.exec(`mkdir -p "${filepath}"`)
+        .on('close', code => code === 0 ? resolve() : reject())
+        .on('error', error => reject(error))
+    )
+  }
+
+  public readfile(filepath: string): Promise<Buffer> {
+    return new Promise<Buffer>((resolve, reject) => {
+      fs.readFile(filepath, (error: NodeJS.ErrnoException, data: Buffer) => {
+        if (error) {
+          reject(error)
+        } else {
+          this.log.debug('read-file', filepath)
+          resolve(data)
+        }
+      })
+    })
+  }
+
+  public rename(original: string, filepath: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => fs.rename(original, filepath, (error: NodeJS.ErrnoException) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    }))
   }
 
   public save<T>(filepath: string, data: T): Promise<void> {
