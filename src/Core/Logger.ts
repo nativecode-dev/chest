@@ -10,7 +10,7 @@ export interface Log {
 }
 
 export function Logger(name: string, category?: string): Log {
-  const cat = `:${category}`
+  const cat = category ? `:${category}` : ''
   const bold = (name: string) => chalk.default.bold(`[${name}${cat}]`)
 
   const log = (...args: any[]) => {
