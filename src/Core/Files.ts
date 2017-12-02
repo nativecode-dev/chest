@@ -28,6 +28,10 @@ class InternalFileSystem implements FileSystem {
       }, this.listfiles(filepath)))
   }
 
+  public dirname(filepath: string): string {
+    return path.dirname(filepath)
+  }
+
   public exists(filepath: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => fs.exists(filepath, (exists: boolean) => resolve(exists)))
   }
