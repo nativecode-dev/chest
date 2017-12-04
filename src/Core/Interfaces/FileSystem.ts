@@ -6,6 +6,7 @@ export interface FileSystem {
   basename(filepath: string): string
   deepdirs(rootpath: string): Promise<string[]>
   deepfiles(rootpath: string): Promise<string[]>
+  deletefile(filepath: string): Promise<void>
   dirname(filepath: string): string
   exists(filepath: string): Promise<boolean>
   ext(filepath: string): string
