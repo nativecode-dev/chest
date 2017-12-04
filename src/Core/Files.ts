@@ -28,6 +28,16 @@ class InternalFileSystem implements FileSystem {
       }, this.listfiles(filepath)))
   }
 
+  public deletefile(filepath: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => fs.unlink(filepath, (error: NodeJS.ErrnoException) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    }))
+  }
+
   public dirname(filepath: string): string {
     return path.dirname(filepath)
   }
