@@ -43,7 +43,12 @@ class InternalFileSystem implements FileSystem {
   }
 
   public exists(filepath: string): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => fs.exists(filepath, (exists: boolean) => resolve(exists)))
+    return new Promise<boolean>((resolve, reject) => fs.access(filepath, (error: Error) => {
+      if (error) {
+        resolve(false)
+      }
+      resolve(true)
+    }))
   }
 
   public ext(filepath: string): string {

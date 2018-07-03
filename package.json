@@ -7,6 +7,7 @@
   "typings": "./lib/index.d.ts",
   "version": "2.0.0-development",
   "dependencies": {
+    "@nofrills/lincoln-debug": "^2.2.6",
     "chalk": "^2.3.0"
   },
   "devDependencies": {
@@ -26,7 +27,6 @@
     "semantic-release": "^8.2.0",
     "semantic-release-cli": "^3.2.6",
     "ts-node": "^3.3.0",
-    "tsconfig-paths": "^2.3.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.1"
@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "prebuild": "rimraf .cache && rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
+    "prebuild": "yarn && rimraf .cache && rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
     "postbuild": "bin-shebang",
     "test": "sh setup-tests.sh && cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",

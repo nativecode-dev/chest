@@ -1,18 +1,18 @@
 cache: yarn
 language: node_js
 node_js:
+  - 'node'
   - '8'
-  - '6'
 os: linux
 after_failure:
   - ls -lah --color=auto
 after_success:
   - yarn run travis-coveralls
   - yarn run travis-ssh
-  - 'git remote set-url origin git@github.com:nativecode-dev/chest.git'
+  - git remote set-url origin git@github.com:nativecode-dev/chest.git
   - git checkout $TRAVIS_BRANCH
-  - 'npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"'
+  - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
   - yarn run travis-release
 before_install:
-  - 'curl -o- -L https://yarnpkg.com/install.sh | bash -s'
-  - 'export PATH="$HOME/.yarn/bin:$PATH"'
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
+  - export PATH="$HOME/.yarn/bin:$PATH"
