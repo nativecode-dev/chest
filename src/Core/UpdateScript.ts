@@ -1,14 +1,14 @@
 import * as cp from 'child_process'
 
-import { Log, Logger, Project, Updater } from './index'
+import { Logger, Lincoln, Project, Updater } from './index'
 
 export abstract class UpdateScript implements Updater {
-  protected readonly log: Log
+  protected readonly log: Lincoln
   private readonly _name: string
 
   constructor(name: string) {
     this._name = name
-    this.log = Logger(`chest:${name}`)
+    this.log = Logger.extend('update-script')
   }
 
   public get name(): string {
@@ -17,17 +17,17 @@ export abstract class UpdateScript implements Updater {
 
   public exec(project: Project): Promise<Project> {
     const rootProject = project.children && project.children.length
-      ? Promise.all(project.children.map(child => this.workspace(child).then(proj => this.log.task(proj.name)))).then(() => project)
+      ? Promise.all(project.children.map(child => this.workspace(child).then(proj => this.log.info(proj.name)))).then(() => project)
       : Promise.resolve(project)
 
     return rootProject
-      .then(() => this.log.start(this.name, project.name))
+      .then(() => this.log.info(this.name, project.name))
       .then(() => project)
   }
 
   protected workspace(project: Project): Promise<Project> {
     return Promise.resolve(project)
-      .then(() => this.log.task(this.name, project.name))
+      .then(() => this.log.info(this.name, project.name))
       .then(() => project)
   }
 
@@ -43,15 +43,15 @@ export abstract class UpdateScript implements Updater {
       })
 
       child.stderr.on('data', data =>
-        this.stream(project, process.stderr, data)
+        this.stream(project, data)
           .map(lines => lines)
           .forEach(args => this.log.error(...args))
       )
 
       child.stdout.on('data', data =>
-        this.stream(project, process.stdout, data)
+        this.stream(project, data)
           .map(lines => lines)
-          .forEach(args => this.log.task(...args))
+          .forEach(args => this.log.info(...args))
       )
 
       child.addListener('exit', (code: number, signal: string) => {
@@ -65,7 +65,7 @@ export abstract class UpdateScript implements Updater {
     })
   }
 
-  private stream(project: Project, stream: NodeJS.WriteStream, data: string | Buffer): string[][] {
+  private stream(project: Project, data: string | Buffer): string[][] {
     const format = (lines: string[]): string[][] => {
       return lines.filter(line => line.trim()).map(line => [project.name, '>', line])
     }

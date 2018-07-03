@@ -3,10 +3,10 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import { FileSystem, Stat } from './Interfaces'
-import { Log, Logger } from './Logger'
+import { Lincoln, Logger } from './Logger'
 
 class InternalFileSystem implements FileSystem {
-  private readonly log: Log = Logger('chest:files')
+  private readonly log: Lincoln = Logger.extend('file-system')
 
   public basename(filepath: string): string {
     return path.basename(filepath)

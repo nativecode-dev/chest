@@ -1,6 +1,6 @@
 import * as path from 'path'
 
-import { Files, NPM, Project, Registry, UpdateScript } from '../index'
+import { Files, Project, Registry, UpdateScript } from '../index'
 
 /*
  * Propogates changes from the root package.json to child
@@ -33,7 +33,7 @@ class Script extends UpdateScript {
 
         const filename = path.join(project.path, 'package.json')
         await Files.save(filename, target)
-        this.log.task('workspace', filename)
+        this.log.info('workspace', filename)
 
         return project
       })

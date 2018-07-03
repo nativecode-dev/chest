@@ -1,7 +1,7 @@
-import { Log, Logger, Project, Registry } from './Core'
+import { Lincoln, Logger, Project, Registry } from './Core'
 
 export class Chest {
-  private static readonly log: Log = Logger('chest')
+  private static readonly log: Lincoln = Logger
 
   public static run(cwd: string, ...args: string[]): Promise<void> {
     Chest.log.info('run', cwd, ...args)
@@ -12,8 +12,8 @@ export class Chest {
         Object.keys(updaters)
           .filter(scriptname => args.some(arg => arg.toLowerCase() === scriptname.toLowerCase()))
           .map(scriptname => updaters[scriptname])
-          .map(script => script.exec(project).then(proj => Chest.log.task('done', '[project]', proj.name)))
+          .map(script => script.exec(project).then(proj => Chest.log.info('done', '[project]', proj.name)))
       ))
-      .then(() => Chest.log.done('done', cwd, args))
+      .then(() => Chest.log.info('done', cwd, args))
   }
 }

@@ -1,6 +1,6 @@
 import { Files } from './Files'
 import { NPM } from './Interfaces'
-import { Log, Logger } from './Logger'
+import { Lincoln, Logger } from './Logger'
 
 export class Project {
   public static InvalidProject: Project = new Project('invalid', 'invalid')
@@ -9,7 +9,7 @@ export class Project {
   private readonly _name: string
   private readonly _owner: Project | undefined
   private readonly _path: string
-  private readonly log: Log
+  private readonly log: Lincoln
 
   private constructor(name: string, path: string, owner?: Project) {
     this._children = []
@@ -17,7 +17,7 @@ export class Project {
     this._owner = owner
     this._path = path
 
-    this.log = Logger(`chest:${this.name}`)
+    this.log = Logger.extend('project')
   }
 
   public get children(): Project[] {
@@ -40,17 +40,17 @@ export class Project {
     return this._path
   }
 
-  public static load(rootpath: string): Promise<Project> {
+  static load(rootpath: string): Promise<Project> {
     return Files.json<NPM>(Files.join(rootpath, 'package.json'))
       .then(npm => ({ npm, project: new Project(npm.name, rootpath) }))
       .then(load => load.project.workspaces(load.npm).then(() => load.project))
   }
 
-  public json<T>(filename: string): Promise<T> {
+  json<T>(filename: string): Promise<T> {
     return Files.json<T>(Files.join(this.path, filename))
   }
 
-  public save<T>(filename: string, data: T): Promise<void> {
+  save<T>(filename: string, data: T): Promise<void> {
     return Files.save(Files.join(this.path, filename), data)
   }
 

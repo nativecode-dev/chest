@@ -28,8 +28,8 @@ export class ProjectNavigator {
     return this.filterByExtension(this.project.path, '.tsx')
   }
 
-  public filterByExtension(filepath: string, ext: string): Promise<string[]> {
-    return Files.listdirs(this.project.path)
-      .then(dirs => dirs.filter(dir => Files.ext(dir.toLowerCase()) === ext))
+  async filterByExtension(filepath: string, ext: string): Promise<string[]> {
+    const files = await Files.listdirs(filepath)
+    return files.filter(dir => Files.ext(dir.toLowerCase()) === ext.toLowerCase())
   }
 }

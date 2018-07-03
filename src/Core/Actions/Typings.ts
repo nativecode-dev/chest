@@ -38,7 +38,7 @@ class Script extends UpdateScript {
       .then(typings => Promise.all(typings.map(typing => Files.json<NPM>(typing))))
       .then(npms => npms.filter(npm => npm.types || npm.typings || npm.typeScriptVersion))
       .then(npms => {
-        npms.forEach(npm => this.log.task(`${npm.name} ->`, npm.types || npm.typings || npm.name))
+        npms.forEach(npm => this.log.info(`${npm.name} ->`, npm.types || npm.typings || npm.name))
         return npms
       })
       .then(npms => project.json<TypeScriptConfig>('tsconfig.json').then(tsconfig => {
