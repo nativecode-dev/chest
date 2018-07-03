@@ -2,9 +2,7 @@ import 'mocha'
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
 
-import { Files } from './Files'
-import { Project } from './Project'
-import { Registry } from './Registry'
+import { Files, Project } from '../src/index'
 
 const expect = chai.expect
 

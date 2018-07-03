@@ -1,7 +1,7 @@
 import 'mocha'
 
 import { expect } from 'chai'
-import { Files, Project, Registry, TypeScriptConfig } from '../index'
+import { Files, Project, Registry, TypeScriptConfig } from '../src/index'
 
 const TIMEOUT = 5000
 

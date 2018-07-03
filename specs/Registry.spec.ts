@@ -2,9 +2,7 @@ import 'mocha'
 
 import { expect } from 'chai'
 
-import { Files } from './Files'
-import { Registry } from './Registry'
-import { UpdateScript } from './UpdateScript'
+import { Files, Registry, UpdateScript } from '../src/index'
 
 const ScriptName = Files.extensionless(__filename)
 const RootScriptName = `${ScriptName}-root`

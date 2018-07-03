@@ -3,8 +3,7 @@ import 'mocha'
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
 
-import { Chest } from './Chest'
-import { Files, Project, Registry } from './Core'
+import { Chest, Files, Registry } from '../src/index'
 
 const TIMEOUT = 5000
 

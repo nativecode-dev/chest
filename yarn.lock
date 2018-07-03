@@ -1247,7 +1247,7 @@ chalk@^2.0.0, chalk@^2.0.1:
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
 
-chalk@^2.3.0:
+chalk@^2.1.0, chalk@^2.3.0:
   version "2.4.1"
   resolved "https://packages.nativecode.com/repository/npm/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   dependencies:
@@ -5643,6 +5643,22 @@ travis-ci@^2.1.1:
     request "~2.74.0"
     underscore.string "~2.2.0rc"
 
+travis-deploy-once@^5.0.1:
+  version "5.0.1"
+  resolved "https://packages.nativecode.com/repository/npm/travis-deploy-once/-/travis-deploy-once-5.0.1.tgz#373c9987a1af5c5a5106ee3d6e042dce2029b02d"
+  dependencies:
+    babel-polyfill "^6.26.0"
+    babel-preset-env "^1.6.1"
+    babel-register "^6.26.0"
+    chalk "^2.1.0"
+    execa "^0.10.0"
+    got "^8.0.1"
+    p-retry "^2.0.0"
+    semver "^5.4.1"
+    update-notifier "^2.3.0"
+    url-join "^4.0.0"
+    yargs "^12.0.1"
+
 trim-newlines@^2.0.0:
   version "2.0.0"
   resolved "https://packages.nativecode.com/repository/npm/trim-newlines/-/trim-newlines-2.0.0.tgz#b403d0b91be50c331dfc4b82eeceb22c3de16d20"
@@ -6068,7 +6084,7 @@ yargs@11.1.0, yargs@^11.0.0:
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
 
-yargs@^12.0.0:
+yargs@^12.0.0, yargs@^12.0.1:
   version "12.0.1"
   resolved "https://packages.nativecode.com/repository/npm/yargs/-/yargs-12.0.1.tgz#6432e56123bb4e7c3562115401e98374060261c2"
   dependencies:
