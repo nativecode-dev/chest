@@ -1,4 +1,9 @@
-cache: yarn
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+cache:
+  directories:
+    - ~/.npm
 language: node_js
 node_js:
   - 'node'
@@ -21,7 +26,7 @@ jobs:
         - git checkout $TRAVIS_BRANCH
         - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
       after_success:
-        - yarn run travis-release
+        - yarn run travis-deploy-once "yarn run semantic-release"
 after_failure:
   - ls -lah --color=auto
 after_success:

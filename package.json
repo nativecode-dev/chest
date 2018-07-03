@@ -29,7 +29,8 @@
     "ts-node": "^7.0.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.1",
+    "travis-deploy-once": "^5.0.1"
   },
   "nyc": {
     "all": true,
@@ -72,6 +73,8 @@
     "pretypedefs": "yarn run build",
     "travis-coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
     "travis-release": "semantic-release pre && npm publish && semantic-release post",
-    "travis-ssh": "set-up-ssh --key \"$encrypted_7baae619033b_key\" --iv \"$encrypted_7baae619033b_iv\" --path-encrypted-key \"deploy.enc\""
+    "travis-ssh": "set-up-ssh --key \"$encrypted_7baae619033b_key\" --iv \"$encrypted_7baae619033b_iv\" --path-encrypted-key \"deploy.enc\"",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   }
 }
