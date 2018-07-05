@@ -1,4 +1,4 @@
-export interface LernaConfig {
+export interface Lerna {
   packages?: string[]
   useWorkspaces?: boolean
   version: string

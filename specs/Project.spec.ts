@@ -1,47 +1,31 @@
 import 'mocha'
-import * as chai from 'chai'
-import * as chaiAsPromised from 'chai-as-promised'
 
-import { Files, Project } from '../src/index'
+import { FileSystem as fs } from '@nofrills/fs'
+import { expect } from 'chai'
+import { Npm, Project } from '../src/index'
 
-const expect = chai.expect
+describe('when using Project', () => {
 
-const testables = Files.join(process.cwd(), 'testables')
-const single = Files.join(testables, 'single')
-const lerna = Files.join(testables, 'workspaces-lerna')
-const workspaces = Files.join(testables, 'workspaces')
+  const cwd = fs.join(process.cwd(), 'specs/data')
 
-const TIMEOUT = 10000
+  describe('to load an existing package.json file', () => {
 
-describe('when loading projects', () => {
+    it('should load project correctly', async () => {
+      const path = fs.join(cwd, 'single', 'package.json')
+      const project = await Project.load(path)
+      const config = project.config('package.json')
+      const npm = config.as<Npm>()
+      expect(npm.name).equals('project-single')
+    })
 
-  beforeEach(() => {
-    chai.should()
-    chai.use(chaiAsPromised)
+    it('should load workspace project correctly', async () => {
+      const path = fs.join(cwd, 'workspaces', 'package.json')
+      const project = await Project.load(path)
+      const config = project.config('package.json')
+      const npm = config.as<Npm>()
+      expect(npm.name).equals('project-workspaces')
+    })
+
   })
-
-  it('should load single npm project', () => {
-    return Project.load(single).then(project => {
-      expect(project.children.length).to.equal(0)
-      expect(project.name).to.equal('project-single')
-      expect(project.path).to.equal(single)
-    })
-  }).timeout(TIMEOUT)
-
-  it('should load yarn lerna project', () => {
-    return Project.load(lerna).then(project => {
-      expect(project.children.length).to.equal(2)
-      expect(project.children[0].owner).to.not.equal(undefined)
-      expect(project.children[1].owner).to.not.equal(undefined)
-    })
-  }).timeout(TIMEOUT)
-
-  it('should load yarn workspace project', () => {
-    return Project.load(workspaces).then(project => {
-      expect(project.children.length).to.equal(2)
-      expect(project.children[0].owner).to.not.equal(undefined)
-      expect(project.children[1].owner).to.not.equal(undefined)
-    })
-  }).timeout(TIMEOUT)
 
 })

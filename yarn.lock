@@ -97,30 +97,57 @@
   version "1.1.0"
   resolved "https://packages.nativecode.com/repository/npm/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@nofrills/collections@^2.2.5":
-  version "2.2.5"
-  resolved "https://packages.nativecode.com/repository/npm/@nofrills/collections/-/collections-2.2.5.tgz#b3957436ff4bd5ff5b1403b38a0af32ad9d16944"
+"@nofrills/collections@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/collections/-/collections-3.0.5.tgz#ff26c6707bc249f40df05cb74ededc75484b4b68"
 
-"@nofrills/fs@^2.2.6":
-  version "2.2.6"
-  resolved "https://packages.nativecode.com/repository/npm/@nofrills/fs/-/fs-2.2.6.tgz#df1001b91e7f093dc5660b20015b355fd9e232ce"
+"@nofrills/console@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/console/-/console-3.0.5.tgz#046e03dcf0b1be2e2bcf4df3131048e5c0abe764"
   dependencies:
-    "@nofrills/lincoln-debug" "^2.2.6"
-    node-fetch "^1.7.3"
+    "@nofrills/fs" "^3.0.5"
+    "@nofrills/lincoln-debug" "^3.0.5"
+    "@nofrills/scrubs" "^3.0.5"
+    node-fetch "^2.1.2"
 
-"@nofrills/lincoln-debug@^2.2.6":
-  version "2.2.6"
-  resolved "https://packages.nativecode.com/repository/npm/@nofrills/lincoln-debug/-/lincoln-debug-2.2.6.tgz#a6c33070e867c50cec57d8c76d3e7dde9761d949"
+"@nofrills/fs@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/fs/-/fs-3.0.5.tgz#f742f9c61ebcc8ffc60b78b0dfce52333e744b0b"
   dependencies:
-    "@nofrills/lincoln" "^2.2.6"
-    debug "^2.6.8"
+    "@nofrills/lincoln-debug" "^3.0.5"
+    glob "^7.1.2"
+    mkdirp "^0.5.1"
+    node-fetch "^2.1.2"
+    rxjs "^6.2.1"
 
-"@nofrills/lincoln@^2.2.6":
-  version "2.2.6"
-  resolved "https://packages.nativecode.com/repository/npm/@nofrills/lincoln/-/lincoln-2.2.6.tgz#c71c999ddd5cd3bf6f4c752965d6f141954ec5d5"
+"@nofrills/lincoln-debug@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/lincoln-debug/-/lincoln-debug-3.0.5.tgz#c9e26b226f7a87c5b25d8e2c43abe1282bce9811"
   dependencies:
-    "@nofrills/collections" "^2.2.5"
-    uuidjs "^3.5.3"
+    "@nofrills/lincoln" "^3.0.5"
+    debug "^3.1.0"
+
+"@nofrills/lincoln@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/lincoln/-/lincoln-3.0.5.tgz#05016f5c1122e8b575ebb2a6a65f162d64709ecd"
+  dependencies:
+    "@nofrills/collections" "^3.0.5"
+    uuidjs "^4.0.3"
+
+"@nofrills/scrubs@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/scrubs/-/scrubs-3.0.5.tgz#786c953fce2c112cdf1848e916ac274ffec8d570"
+  dependencies:
+    "@nofrills/lincoln-debug" "^3.0.5"
+    "@nofrills/types" "^3.0.5"
+    lodash.merge "^4.6.0"
+
+"@nofrills/types@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@nofrills/types/-/types-3.0.5.tgz#c342540095e9293f92d34e09b48a9956b198db40"
+  dependencies:
+    validator "^10.4.0"
+    zipcodes-regex "^1.0.1"
 
 "@octokit/rest@^15.2.0":
   version "15.9.4"
@@ -203,13 +230,7 @@
   version "0.7.0"
   resolved "https://packages.nativecode.com/repository/npm/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
-"@types/chai-as-promised@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@types/chai-as-promised/-/chai-as-promised-7.1.0.tgz#010b04cde78eacfb6e72bfddb3e58fe23c2e78b9"
-  dependencies:
-    "@types/chai" "*"
-
-"@types/chai@*", "@types/chai@^4.0.4":
+"@types/chai@^4.0.4":
   version "4.1.4"
   resolved "https://packages.nativecode.com/repository/npm/@types/chai/-/chai-4.1.4.tgz#5ca073b330d90b4066d6ce18f60d57f2084ce8ca"
 
@@ -1208,12 +1229,6 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chai-as-promised@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
-  dependencies:
-    check-error "^1.0.2"
-
 chai@^4.1.2:
   version "4.1.2"
   resolved "https://packages.nativecode.com/repository/npm/chai/-/chai-4.1.2.tgz#0f64584ba642f0f2ace2806279f4f06ca23ad73c"
@@ -1247,7 +1262,7 @@ chardet@^0.5.0:
   version "0.5.0"
   resolved "https://packages.nativecode.com/repository/npm/chardet/-/chardet-0.5.0.tgz#fe3ac73c00c3d865ffcc02a0682e2c20b6a06029"
 
-check-error@^1.0.1, check-error@^1.0.2:
+check-error@^1.0.1:
   version "1.0.2"
   resolved "https://packages.nativecode.com/repository/npm/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
@@ -2861,7 +2876,7 @@ is-ssh@^1.3.0:
   dependencies:
     protocols "^1.1.0"
 
-is-stream@^1.0.0, is-stream@^1.0.1, is-stream@^1.1.0:
+is-stream@^1.0.0, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://packages.nativecode.com/repository/npm/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
@@ -3228,6 +3243,10 @@ lodash.assign@^4.2.0:
 lodash.clonedeep@~4.5.0:
   version "4.5.0"
   resolved "https://packages.nativecode.com/repository/npm/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
+lodash.merge@^4.6.0:
+  version "4.6.1"
+  resolved "https://packages.nativecode.com/repository/npm/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
 
 lodash.toarray@^4.4.0:
   version "4.4.0"
@@ -3638,16 +3657,9 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@^1.7.3:
-  version "1.7.3"
-  resolved "https://packages.nativecode.com/repository/npm/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
-  dependencies:
-    encoding "^0.1.11"
-    is-stream "^1.0.1"
-
-node-fetch@^2.1.1:
+node-fetch@^2.1.1, node-fetch@^2.1.2:
   version "2.1.2"
-  resolved "https://packages.nativecode.com/repository/npm/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
 
 node-gyp@^3.6.2:
   version "3.7.0"
@@ -4877,9 +4889,9 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.1.0:
+rxjs@^6.1.0, rxjs@^6.2.1:
   version "6.2.1"
-  resolved "https://packages.nativecode.com/repository/npm/rxjs/-/rxjs-6.2.1.tgz#246cebec189a6cbc143a3ef9f62d6f4c91813ca1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.1.tgz#246cebec189a6cbc143a3ef9f62d6f4c91813ca1"
   dependencies:
     tslib "^1.9.0"
 
@@ -5798,9 +5810,9 @@ uuid@^3.0.0, uuid@^3.1.0, uuid@^3.2.1:
   version "3.3.2"
   resolved "https://packages.nativecode.com/repository/npm/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
-uuidjs@^3.5.3:
-  version "3.6.2"
-  resolved "https://packages.nativecode.com/repository/npm/uuidjs/-/uuidjs-3.6.2.tgz#d46cc53ab911b71915fe363ff27a2fa0f1a704a0"
+uuidjs@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/uuidjs/-/uuidjs-4.0.3.tgz#4b4113a98e70507643a9a55a0493ff95b1d2538d"
 
 validate-npm-package-license@^3.0.1, validate-npm-package-license@^3.0.3:
   version "3.0.3"
@@ -5815,7 +5827,7 @@ validate-npm-package-name@^3.0.0, validate-npm-package-name@~3.0.0:
   dependencies:
     builtins "^1.0.3"
 
-validator@^10.0.0:
+validator@^10.0.0, validator@^10.4.0:
   version "10.4.0"
   resolved "https://packages.nativecode.com/repository/npm/validator/-/validator-10.4.0.tgz#ee99a44afb3bb5ed350a159f056ca72a204cfc3c"
 
@@ -5996,3 +6008,7 @@ yargs@~3.10.0:
 yn@^2.0.0:
   version "2.0.0"
   resolved "https://packages.nativecode.com/repository/npm/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
+
+zipcodes-regex@^1.0.1:
+  version "1.0.1"
+  resolved "https://packages.nativecode.com/repository/npm/zipcodes-regex/-/zipcodes-regex-1.0.1.tgz#18763d814245094ace277666b7a805bc7f9db74d"

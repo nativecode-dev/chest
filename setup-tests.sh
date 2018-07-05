@@ -2,7 +2,7 @@
 
 YARN=`which yarn`
 
-cd testables/single
+cd specs/data/single
 $YARN
 
 cd ../workspaces

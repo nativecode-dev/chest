@@ -1,5 +1,5 @@
 import { CompilerOptions } from 'typescript'
 
-export interface TypeScriptConfig {
+export interface TypeScript {
   compilerOptions: CompilerOptions
 }

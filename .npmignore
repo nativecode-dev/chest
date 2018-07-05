@@ -1,9 +1,10 @@
+.artifacts/
 .cache/
 artifacts/
 docs/
 node_modules/
+specs/
 src/
-testables/
 
 *.log
 *.map
