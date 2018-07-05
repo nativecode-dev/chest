@@ -24,8 +24,8 @@ export class Project {
     return this.root
   }
 
-  get projects(): Project[] {
-    return this.children
+  projects(): Project[] {
+    return this.children.slice()
   }
 
   static async load(filepath: string): Promise<Project> {
@@ -49,6 +49,11 @@ export class Project {
     }
 
     return project
+  }
+
+  add(project: Project): number {
+    this.log.debug('add', this.children.length, project.name)
+    return this.children.push(project)
   }
 
   as<T>(filename: string): T {

@@ -24,6 +24,7 @@ describe('when using Project', () => {
       const config = project.config('package.json')
       const npm = config.as<Npm>()
       expect(npm.name).equals('project-workspaces')
+      expect(project.projects().length).equals(2)
     })
 
   })

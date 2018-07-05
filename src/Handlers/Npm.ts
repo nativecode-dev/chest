@@ -44,18 +44,22 @@ export async function NpmConfig(project: Project, filepath: string): Promise<Pro
   const log = logger.extend(config.name)
 
   if (data && data.workspaces) {
-    await Promise.all(data.workspaces.map(async workspace => {
-      const pattern = fs.join(project.path, workspace)
-      const packages = await fs.glob(pattern)
-      log.debug('resolve', pattern, ...packages)
+    await Promise.all(
+      data.workspaces.map(async workspace => {
+        const pattern = fs.join(project.path, workspace)
+        const packages = await fs.glob(pattern)
+        log.debug('resolve', pattern, ...packages)
 
-      packages.forEach(async path => {
-        const projpath = fs.join(path, 'package.json')
-        const child = await Project.load(projpath)
-        project.projects.push(child)
-        log.debug('child', child.name, child.path)
+        return Promise.all(
+          packages.map(async path => {
+            const projpath = fs.join(path, 'package.json')
+            const child = await Project.load(projpath)
+            project.add(child)
+            log.debug('child', child.name, child.path)
+          })
+        )
       })
-    }))
+    )
   }
 
   return config
