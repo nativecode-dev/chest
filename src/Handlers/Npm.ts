@@ -1,10 +1,10 @@
 import { Dictionary } from '@nofrills/collections'
-import { FileSystem as fs } from '@nofrills/fs'
+import { Lincoln } from '@nofrills/lincoln'
+import { fs } from '@nofrills/fs'
 
 import { Project } from '../Project'
 import { ProjectConfig } from '../ProjectConfig'
 import { Logger } from '../Logger'
-import { Lincoln } from '@nofrills/lincoln';
 
 export interface Npm {
   author?: string | string[] | Dictionary<string>
