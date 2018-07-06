@@ -7,11 +7,11 @@
   "typings": "./lib/index.d.ts",
   "version": "0.0.0-development",
   "dependencies": {
-    "@nofrills/collections": "^3.0.7",
-    "@nofrills/console": "^3.0.7",
-    "@nofrills/fs": "^3.0.7",
-    "@nofrills/lincoln-debug": "^3.0.7",
-    "@nofrills/scrubs": "^3.0.7"
+    "@nofrills/collections": "^3.0.8",
+    "@nofrills/console": "^3.0.8",
+    "@nofrills/fs": "^3.0.8",
+    "@nofrills/lincoln-debug": "^3.0.8",
+    "@nofrills/scrubs": "^3.0.8"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
@@ -63,14 +63,13 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "prebuild": "yarn && rimraf .cache && rimraf lib && rimraf artifacts && tslint --project tsconfig.json --config tslint.json",
+    "prebuild": "yarn && yarn run clean && yarn run lint",
     "postbuild": "bin-shebang",
+    "clean": "rimraf .cache && rimraf lib && rimraf artifacts",
+    "lint": "tslint --project tsconfig.json --config tslint.json",
     "test": "sh setup-tests.sh && cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
     "testonly": "cross-env DEBUG=chest* nyc mocha --opts mocha.opts",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "typedefs": "cd specs/data/workspaces && node ../../lib/CLI typings",
-    "pretypedefs": "yarn run build",
     "travis-coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
     "travis-release": "semantic-release pre && npm publish && semantic-release post",
     "travis-ssh": "set-up-ssh --key \"$encrypted_7baae619033b_key\" --iv \"$encrypted_7baae619033b_iv\" --path-encrypted-key \"deploy.enc\"",

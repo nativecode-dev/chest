@@ -1,5 +1,6 @@
 .artifacts/
 .cache/
+.github/
 artifacts/
 docs/
 node_modules/
