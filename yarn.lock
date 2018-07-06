@@ -97,54 +97,54 @@
   version "1.1.0"
   resolved "https://packages.nativecode.com/repository/npm/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@nofrills/collections@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/collections/-/collections-3.0.5.tgz#ff26c6707bc249f40df05cb74ededc75484b4b68"
+"@nofrills/collections@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/collections/-/collections-3.0.7.tgz#89135a69d29bbc3e16253d3eb279a6f0e2b1e47f"
 
-"@nofrills/console@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/console/-/console-3.0.5.tgz#046e03dcf0b1be2e2bcf4df3131048e5c0abe764"
+"@nofrills/console@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/console/-/console-3.0.7.tgz#8240f1e7ab5232713c2b187945438d166db3468c"
   dependencies:
-    "@nofrills/fs" "^3.0.5"
-    "@nofrills/lincoln-debug" "^3.0.5"
-    "@nofrills/scrubs" "^3.0.5"
+    "@nofrills/fs" "^3.0.7"
+    "@nofrills/lincoln-debug" "^3.0.7"
+    "@nofrills/scrubs" "^3.0.7"
     node-fetch "^2.1.2"
 
-"@nofrills/fs@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/fs/-/fs-3.0.5.tgz#f742f9c61ebcc8ffc60b78b0dfce52333e744b0b"
+"@nofrills/fs@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/fs/-/fs-3.0.7.tgz#c8d47fa8034ba6b6b2ebaea4a562981ab7fe52e8"
   dependencies:
-    "@nofrills/lincoln-debug" "^3.0.5"
+    "@nofrills/lincoln-debug" "^3.0.7"
     glob "^7.1.2"
     mkdirp "^0.5.1"
     node-fetch "^2.1.2"
     rxjs "^6.2.1"
 
-"@nofrills/lincoln-debug@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/lincoln-debug/-/lincoln-debug-3.0.5.tgz#c9e26b226f7a87c5b25d8e2c43abe1282bce9811"
+"@nofrills/lincoln-debug@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/lincoln-debug/-/lincoln-debug-3.0.7.tgz#32e9d6841babb9ccf0951037977022a4685d546f"
   dependencies:
-    "@nofrills/lincoln" "^3.0.5"
+    "@nofrills/lincoln" "^3.0.7"
     debug "^3.1.0"
 
-"@nofrills/lincoln@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/lincoln/-/lincoln-3.0.5.tgz#05016f5c1122e8b575ebb2a6a65f162d64709ecd"
+"@nofrills/lincoln@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/lincoln/-/lincoln-3.0.7.tgz#e592d02fad50f1ae2b860e5d67e546578c32c2f3"
   dependencies:
-    "@nofrills/collections" "^3.0.5"
+    "@nofrills/collections" "^3.0.7"
     uuidjs "^4.0.3"
 
-"@nofrills/scrubs@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/scrubs/-/scrubs-3.0.5.tgz#786c953fce2c112cdf1848e916ac274ffec8d570"
+"@nofrills/scrubs@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/scrubs/-/scrubs-3.0.7.tgz#cadb7a87ba292e0c40ee8084e926e265ed388748"
   dependencies:
-    "@nofrills/lincoln-debug" "^3.0.5"
-    "@nofrills/types" "^3.0.5"
+    "@nofrills/lincoln-debug" "^3.0.7"
+    "@nofrills/types" "^3.0.7"
     lodash.merge "^4.6.0"
 
-"@nofrills/types@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@nofrills/types/-/types-3.0.5.tgz#c342540095e9293f92d34e09b48a9956b198db40"
+"@nofrills/types@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@nofrills/types/-/types-3.0.7.tgz#2dc66e043cf4ed0753551026ac71c7abdbb92644"
   dependencies:
     validator "^10.4.0"
     zipcodes-regex "^1.0.1"
