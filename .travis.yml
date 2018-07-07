@@ -25,6 +25,7 @@ jobs:
         - git remote set-url origin git@github.com:nativecode-dev/chest.git
         - git checkout $TRAVIS_BRANCH
         - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+        - yarn run test
       after_success:
         - yarn run travis-deploy-once "yarn run semantic-release"
 after_failure:
