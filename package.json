@@ -7,11 +7,11 @@
   "typings": "./lib/index.d.ts",
   "version": "0.0.0-development",
   "dependencies": {
-    "@nofrills/collections": "^3.1.4-2",
-    "@nofrills/console": "^3.1.4-2",
-    "@nofrills/fs": "^3.1.4-2",
-    "@nofrills/lincoln-debug": "^3.1.4-2",
-    "@nofrills/scrubs": "^3.1.4-2"
+    "@nofrills/collections": "^3.1.4",
+    "@nofrills/console": "^3.1.4",
+    "@nofrills/fs": "^3.1.4",
+    "@nofrills/lincoln-debug": "^3.1.4",
+    "@nofrills/scrubs": "^3.1.4"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
