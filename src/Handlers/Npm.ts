@@ -26,10 +26,12 @@ export interface Npm {
   workspaces?: string[]
 }
 
+export const NpmFile = 'package.json'
+
 const logger: Lincoln = Logger.extend('npm')
 
 export async function NpmConfig(project: Project, filepath: string): Promise<ProjectConfig | null> {
-  if (fs.basename(filepath).toLowerCase() !== 'package.json') {
+  if (fs.basename(filepath).toLowerCase() !== NpmFile) {
     return null
   }
 
@@ -52,7 +54,7 @@ export async function NpmConfig(project: Project, filepath: string): Promise<Pro
 
         return Promise.all(
           packages.map(async path => {
-            const projpath = fs.join(path, 'package.json')
+            const projpath = fs.join(path, NpmFile)
             const child = await Project.load(projpath)
             project.add(child)
             log.debug('child', child.name, child.path)

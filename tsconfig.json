@@ -1,37 +1,3 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "declaration": true,
-    "diagnostics": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
-    "lib": [
-      "es2015"
-    ],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "outDir": "lib",
-    "pretty": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "specs/**/*.spec.ts"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ]
+  "extends": "./tsconfig.base"
 }

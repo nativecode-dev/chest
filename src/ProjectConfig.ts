@@ -9,6 +9,8 @@ const logger = Logger.extend('config')
 
 export type ProjectConfigHandler = (project: Project, filepath: string) => Promise<ProjectConfig | null>
 
+export const ConfigHandlerRegistry: Registry<ProjectConfigHandler> = new Registry<ProjectConfigHandler>()
+
 export class ProjectConfig {
   protected readonly log: Lincoln
 
@@ -42,6 +44,7 @@ export class ProjectConfig {
 
     return caps
   }
+
   as<T>(): T {
     return this.config
   }
@@ -59,5 +62,3 @@ export class ProjectConfig {
   }
 
 }
-
-export const ConfigHandlerRegistry: Registry<ProjectConfigHandler> = new Registry<ProjectConfigHandler>()

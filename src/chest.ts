@@ -1,10 +1,10 @@
 import * as path from 'path'
 
 import { Project } from './Project'
-import { CLI, ConsoleOptions, IConsole } from '@nofrills/console'
+import { CLI, ConsoleOptions } from '@nofrills/console'
 import { Logger } from './Logger'
 
-async function main(console: IConsole): Promise<void> {
+async function main(): Promise<void> {
   const cwd = process.cwd()
   const project = await Project.load(path.join(cwd, 'package.json'))
   Logger.debug(project.name)
@@ -15,5 +15,4 @@ const options: ConsoleOptions = {
 }
 const exe = process.argv[0]
 const args = process.argv.slice(1)
-const cli = new CLI<ConsoleOptions>(options, exe, args)
-cli.start().catch(console.error)
+new CLI<ConsoleOptions>(options, exe, args).start().catch(console.error)

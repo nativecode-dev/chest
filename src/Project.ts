@@ -2,17 +2,17 @@ import { FileSystem as fs } from '@nofrills/fs'
 
 import { ConfigHandlerRegistry, ProjectConfig } from './ProjectConfig'
 import { Lincoln, Logger } from './Logger'
+import { NotFound } from './Errors'
 
 const logger = Logger.extend('project')
 
 export class Project {
   private readonly children: Project[] = []
   private readonly configmap: { [key: string]: ProjectConfig } = {}
+
   protected readonly log: Lincoln
 
-  private constructor(
-    private readonly root: string
-  ) {
+  private constructor(private readonly root: string) {
     this.log = logger.extend(this.name)
   }
 
@@ -25,12 +25,12 @@ export class Project {
   }
 
   projects(): Project[] {
-    return this.children.slice()
+    return this.children.slice().sort((a, b) => a.name >= b.name ? 1 : 0)
   }
 
   static async load(filepath: string): Promise<Project> {
     if (await fs.exists(filepath) === false) {
-      throw new Error(`could not access project configuration: ${filepath}`)
+      throw new NotFound(filepath)
     }
 
     const project = new Project(fs.dirname(filepath))
@@ -57,11 +57,7 @@ export class Project {
   }
 
   as<T>(filename: string): T {
-    const config = this.config(filename)
-    if (config) {
-      config.as<T>()
-    }
-    return {} as T
+    return this.config(filename).as<T>()
   }
 
   config(filename: string): ProjectConfig {
@@ -69,7 +65,7 @@ export class Project {
     if (this.configmap[key]) {
       return this.configmap[key]
     }
-    throw new Error(`project configuration not found: ${key}`)
+    throw new NotFound(key)
   }
 
   protected set(config: ProjectConfig): void {

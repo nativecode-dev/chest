@@ -1,6 +1,7 @@
---require source-map-support/register
---require ts-node/register
+--colors
 --full-trace
 --recursive
---bail
-specs/**/*.spec.ts
+--reporter min
+--require source-map-support/register
+--require ts-node/register
+**/specs/**/*.spec.ts

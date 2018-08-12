@@ -1,5 +1,9 @@
 import { CompilerOptions } from 'typescript'
 
 export interface TypeScript {
-  compilerOptions: CompilerOptions
+  compileOnSave?: boolean
+  compilerOptions?: CompilerOptions
+  exclude?: string[]
+  extends?: string
+  include?: string[]
 }

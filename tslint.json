@@ -1,6 +1,7 @@
 {
   "extends": [
-    "tslint-config-standard"
+    "tslint-config-standard",
+    "tslint-no-unused-expression-chai"
   ],
   "rules": {
     "await-promise": true,
