@@ -22,12 +22,12 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@nofrills/collections": "^3.1.6-13",
-    "@nofrills/console": "^3.1.6-15",
-    "@nofrills/fs": "^3.1.6-14",
-    "@nofrills/lincoln-debug": "^3.1.6-14",
-    "@nofrills/scrubs": "^3.1.6-15",
-    "@nofrills/types": "^3.1.6-15"
+    "@nofrills/collections": "^3.1.11",
+    "@nofrills/console": "^3.1.12",
+    "@nofrills/fs": "^3.1.12",
+    "@nofrills/lincoln-debug": "^3.1.12",
+    "@nofrills/scrubs": "^3.1.12",
+    "@nofrills/types": "^3.1.9"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",

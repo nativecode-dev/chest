@@ -3,6 +3,7 @@ import { fs } from '@nofrills/fs'
 
 import { Lincoln, Logger } from './Logger'
 import { Project } from './Project'
+import { ProjectFiles } from './ProjectFiles'
 import { ProjectSupport } from './ProjectSupport'
 
 const logger = Logger.extend('config')
