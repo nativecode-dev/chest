@@ -22,7 +22,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@nofrills/collections": "^3.1.11",
+    "@nofrills/collections": "^3.1.12",
     "@nofrills/console": "^3.1.12",
     "@nofrills/fs": "^3.1.12",
     "@nofrills/lincoln-debug": "^3.1.12",

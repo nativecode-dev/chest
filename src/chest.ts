@@ -1,18 +1,37 @@
-import * as path from 'path'
-
-import { Project } from './Project'
+import { FileSystem as fs } from '@nofrills/fs'
 import { CLI, ConsoleOptions } from '@nofrills/console'
+
+import { NpmFile, Project } from './lib'
+
 import { Logger } from './Logger'
 
-async function main(): Promise<void> {
-  const cwd = process.cwd()
-  const project = await Project.load(path.join(cwd, 'package.json'))
-  Logger.debug(project.name)
+export class Chest {
+  private readonly log = Logger
+
+  protected constructor(private readonly filename: string) {
+    this.log.debug('new', filename)
+  }
+
+  async execute(stages: string[]): Promise<void> {
+    this.log.debug('stages', ...stages)
+    const project = await Project.load(this.filename)
+    return project.execute(stages)
+  }
+
+  static async create(filename: string, stages: string[]): Promise<Chest> {
+    const chest = new Chest(filename)
+    await chest.execute(stages)
+    return chest
+  }
 }
 
-const options: ConsoleOptions = {
-  initializer: main
-}
 const exe = process.argv[0]
 const args = process.argv.slice(1)
-new CLI<ConsoleOptions>(options, exe, args).start().catch(console.error)
+
+CLI.run<ConsoleOptions>({
+  initializer: async () => {
+    const cwd = process.cwd()
+    const filename = fs.join(cwd, NpmFile)
+    await Chest.create(filename, args)
+  }
+}, exe, ...args).catch(console.error)

@@ -14,7 +14,7 @@ os:
 stages:
   - test
   - name: deploy
-    if: (branch = "master" OR branch = "master-lts") AND type != pull_request AND tag IS blank
+    if: (branch = "master" OR branch = "develop") AND type != pull_request
 jobs:
   include:
     - stage: deploy

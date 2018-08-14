@@ -97,13 +97,13 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@nofrills/collections@^3.1.10", "@nofrills/collections@^3.1.11":
-  version "3.1.11"
-  resolved "https://registry.yarnpkg.com/@nofrills/collections/-/collections-3.1.11.tgz#e9b57760ae605649ba562d6af05dd87b5f21a03d"
+"@nofrills/collections@^3.1.10", "@nofrills/collections@^3.1.12":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/collections/-/collections-3.2.0.tgz#757b13ddb55122483940e2f2b3607ee1c8176660"
 
 "@nofrills/console@^3.1.12":
-  version "3.1.12"
-  resolved "https://registry.yarnpkg.com/@nofrills/console/-/console-3.1.12.tgz#6425c791d6b476fe8561c09eb75a0d05789eae16"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/console/-/console-3.2.0.tgz#7252c5bf2e18e8b8ec1f4cbd7b647c5b1aacc6ad"
   dependencies:
     "@nofrills/fs" "^3.1.11"
     "@nofrills/lincoln-debug" "^3.1.11"
@@ -111,8 +111,8 @@
     node-fetch "^2.1.2"
 
 "@nofrills/fs@^3.1.11", "@nofrills/fs@^3.1.12":
-  version "3.1.12"
-  resolved "https://registry.yarnpkg.com/@nofrills/fs/-/fs-3.1.12.tgz#a4db3b9a9031f2cb2723aef03f19935d6e0ace08"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/fs/-/fs-3.2.0.tgz#c28c8b8e262ee94bfd202e5e9c23fe771b9c4abc"
   dependencies:
     "@nofrills/lincoln-debug" "^3.1.11"
     glob "^7.1.2"
@@ -121,31 +121,31 @@
     rxjs "^6.2.2"
 
 "@nofrills/lincoln-debug@^3.1.11", "@nofrills/lincoln-debug@^3.1.12":
-  version "3.1.12"
-  resolved "https://registry.yarnpkg.com/@nofrills/lincoln-debug/-/lincoln-debug-3.1.12.tgz#070f47793847ce273e5c6891243302144d4a0f13"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/lincoln-debug/-/lincoln-debug-3.2.0.tgz#e8c4b73d013637f9650df19ab06a84142ce35c9b"
   dependencies:
     "@nofrills/collections" "^3.1.10"
     "@nofrills/lincoln" "^3.1.10"
     debug "^3.1.0"
 
 "@nofrills/lincoln@^3.1.10":
-  version "3.1.11"
-  resolved "https://registry.yarnpkg.com/@nofrills/lincoln/-/lincoln-3.1.11.tgz#9d4137fbbde5add09c1160317ed7a3a74f65b9db"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/lincoln/-/lincoln-3.2.0.tgz#ee1d81593ed7c050deef0076083d795897bd3aec"
   dependencies:
     "@nofrills/collections" "^3.1.10"
     uuidjs "^4.0.3"
 
 "@nofrills/scrubs@^3.1.11", "@nofrills/scrubs@^3.1.12":
-  version "3.1.12"
-  resolved "https://registry.yarnpkg.com/@nofrills/scrubs/-/scrubs-3.1.12.tgz#78f1c6db1d5d5b90c8ecf6401b4af7b635a7b8aa"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/scrubs/-/scrubs-3.2.0.tgz#ff0d8907c181f26891ea91a5eebc8796f84d92ed"
   dependencies:
     "@nofrills/lincoln-debug" "^3.1.11"
     "@nofrills/types" "^3.1.8"
     deepmerge "^2.1.1"
 
 "@nofrills/types@^3.1.8", "@nofrills/types@^3.1.9":
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/@nofrills/types/-/types-3.1.9.tgz#66ca41afecd65f157592c0209260c7a0298b4976"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/types/-/types-3.2.0.tgz#7f22a4bd432380030682b984570742aeaafbd042"
   dependencies:
     deepmerge "^2.1.1"
     validator "^10.4.0"
@@ -3363,11 +3363,11 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@^2.1.1, node-fetch@^2.1.2:
+node-fetch@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
 
-node-fetch@^2.2.0:
+node-fetch@^2.1.2, node-fetch@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.2.0.tgz#4ee79bde909262f9775f731e3656d0db55ced5b5"
 
@@ -5277,8 +5277,8 @@ validate-npm-package-name@^3.0.0, validate-npm-package-name@~3.0.0:
     builtins "^1.0.3"
 
 validator@^10.4.0:
-  version "10.4.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-10.4.0.tgz#ee99a44afb3bb5ed350a159f056ca72a204cfc3c"
+  version "10.5.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.5.0.tgz#1debbe1e6f5fd0c920ed2af47516f3762033939c"
 
 verror@1.10.0:
   version "1.10.0"

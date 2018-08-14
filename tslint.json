@@ -5,6 +5,7 @@
   ],
   "rules": {
     "await-promise": true,
+    "deprecation": false,
     "no-floating-promises": true,
     "no-unnecessary-qualifier": true,
     "no-unused-variable": true,
