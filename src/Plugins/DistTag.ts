@@ -1,4 +1,4 @@
-import { Plugin, PluginContext } from '../lib'
+import { Plugin, PluginContext } from '@nofrills/projector'
 
 import { Logger } from '../Logger'
 

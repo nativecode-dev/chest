@@ -97,11 +97,11 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@nofrills/collections@^3.1.10", "@nofrills/collections@^3.1.12":
+"@nofrills/collections@^3.1.10", "@nofrills/collections@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@nofrills/collections/-/collections-3.2.0.tgz#757b13ddb55122483940e2f2b3607ee1c8176660"
 
-"@nofrills/console@^3.1.12":
+"@nofrills/console@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@nofrills/console/-/console-3.2.0.tgz#7252c5bf2e18e8b8ec1f4cbd7b647c5b1aacc6ad"
   dependencies:
@@ -110,7 +110,7 @@
     "@nofrills/scrubs" "^3.1.11"
     node-fetch "^2.1.2"
 
-"@nofrills/fs@^3.1.11", "@nofrills/fs@^3.1.12":
+"@nofrills/fs@^3.1.11", "@nofrills/fs@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@nofrills/fs/-/fs-3.2.0.tgz#c28c8b8e262ee94bfd202e5e9c23fe771b9c4abc"
   dependencies:
@@ -120,7 +120,7 @@
     node-fetch "^2.2.0"
     rxjs "^6.2.2"
 
-"@nofrills/lincoln-debug@^3.1.11", "@nofrills/lincoln-debug@^3.1.12":
+"@nofrills/lincoln-debug@^3.1.11", "@nofrills/lincoln-debug@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@nofrills/lincoln-debug/-/lincoln-debug-3.2.0.tgz#e8c4b73d013637f9650df19ab06a84142ce35c9b"
   dependencies:
@@ -135,7 +135,18 @@
     "@nofrills/collections" "^3.1.10"
     uuidjs "^4.0.3"
 
-"@nofrills/scrubs@^3.1.11", "@nofrills/scrubs@^3.1.12":
+"@nofrills/projector@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@nofrills/projector/-/projector-4.0.0.tgz#0823423a5ea36f7d65ea6cea5d246e4e19749d69"
+  dependencies:
+    "@nofrills/collections" "^3.2.0"
+    "@nofrills/console" "^3.2.0"
+    "@nofrills/fs" "^3.2.0"
+    "@nofrills/lincoln-debug" "^3.2.0"
+    "@nofrills/scrubs" "^3.2.0"
+    "@nofrills/types" "^3.2.0"
+
+"@nofrills/scrubs@^3.1.11", "@nofrills/scrubs@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@nofrills/scrubs/-/scrubs-3.2.0.tgz#ff0d8907c181f26891ea91a5eebc8796f84d92ed"
   dependencies:
@@ -143,7 +154,7 @@
     "@nofrills/types" "^3.1.8"
     deepmerge "^2.1.1"
 
-"@nofrills/types@^3.1.8", "@nofrills/types@^3.1.9":
+"@nofrills/types@^3.1.8", "@nofrills/types@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@nofrills/types/-/types-3.2.0.tgz#7f22a4bd432380030682b984570742aeaafbd042"
   dependencies:
@@ -256,8 +267,8 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.5.tgz#8a4accfc403c124a0bafe8a9fc61a05ec1032073"
 
 "@types/node@^10.5.8":
-  version "10.5.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.8.tgz#6f14ccecad1d19332f063a6a764f8907801fece0"
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.7.0.tgz#d384b2c8625414ab2aa18fdf989c288d6a7a8202"
 
 JSONStream@^1.0.4, JSONStream@^1.3.3:
   version "1.3.3"

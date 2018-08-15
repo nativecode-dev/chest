@@ -1,7 +1,6 @@
 import { FileSystem as fs } from '@nofrills/fs'
+import { NpmFile, Project } from '@nofrills/projector'
 import { CLI, ConsoleOptions } from '@nofrills/console'
-
-import { NpmFile, Project } from './lib'
 
 import { Logger } from './Logger'
 

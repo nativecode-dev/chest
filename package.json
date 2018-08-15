@@ -22,15 +22,16 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@nofrills/collections": "^3.1.12",
-    "@nofrills/console": "^3.1.12",
-    "@nofrills/fs": "^3.1.12",
-    "@nofrills/lincoln-debug": "^3.1.12",
-    "@nofrills/scrubs": "^3.1.12",
-    "@nofrills/types": "^3.1.9"
+    "@nofrills/collections": "^3.2.0",
+    "@nofrills/console": "^3.2.0",
+    "@nofrills/fs": "^3.2.0",
+    "@nofrills/lincoln-debug": "^3.2.0",
+    "@nofrills/scrubs": "^3.2.0",
+    "@nofrills/types": "^3.2.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
+    "@nofrills/projector": "^4.0.0",
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^5.2.5",
