@@ -26,7 +26,7 @@ jobs:
       node_js: '8'
       os: linux
       script:
-        - yarn run travis-coveralls
+        - yarn run coveralls
     - stage: release
       node_js: '8'
       os: linux

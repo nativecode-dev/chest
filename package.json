@@ -4,7 +4,7 @@
   "bin": "./lib/chest.js",
   "license": "MIT",
   "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "version": "0.0.0-development",
   "scripts": {
     "build": "tsc --project tsconfig.json",
