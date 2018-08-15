@@ -1,38 +1,37 @@
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
 cache:
   directories:
-    - ~/.npm
+    - node_modules
+  yarn: true
 language: node_js
 node_js:
   - 'node'
 os:
   - linux
   - osx
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - npm whoami
+  - yarn run setup build
+  - yarn run setup git
 stages:
   - test
-  - name: release
+  - name: coverage
     if: (branch = "master" OR branch = "develop") AND type != pull_request
+  - name: release
+    if: branch = "master" AND type != pull_request
 jobs:
   include:
+    - stage: coverage
+      node_js: '8'
+      os: linux
+      script:
+        - yarn run travis-coveralls
     - stage: release
       node_js: '8'
       os: linux
       script:
-        - yarn run travis-ssh
+        - yarn run setup ssh
         - git remote set-url origin git@github.com:nativecode-dev/chest.git
         - git checkout $TRAVIS_BRANCH
-        - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-        - yarn run test
-      after_success:
-        - yarn run travis-deploy-once "yarn run semantic-release"
-after_failure:
-  - ls -lah --color=auto
-after_success:
-  - yarn run travis-coveralls
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
-  - export PATH="$HOME/.yarn/bin:$PATH"
-env:
-  - BUILD_LEADER_ID=3
+        - yarn run release

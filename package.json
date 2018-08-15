@@ -9,17 +9,14 @@
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "prebuild": "yarn && yarn run clean && yarn run lint",
-    "postbuild": "bin-shebang",
     "clean": "rimraf .cache && rimraf lib && rimraf artifacts",
     "lint": "tslint --project tsconfig.json --config tslint.json",
-    "test": "sh setup-tests.sh && cross-env DEBUG= nyc mocha --opts mocha.opts",
+    "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
-    "testonly": "cross-env DEBUG=chest* nyc mocha --opts mocha.opts",
-    "travis-coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
-    "travis-release": "semantic-release pre && npm publish && semantic-release post",
-    "travis-ssh": "set-up-ssh --key \"$encrypted_7baae619033b_key\" --iv \"$encrypted_7baae619033b_iv\" --path-encrypted-key \"deploy.enc\"",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
+    "release": "semantic-release",
+    "prerelease": "yarn run build && bin-shebang",
+    "setup": "sh setup.sh"
   },
   "dependencies": {
     "@nofrills/collections": "^3.2.0",
@@ -45,7 +42,6 @@
     "nyc": "^12.0.2",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.9.8",
-    "travis-deploy-once": "^5.0.2",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^7.0.0",
