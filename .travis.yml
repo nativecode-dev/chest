@@ -7,17 +7,16 @@ cache:
 language: node_js
 node_js:
   - 'node'
-  - '8'
 os:
   - linux
   - osx
 stages:
   - test
-  - name: deploy
+  - name: release
     if: (branch = "master" OR branch = "develop") AND type != pull_request
 jobs:
   include:
-    - stage: deploy
+    - stage: release
       node_js: '8'
       os: linux
       script:
