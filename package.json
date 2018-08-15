@@ -14,6 +14,7 @@
     "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
     "pretest": "yarn run build",
     "coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
+    "precoveralls": "yarn run test",
     "release": "semantic-release",
     "prerelease": "yarn run build && bin-shebang",
     "setup": "sh setup.sh"
