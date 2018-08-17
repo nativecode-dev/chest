@@ -6,20 +6,6 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "version": "0.0.0-development",
-  "scripts": {
-    "build": "tsc --project tsconfig.json",
-    "prebuild": "yarn && yarn run clean && yarn run lint",
-    "clean": "rimraf .cache && rimraf lib && rimraf artifacts",
-    "lint": "tslint --project tsconfig.json --config tslint.json",
-    "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
-    "pretest": "yarn run build",
-    "coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
-    "precoveralls": "yarn run test",
-    "release": "semantic-release",
-    "prerelease": "yarn run build && bin-shebang",
-    "commit": "npx git-cz",
-    "setup": "setup.sh"
-  },
   "dependencies": {
     "@nofrills/collections": "^3.2.0",
     "@nofrills/console": "^3.2.0",
@@ -41,6 +27,7 @@
     "commitizen": "^2.10.1",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
+    "cz-conventional-changelog": "^2.1.0",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
     "rimraf": "^2.6.2",
@@ -78,5 +65,19 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/nativecode-dev/chest"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "prebuild": "yarn && yarn run clean && yarn run lint",
+    "clean": "rimraf .cache && rimraf lib && rimraf artifacts",
+    "lint": "tslint --project tsconfig.json --config tslint.json",
+    "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
+    "pretest": "yarn run build",
+    "coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
+    "precoveralls": "yarn run test",
+    "release": "semantic-release",
+    "prerelease": "yarn run build && bin-shebang",
+    "commit": "git add -A . && npx git-cz",
+    "setup": "setup.sh"
   }
 }
