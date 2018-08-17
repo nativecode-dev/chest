@@ -78,6 +78,6 @@
     "release": "semantic-release",
     "prerelease": "yarn run build && bin-shebang",
     "commit": "git add -A . && npx git-cz",
-    "setup": "setup.sh"
+    "setup": "sh setup.sh"
   }
 }
