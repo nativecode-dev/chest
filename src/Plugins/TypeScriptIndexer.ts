@@ -2,11 +2,13 @@ import { Plugin, PluginContext } from '@nofrills/projector'
 
 import { Logger } from '../Logger'
 
-export class DistTag implements Plugin {
-  private readonly log = Logger.extend('dist-tag')
+export const TypeScriptIndexerName = 'ts-indexer'
+
+export class TypeScriptIndexer implements Plugin {
+  private readonly log = Logger.extend(TypeScriptIndexerName)
 
   get name(): string {
-    return 'dist-tag'
+    return TypeScriptIndexerName
   }
 
   execute(context: PluginContext): Promise<PluginContext> {
