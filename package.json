@@ -17,7 +17,8 @@
     "precoveralls": "yarn run test",
     "release": "semantic-release",
     "prerelease": "yarn run build && bin-shebang",
-    "setup": "sh setup.sh"
+    "commit": "npx git-cz",
+    "setup": "setup.sh"
   },
   "dependencies": {
     "@nofrills/collections": "^3.2.0",
@@ -33,10 +34,11 @@
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.5.8",
+    "@types/node": "^10.7.1",
     "bin-shebang": "^1.0.11",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "commitizen": "^2.10.1",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
     "mocha": "^5.2.0",
