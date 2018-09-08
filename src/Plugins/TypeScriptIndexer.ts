@@ -1,4 +1,4 @@
-import { Plugin, PluginContext } from '@nofrills/projector'
+import { Plugin, PluginContext, Project, Registry, TypeScriptFile, ProjectSupport } from '@nofrills/projector'
 
 import { Logger } from '../Logger'
 
@@ -11,10 +11,23 @@ export class TypeScriptIndexer implements Plugin {
     return TypeScriptIndexerName
   }
 
-  execute(context: PluginContext): Promise<PluginContext> {
+  async execute(context: PluginContext): Promise<PluginContext> {
     if (context.stage === this.name) {
       this.log.debug(context.project.name)
     }
+
+    await this.recurse(context.project)
+
     return Promise.resolve(context)
   }
+
+  private async recurse(project: Project): Promise<void> {
+    // Recurse child projects as well.
+    const promises = project.projects()
+      .map(proj => this.recurse(proj))
+
+    await Promise.all(promises)
+  }
 }
+
+Registry.plugin(TypeScriptIndexerName, TypeScriptIndexer)

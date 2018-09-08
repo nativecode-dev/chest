@@ -1,10 +1,10 @@
 import { FileSystem as fs } from '@nofrills/fs'
-import { NpmFile, Project } from '@nofrills/projector'
+import { NpmFile, PluginHost, Project } from '@nofrills/projector'
 import { CLI, ConsoleOptions } from '@nofrills/console'
 
 import { Logger } from './Logger'
 
-export class Chest {
+export class Chest implements PluginHost {
   private readonly log = Logger
 
   protected constructor(private readonly filename: string) {
@@ -13,7 +13,7 @@ export class Chest {
 
   async execute(stages: string[]): Promise<void> {
     this.log.debug('stages', ...stages)
-    const project = await Project.load(this.filename)
+    const project = await Project.load(this, this.filename)
     return project.execute(stages)
   }
 
@@ -21,6 +21,10 @@ export class Chest {
     const chest = new Chest(filename)
     await chest.execute(stages)
     return chest
+  }
+
+  get name(): string {
+    return 'chest'
   }
 }
 
