@@ -8,7 +8,7 @@
     "deprecation": false,
     "no-floating-promises": true,
     "no-unnecessary-qualifier": true,
-    "no-unused-variable": true,
+    "no-unused-variable": false,
     "no-use-before-declare": true,
     "return-undefined": false,
     "strict-type-predicates": true,

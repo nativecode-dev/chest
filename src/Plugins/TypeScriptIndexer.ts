@@ -1,4 +1,4 @@
-import { Plugin, PluginContext, Project, Registry, TypeScriptFile, ProjectSupport } from '@nofrills/projector'
+import { Plugin, PluginContext, Project, Registry } from '@nofrills/projector'
 
 import { Logger } from '../Logger'
 
@@ -23,8 +23,7 @@ export class TypeScriptIndexer implements Plugin {
 
   private async recurse(project: Project): Promise<void> {
     // Recurse child projects as well.
-    const promises = project.projects()
-      .map(proj => this.recurse(proj))
+    const promises = project.projects().map(proj => this.recurse(proj))
 
     await Promise.all(promises)
   }
