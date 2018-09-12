@@ -113,7 +113,7 @@
     "@nofrills/lincoln-debug" "^3.2.0"
     "@nofrills/scrubs" "^3.2.0"
 
-"@nofrills/console@^3.5.0":
+"@nofrills/console@^3.3.2", "@nofrills/console@^3.5.0":
   version "3.5.0"
   resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.5.0.tgz#7bed5a824281fb41595efb2a250bfe56e0ab4a34"
   dependencies:
@@ -131,7 +131,7 @@
     mkdirp "^0.5.1"
     rxjs "^6.3.1"
 
-"@nofrills/fs@^3.5.1":
+"@nofrills/fs@^3.4.2", "@nofrills/fs@^3.5.1":
   version "3.5.1"
   resolved "https://registry.npmjs.org/@nofrills/fs/-/fs-3.5.1.tgz#6f7d2e66a176d3e21ed32eed05e5703afac28bf7"
   dependencies:
@@ -196,6 +196,15 @@
     "@nofrills/types" "^3.2.0"
     deepmerge "^2.1.1"
 
+"@nofrills/tasks@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-3.0.0.tgz#ab7c10960d7769acfbabf45d2cfec9360cd733ae"
+  dependencies:
+    "@nofrills/console" "^3.3.2"
+    "@nofrills/fs" "^3.4.2"
+    "@nofrills/lincoln-debug" "^3.3.1"
+    "@nofrills/types" "^3.3.3"
+
 "@nofrills/types@^3.2.0", "@nofrills/types@^3.3.0":
   version "3.3.3"
   resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.3.3.tgz#2a6c3119e3a7a7e3f830c1334044c30e0da10434"
@@ -204,7 +213,7 @@
     validator "^10.7.1"
     zipcodes-regex "^1.0.1"
 
-"@nofrills/types@^3.4.1":
+"@nofrills/types@^3.3.3", "@nofrills/types@^3.4.1":
   version "3.4.1"
   resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.4.1.tgz#8ce3d04bccac537e7e552e1ee92f6440e74923ec"
   dependencies:
@@ -574,10 +583,6 @@ bin-links@^1.1.2:
     gentle-fs "^2.0.0"
     graceful-fs "^4.1.11"
     write-file-atomic "^2.3.0"
-
-bin-shebang@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.npmjs.org/bin-shebang/-/bin-shebang-1.0.11.tgz#296dd2b8229518f35db1a0aeaf663b0454b350c6"
 
 block-stream@*:
   version "0.0.9"
@@ -1177,16 +1182,6 @@ cz-conventional-changelog@2.0.0:
     lodash.map "^4.5.1"
     longest "^1.0.1"
     pad-right "^0.2.2"
-    right-pad "^1.0.1"
-    word-wrap "^1.0.3"
-
-cz-conventional-changelog@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/cz-conventional-changelog/-/cz-conventional-changelog-2.1.0.tgz#2f4bc7390e3244e4df293e6ba351e4c740a7c764"
-  dependencies:
-    conventional-commit-types "^2.0.0"
-    lodash.map "^4.5.1"
-    longest "^1.0.1"
     right-pad "^1.0.1"
     word-wrap "^1.0.3"
 

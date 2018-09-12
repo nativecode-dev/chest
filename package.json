@@ -1,11 +1,14 @@
 {
+  "author": "opensource@nativecode.com",
   "name": "@beard/chest",
   "description": "CHEST of me best tools, matey!",
-  "bin": "./lib/chest.js",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "version": "0.0.0-development",
+  "bin": {
+    "chest": "./lib/chest.js"
+  },
   "dependencies": {
     "@nofrills/collections": "^3.7.0",
     "@nofrills/console": "^3.5.0",
@@ -17,17 +20,16 @@
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
     "@nofrills/projector": "^4.6.0",
+    "@nofrills/tasks": "^3.0.0",
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.7.1",
-    "bin-shebang": "^1.0.11",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "commitizen": "^2.10.1",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
-    "cz-conventional-changelog": "^2.1.0",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "rimraf": "^2.6.2",
@@ -57,7 +59,8 @@
     "temp-directory": ".cache/nyc"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "next"
   },
   "release": {
     "branch": "master"
@@ -67,17 +70,13 @@
     "url": "https://github.com/nativecode-dev/chest"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.json",
-    "prebuild": "yarn && yarn run clean && yarn run lint",
-    "clean": "rimraf .cache && rimraf lib && rimraf artifacts",
-    "lint": "tslint --project tsconfig.json --config tslint.json",
-    "test": "cross-env DEBUG= nyc mocha --opts mocha.opts",
-    "pretest": "yarn run build",
-    "coveralls": "cross-env DEBUG= nyc report --reporter=text-lcov | coveralls",
-    "precoveralls": "yarn run test",
-    "release": "semantic-release",
-    "prerelease": "yarn run build && bin-shebang",
-    "commit": "git add -A . && npx git-cz",
-    "setup": "sh setup.sh"
+    "build": "cli-tasks build",
+    "clean": "cli-tasks clean",
+    "lint": "cli-tasks lint",
+    "test": "cli-tasks test",
+    "coveralls": "cli-tasks test:coverage",
+    "release": "cli-tasks release",
+    "commit": "cli-tasks commit",
+    "setup": "cli-tasks configure"
   }
 }
