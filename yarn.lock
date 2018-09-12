@@ -101,9 +101,21 @@
   version "3.6.1"
   resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.6.1.tgz#1699dbec0c68f1e42cad3a7d7e755f2aee7ab94b"
 
+"@nofrills/collections@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.7.0.tgz#fefc2d07f29060e9c5b963c865541a4d69198c22"
+
 "@nofrills/console@^3.2.0":
   version "3.3.2"
   resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.3.2.tgz#432a4143a8b2cef1f8ba274be43621f2ffadecb9"
+  dependencies:
+    "@nofrills/fs" "^3.2.0"
+    "@nofrills/lincoln-debug" "^3.2.0"
+    "@nofrills/scrubs" "^3.2.0"
+
+"@nofrills/console@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.5.0.tgz#7bed5a824281fb41595efb2a250bfe56e0ab4a34"
   dependencies:
     "@nofrills/fs" "^3.2.0"
     "@nofrills/lincoln-debug" "^3.2.0"
@@ -119,9 +131,27 @@
     mkdirp "^0.5.1"
     rxjs "^6.3.1"
 
+"@nofrills/fs@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.npmjs.org/@nofrills/fs/-/fs-3.5.1.tgz#6f7d2e66a176d3e21ed32eed05e5703afac28bf7"
+  dependencies:
+    "@nofrills/lincoln-debug" "^3.3.1"
+    "@nofrills/types" "^3.3.0"
+    glob "^7.1.2"
+    mkdirp "^0.5.1"
+    rxjs "^6.3.2"
+
 "@nofrills/lincoln-debug@^3.2.0", "@nofrills/lincoln-debug@^3.3.0":
   version "3.3.1"
   resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.3.1.tgz#d4166d5ba594a510dcf45a464b4249d32a16b11b"
+  dependencies:
+    "@nofrills/collections" "^3.2.0"
+    "@nofrills/lincoln" "^3.2.0"
+    debug "^3.1.0"
+
+"@nofrills/lincoln-debug@^3.3.1", "@nofrills/lincoln-debug@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.4.0.tgz#194b446129f5ccc9625683ff7d7cfced313612d8"
   dependencies:
     "@nofrills/collections" "^3.2.0"
     "@nofrills/lincoln" "^3.2.0"
@@ -138,9 +168,9 @@
   version "1.0.1"
   resolved "https://registry.npmjs.org/@nofrills/patterns/-/patterns-1.0.1.tgz#8911a0e84a6f8be6ded1b20ba9e9f53e93abe1f1"
 
-"@nofrills/projector@^4.0.0":
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/@nofrills/projector/-/projector-4.5.1.tgz#630396655b70ba206d74db783796793a1b76de5c"
+"@nofrills/projector@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.npmjs.org/@nofrills/projector/-/projector-4.6.0.tgz#f8d86dcc0ee0a2c83eda841c34afaa663583041e"
   dependencies:
     "@nofrills/collections" "^3.2.0"
     "@nofrills/console" "^3.2.0"
@@ -158,6 +188,14 @@
     "@nofrills/types" "^3.2.0"
     deepmerge "^2.1.1"
 
+"@nofrills/scrubs@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.4.0.tgz#a400ec57524db0eea6c49e8ee921602db2cfd9be"
+  dependencies:
+    "@nofrills/lincoln-debug" "^3.2.0"
+    "@nofrills/types" "^3.2.0"
+    deepmerge "^2.1.1"
+
 "@nofrills/types@^3.2.0", "@nofrills/types@^3.3.0":
   version "3.3.3"
   resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.3.3.tgz#2a6c3119e3a7a7e3f830c1334044c30e0da10434"
@@ -165,6 +203,14 @@
     deepmerge "^2.1.1"
     validator "^10.7.1"
     zipcodes-regex "^1.0.1"
+
+"@nofrills/types@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.4.1.tgz#8ce3d04bccac537e7e552e1ee92f6440e74923ec"
+  dependencies:
+    deepmerge "^2.1.1"
+    validator "^10.7.1"
+    zipcodes-regex "^1.0.2"
 
 "@octokit/rest@^15.2.0":
   version "15.11.1"
@@ -1169,6 +1215,12 @@ debug@^2.2.0, debug@^2.3.3:
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
     ms "2.0.0"
+
+debug@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/debug/-/debug-4.0.1.tgz#f9bb36d439b8d1f0dd52d8fb6b46e4ebb8c1cd5b"
+  dependencies:
+    ms "^2.1.1"
 
 debuglog@^1.0.1:
   version "1.0.1"
@@ -3138,7 +3190,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-ms@^2.0.0:
+ms@^2.0.0, ms@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
 
@@ -4292,7 +4344,7 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^6.3.1:
+rxjs@^6.3.1, rxjs@^6.3.2:
   version "6.3.2"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.3.2.tgz#6a688b16c4e6e980e62ea805ec30648e1c60907f"
   dependencies:
@@ -4312,9 +4364,9 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-semantic-release@^15.9.8:
-  version "15.9.14"
-  resolved "https://registry.npmjs.org/semantic-release/-/semantic-release-15.9.14.tgz#108fa88649e318b85f728adc9375b12d68075726"
+semantic-release@^15.9.15:
+  version "15.9.15"
+  resolved "https://registry.npmjs.org/semantic-release/-/semantic-release-15.9.15.tgz#e423dc5468f7e5bf601d5ca8bf4ae6d4ada5eadf"
   dependencies:
     "@semantic-release/commit-analyzer" "^6.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -4323,7 +4375,7 @@ semantic-release@^15.9.8:
     "@semantic-release/release-notes-generator" "^7.0.0"
     aggregate-error "^1.0.0"
     cosmiconfig "^5.0.1"
-    debug "^3.1.0"
+    debug "^4.0.0"
     env-ci "^2.4.0"
     execa "^1.0.0"
     figures "^2.0.0"
@@ -5236,3 +5288,7 @@ yn@^2.0.0:
 zipcodes-regex@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/zipcodes-regex/-/zipcodes-regex-1.0.1.tgz#18763d814245094ace277666b7a805bc7f9db74d"
+
+zipcodes-regex@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/zipcodes-regex/-/zipcodes-regex-1.0.2.tgz#cdbe2cd96b4aeaba69bc587a52096caece825bed"

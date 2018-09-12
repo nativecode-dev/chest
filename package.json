@@ -7,16 +7,16 @@
   "types": "./lib/index.d.ts",
   "version": "0.0.0-development",
   "dependencies": {
-    "@nofrills/collections": "^3.2.0",
-    "@nofrills/console": "^3.2.0",
-    "@nofrills/fs": "^3.2.0",
-    "@nofrills/lincoln-debug": "^3.2.0",
-    "@nofrills/scrubs": "^3.2.0",
-    "@nofrills/types": "^3.2.0"
+    "@nofrills/collections": "^3.7.0",
+    "@nofrills/console": "^3.5.0",
+    "@nofrills/fs": "^3.5.1",
+    "@nofrills/lincoln-debug": "^3.4.0",
+    "@nofrills/scrubs": "^3.4.0",
+    "@nofrills/types": "^3.4.1"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@nofrills/projector": "^4.0.0",
+    "@nofrills/projector": "^4.6.0",
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^5.2.5",
@@ -31,7 +31,7 @@
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "rimraf": "^2.6.2",
-    "semantic-release": "^15.9.8",
+    "semantic-release": "^15.9.15",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^8.0.1",
