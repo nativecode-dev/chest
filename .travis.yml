@@ -12,7 +12,7 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s
   - export PATH="$HOME/.yarn/bin:$PATH"
   - npm whoami
-  - npx lerna bootstrap
+  - yarn install
   - yarn run configure
 stages:
   - test
