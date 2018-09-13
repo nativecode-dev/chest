@@ -10,7 +10,6 @@
       "git add -A . && npx git-cz"
     ],
     "configure": [
-      "[configure:doc]",
       "[configure:git]",
       "[configure:ssh]"
     ],
