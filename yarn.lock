@@ -101,9 +101,9 @@
   version "3.6.1"
   resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.6.1.tgz#1699dbec0c68f1e42cad3a7d7e755f2aee7ab94b"
 
-"@nofrills/collections@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.7.0.tgz#fefc2d07f29060e9c5b963c865541a4d69198c22"
+"@nofrills/collections@^3.8.0":
+  version "3.8.0"
+  resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.8.0.tgz#2fef20b3688fd826e8a43b735c80468a4092a1a6"
 
 "@nofrills/console@^3.2.0":
   version "3.3.2"
@@ -149,13 +149,21 @@
     "@nofrills/lincoln" "^3.2.0"
     debug "^3.1.0"
 
-"@nofrills/lincoln-debug@^3.3.1", "@nofrills/lincoln-debug@^3.4.0":
+"@nofrills/lincoln-debug@^3.3.1":
   version "3.4.0"
   resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.4.0.tgz#194b446129f5ccc9625683ff7d7cfced313612d8"
   dependencies:
     "@nofrills/collections" "^3.2.0"
     "@nofrills/lincoln" "^3.2.0"
     debug "^3.1.0"
+
+"@nofrills/lincoln-debug@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.5.0.tgz#607f2971347f7372c240eff91f67d2d32a52cc8f"
+  dependencies:
+    "@nofrills/collections" "^3.2.0"
+    "@nofrills/lincoln" "^3.2.0"
+    debug "^4.0.1"
 
 "@nofrills/lincoln@^3.2.0":
   version "3.3.1"
@@ -168,9 +176,9 @@
   version "1.0.1"
   resolved "https://registry.npmjs.org/@nofrills/patterns/-/patterns-1.0.1.tgz#8911a0e84a6f8be6ded1b20ba9e9f53e93abe1f1"
 
-"@nofrills/projector@^4.6.0":
-  version "4.6.0"
-  resolved "https://registry.npmjs.org/@nofrills/projector/-/projector-4.6.0.tgz#f8d86dcc0ee0a2c83eda841c34afaa663583041e"
+"@nofrills/projector@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.npmjs.org/@nofrills/projector/-/projector-4.7.0.tgz#a45db8a1b145fe009f6587b287d2ab194e99f3c9"
   dependencies:
     "@nofrills/collections" "^3.2.0"
     "@nofrills/console" "^3.2.0"
@@ -188,17 +196,17 @@
     "@nofrills/types" "^3.2.0"
     deepmerge "^2.1.1"
 
-"@nofrills/scrubs@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.4.0.tgz#a400ec57524db0eea6c49e8ee921602db2cfd9be"
+"@nofrills/scrubs@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.5.0.tgz#09db7cfd752260c6f3565fdc33e61940b3f839c1"
   dependencies:
     "@nofrills/lincoln-debug" "^3.2.0"
     "@nofrills/types" "^3.2.0"
     deepmerge "^2.1.1"
 
-"@nofrills/tasks@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-3.0.0.tgz#ab7c10960d7769acfbabf45d2cfec9360cd733ae"
+"@nofrills/tasks@^3.1.7":
+  version "3.1.7"
+  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-3.1.7.tgz#6b21e2651bbb69854740ebb0797701d222cae96e"
   dependencies:
     "@nofrills/console" "^3.3.2"
     "@nofrills/fs" "^3.4.2"
@@ -1211,7 +1219,7 @@ debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
-debug@^4.0.0:
+debug@^4.0.0, debug@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/debug/-/debug-4.0.1.tgz#f9bb36d439b8d1f0dd52d8fb6b46e4ebb8c1cd5b"
   dependencies:

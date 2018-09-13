@@ -4,7 +4,6 @@
   },
   "description": "invalid workspace project",
   "devDependencies": {
-    "@types/chalk": "*",
     "@types/node": "^8.0.52"
   },
   "name": "project-single",

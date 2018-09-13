@@ -4,9 +4,9 @@
   },
   "description": "single project",
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
     "@types/node": "^8.0.52"
   },
+  "license": "MIT",
   "name": "project-single",
   "version": "1.0.0"
 }

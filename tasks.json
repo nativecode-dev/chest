@@ -19,11 +19,16 @@
     ],
     "configure:git": [
       "git config --global user.email \"opensource+nofrills@nativecode.com\"",
-      "git config --global user.name \"Native Open Source\"",
+      "git config --global user.name \"opensource\"",
       "git config --global push.default simple"
     ],
     "configure:ssh": [
       "set-up-ssh --key $encrypted_7baae619033b_key --iv $encrypted_7baae619033b_iv --path-encrypted-key deploy.enc"
+    ],
+    "configure:test": [
+      "yarn install --cwd specs/data/single --pure-lockfile --silent",
+      "yarn install --cwd specs/data/workspaces --pure-lockfile --silent",
+      "yarn install --cwd specs/data/workspaces-lerna --pure-lockfile --silent"
     ],
     "clean": [
       "rimraf .cache",
@@ -36,9 +41,7 @@
       "semantic-release"
     ],
     "test": [
-      "cd specs/data/single && $YARN install",
-      "cd ../workspaces && $YARN install",
-      "cd ../workspaces-lerna && $YARN install",
+      "[configure:test]",
       "[build]",
       "cross-env DEBUG= nyc mocha --opts mocha.opts"
     ],
