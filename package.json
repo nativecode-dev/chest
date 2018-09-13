@@ -71,6 +71,7 @@
   },
   "scripts": {
     "build": "cli-tasks build",
+    "configure": "cli-tasks configure",
     "clean": "cli-tasks clean",
     "lint": "cli-tasks lint",
     "test": "cli-tasks test",
