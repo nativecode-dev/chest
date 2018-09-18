@@ -21,9 +21,12 @@
       "git config --global user.name \"opensource\"",
       "git config --global push.default simple"
     ],
-    "configure:ssh": [
-      "bash set-up-ssh --key $encrypted_7baae619033b_key --iv $encrypted_7baae619033b_iv --path-encrypted-key deploy.enc"
-    ],
+    "configure:ssh": {
+      "entries": [
+        "set-up-ssh --key $encrypted_7baae619033b_key --iv $encrypted_7baae619033b_iv --path-encrypted-key deploy.enc"
+      ],
+      "shell": "/bin/bash"
+    },
     "configure:test": [
       "yarn install --cwd specs/data/single --pure-lockfile --silent",
       "yarn install --cwd specs/data/workspaces --pure-lockfile --silent",
