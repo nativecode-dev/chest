@@ -12,7 +12,7 @@
 # @beard/chest
 
 <p align="center">
-  <img src="https://github.com/nativecode-dev/chest/raw/master/chest-temp.png">
+  <img src="https://github.com/nativecode-dev/chest/raw/master/chest.png">
 </p>
 
 # WTF

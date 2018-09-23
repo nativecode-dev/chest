@@ -3,5 +3,6 @@
   "singleQuote": true,
   "trailingComma": "all",
   "parser": "typescript",
-  "proseWrap": "never"
+  "proseWrap": "never",
+  "printWidth": 120
 }

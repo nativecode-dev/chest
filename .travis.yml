@@ -13,7 +13,7 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
   - npm whoami
   - yarn install
-  - yarn run configure
+  - yarn configure
 stages:
   - test
   - name: coverage
@@ -26,12 +26,11 @@ jobs:
       node_js: '8'
       os: linux
       script:
-        - yarn run coveralls
+        - yarn coveralls
     - stage: release
       node_js: '8'
       os: linux
       script:
-        - yarn run setup ssh
         - git remote set-url origin git@github.com:nativecode-dev/chest.git
         - git checkout $TRAVIS_BRANCH
-        - yarn run release
+        - yarn release

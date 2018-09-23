@@ -97,41 +97,27 @@
   version "1.1.2"
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
 
-"@nofrills/collections@^3.2.0":
-  version "3.6.1"
-  resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.6.1.tgz#1699dbec0c68f1e42cad3a7d7e755f2aee7ab94b"
-
 "@nofrills/collections@^3.8.0":
   version "3.8.0"
   resolved "https://registry.npmjs.org/@nofrills/collections/-/collections-3.8.0.tgz#2fef20b3688fd826e8a43b735c80468a4092a1a6"
 
-"@nofrills/console@^3.2.0":
-  version "3.3.2"
-  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.3.2.tgz#432a4143a8b2cef1f8ba274be43621f2ffadecb9"
+"@nofrills/console@^3.5.0":
+  version "3.5.1"
+  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.5.1.tgz#e64220eb2a4143f27382375befce9d7d10ed17c4"
   dependencies:
-    "@nofrills/fs" "^3.2.0"
-    "@nofrills/lincoln-debug" "^3.2.0"
-    "@nofrills/scrubs" "^3.2.0"
+    "@nofrills/fs" "^3.5.1"
+    "@nofrills/lincoln-debug" "^3.6.2"
+    "@nofrills/scrubs" "^3.5.2"
 
-"@nofrills/console@^3.3.2", "@nofrills/console@^3.5.0":
-  version "3.5.0"
-  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.5.0.tgz#7bed5a824281fb41595efb2a250bfe56e0ab4a34"
+"@nofrills/console@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.5.2.tgz#4937e34b104b4c8749099e2941c09537cf633510"
   dependencies:
-    "@nofrills/fs" "^3.2.0"
-    "@nofrills/lincoln-debug" "^3.2.0"
-    "@nofrills/scrubs" "^3.2.0"
+    "@nofrills/fs" "^3.5.1"
+    "@nofrills/lincoln-debug" "^3.6.2"
+    "@nofrills/scrubs" "^3.5.2"
 
-"@nofrills/fs@^3.2.0":
-  version "3.4.2"
-  resolved "https://registry.npmjs.org/@nofrills/fs/-/fs-3.4.2.tgz#6ee5f115134ab1e629a8a74d40b603d1f169ade2"
-  dependencies:
-    "@nofrills/lincoln-debug" "^3.3.0"
-    "@nofrills/types" "^3.3.0"
-    glob "^7.1.2"
-    mkdirp "^0.5.1"
-    rxjs "^6.3.1"
-
-"@nofrills/fs@^3.4.2", "@nofrills/fs@^3.5.1":
+"@nofrills/fs@^3.5.1":
   version "3.5.1"
   resolved "https://registry.npmjs.org/@nofrills/fs/-/fs-3.5.1.tgz#6f7d2e66a176d3e21ed32eed05e5703afac28bf7"
   dependencies:
@@ -141,88 +127,79 @@
     mkdirp "^0.5.1"
     rxjs "^6.3.2"
 
-"@nofrills/lincoln-debug@^3.2.0", "@nofrills/lincoln-debug@^3.3.0":
-  version "3.3.1"
-  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.3.1.tgz#d4166d5ba594a510dcf45a464b4249d32a16b11b"
+"@nofrills/fs@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.npmjs.org/@nofrills/fs/-/fs-3.5.3.tgz#265fe18f784e09473f265eba8b0bfebe96f3ecc4"
   dependencies:
-    "@nofrills/collections" "^3.2.0"
-    "@nofrills/lincoln" "^3.2.0"
-    debug "^3.1.0"
+    "@nofrills/lincoln-debug" "^3.6.0"
+    glob "^7.1.2"
+    mkdirp "^0.5.1"
+    rxjs "^6.3.2"
 
-"@nofrills/lincoln-debug@^3.3.1":
-  version "3.4.0"
-  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.4.0.tgz#194b446129f5ccc9625683ff7d7cfced313612d8"
+"@nofrills/lincoln-debug@^3.3.1", "@nofrills/lincoln-debug@^3.6.0", "@nofrills/lincoln-debug@^3.6.2":
+  version "3.6.3"
+  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.6.3.tgz#e27e1d31fb41f5ec7a55ffdbd18d0e4fa59955e2"
   dependencies:
-    "@nofrills/collections" "^3.2.0"
-    "@nofrills/lincoln" "^3.2.0"
-    debug "^3.1.0"
-
-"@nofrills/lincoln-debug@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.6.0.tgz#78deb687ce45e25cbe3352d324d0616b677e023c"
-  dependencies:
-    "@nofrills/collections" "^3.2.0"
-    "@nofrills/lincoln" "^3.2.0"
+    "@nofrills/collections" "^3.8.0"
+    "@nofrills/lincoln" "^3.5.0"
     debug "^4.0.1"
 
-"@nofrills/lincoln@^3.2.0":
-  version "3.3.1"
-  resolved "https://registry.npmjs.org/@nofrills/lincoln/-/lincoln-3.3.1.tgz#f716c55747bbe4c61ba074206540987af503a367"
+"@nofrills/lincoln-debug@^3.6.5":
+  version "3.6.5"
+  resolved "https://registry.npmjs.org/@nofrills/lincoln-debug/-/lincoln-debug-3.6.5.tgz#5f52382d52af9a75a9a106d97c98e52b8067d652"
   dependencies:
-    "@nofrills/collections" "^3.2.0"
+    "@nofrills/collections" "^3.8.0"
+    "@nofrills/lincoln" "^3.5.0"
+    debug "^4.0.1"
+
+"@nofrills/lincoln@^3.5.0":
+  version "3.5.1"
+  resolved "https://registry.npmjs.org/@nofrills/lincoln/-/lincoln-3.5.1.tgz#61aa26344b96c6b90ffeaa601f4b2f66d84d6779"
+  dependencies:
+    "@nofrills/collections" "^3.8.0"
     uuidjs "^4.0.3"
 
-"@nofrills/patterns@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@nofrills/patterns/-/patterns-1.0.1.tgz#8911a0e84a6f8be6ded1b20ba9e9f53e93abe1f1"
+"@nofrills/patterns@^1.3.1":
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/@nofrills/patterns/-/patterns-1.4.2.tgz#92556ade9c8f125413f628e6e1daaf0c8390fe8a"
 
-"@nofrills/projector@^4.7.0":
-  version "4.7.0"
-  resolved "https://registry.npmjs.org/@nofrills/projector/-/projector-4.7.0.tgz#a45db8a1b145fe009f6587b287d2ab194e99f3c9"
+"@nofrills/projector@^4.8.4":
+  version "4.8.4"
+  resolved "https://registry.npmjs.org/@nofrills/projector/-/projector-4.8.4.tgz#e34d9d6f1961acae43c9b1ac5c359c48f8ff8af2"
   dependencies:
-    "@nofrills/collections" "^3.2.0"
-    "@nofrills/console" "^3.2.0"
-    "@nofrills/fs" "^3.2.0"
-    "@nofrills/lincoln-debug" "^3.2.0"
-    "@nofrills/patterns" "^1.0.0"
-    "@nofrills/scrubs" "^3.2.0"
-    "@nofrills/types" "^3.2.0"
+    "@nofrills/collections" "^3.8.0"
+    "@nofrills/console" "^3.5.0"
+    "@nofrills/fs" "^3.5.1"
+    "@nofrills/lincoln-debug" "^3.6.0"
+    "@nofrills/patterns" "^1.3.1"
+    "@nofrills/scrubs" "^3.5.0"
 
-"@nofrills/scrubs@^3.2.0":
-  version "3.3.3"
-  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.3.3.tgz#8158f595be3e351518b4c6b86a7bf6dd8a83e8a4"
+"@nofrills/scrubs@^3.5.0", "@nofrills/scrubs@^3.5.2":
+  version "3.5.3"
+  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.5.3.tgz#2dd8f655f73b565966d4e8ffa26d4b72ff07a87f"
   dependencies:
-    "@nofrills/lincoln-debug" "^3.2.0"
-    "@nofrills/types" "^3.2.0"
+    "@nofrills/lincoln-debug" "^3.6.0"
     deepmerge "^2.1.1"
 
-"@nofrills/scrubs@^3.5.0":
-  version "3.5.0"
-  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.5.0.tgz#09db7cfd752260c6f3565fdc33e61940b3f839c1"
+"@nofrills/scrubs@^3.5.6":
+  version "3.5.6"
+  resolved "https://registry.npmjs.org/@nofrills/scrubs/-/scrubs-3.5.6.tgz#3c3b6063b83599659dcd26c189210ba6602e541e"
   dependencies:
-    "@nofrills/lincoln-debug" "^3.2.0"
-    "@nofrills/types" "^3.2.0"
+    "@nofrills/lincoln-debug" "^3.6.0"
+    "@nofrills/types" "^3.4.2"
     deepmerge "^2.1.1"
 
-"@nofrills/tasks@^4.1.9":
-  version "4.1.9"
-  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-4.1.9.tgz#85e8caafd73e4dac94a286cff5c8980f80642268"
+"@nofrills/tasks@^5.5.6":
+  version "5.5.6"
+  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-5.5.6.tgz#11d4e9f44533a9f7d105fb73ee55e039be6cdd4f"
   dependencies:
-    "@nofrills/console" "^3.3.2"
-    "@nofrills/fs" "^3.4.2"
-    "@nofrills/lincoln-debug" "^3.3.1"
-    "@nofrills/types" "^3.3.3"
+    "@nofrills/console" "^3.5.0"
+    "@nofrills/fs" "^3.5.1"
+    "@nofrills/lincoln-debug" "^3.6.0"
+    "@nofrills/patterns" "^1.3.1"
     chalk "^2.4.1"
 
-"@nofrills/types@^3.2.0", "@nofrills/types@^3.3.0":
-  version "3.3.3"
-  resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.3.3.tgz#2a6c3119e3a7a7e3f830c1334044c30e0da10434"
-  dependencies:
-    deepmerge "^2.1.1"
-    validator "^10.7.1"
-    zipcodes-regex "^1.0.1"
-
-"@nofrills/types@^3.3.3", "@nofrills/types@^3.4.1":
+"@nofrills/types@^3.3.0":
   version "3.4.1"
   resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.4.1.tgz#8ce3d04bccac537e7e552e1ee92f6440e74923ec"
   dependencies:
@@ -230,9 +207,25 @@
     validator "^10.7.1"
     zipcodes-regex "^1.0.2"
 
+"@nofrills/types@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.4.2.tgz#deca7887b538a16642a0987285894cf8eedc847e"
+  dependencies:
+    deepmerge "^2.1.1"
+    validator "^10.7.1"
+    zipcodes-regex "^1.0.2"
+
+"@nofrills/types@^3.4.3":
+  version "3.4.3"
+  resolved "https://registry.npmjs.org/@nofrills/types/-/types-3.4.3.tgz#e3ad7b02e6490b0033f10eaefe5ba56662e6fda7"
+  dependencies:
+    deepmerge "^2.1.1"
+    validator "^10.7.1"
+    zipcodes-regex "^1.0.2"
+
 "@octokit/rest@^15.2.0":
-  version "15.11.1"
-  resolved "https://registry.npmjs.org/@octokit/rest/-/rest-15.11.1.tgz#ef4e7462ec8f94e535a82220f7b5212111fc2647"
+  version "15.12.0"
+  resolved "https://registry.npmjs.org/@octokit/rest/-/rest-15.12.0.tgz#458efa0466ce3b257726bffff869a06da026e954"
   dependencies:
     before-after-hook "^1.1.0"
     btoa-lite "^1.0.0"
@@ -241,16 +234,17 @@
     https-proxy-agent "^2.2.0"
     lodash "^4.17.4"
     node-fetch "^2.1.1"
+    universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
 "@semantic-release/commit-analyzer@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/@semantic-release/commit-analyzer/-/commit-analyzer-6.0.0.tgz#e26ef70938059f03525573560f65212164953121"
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/@semantic-release/commit-analyzer/-/commit-analyzer-6.0.1.tgz#5acd015130d60e279b6ed2de56b8e0d06169cd3f"
   dependencies:
     conventional-changelog-angular "^5.0.0"
     conventional-commits-filter "^2.0.0"
     conventional-commits-parser "^3.0.0"
-    debug "^3.1.0"
+    debug "^4.0.0"
     import-from "^2.1.0"
     lodash "^4.17.4"
 
@@ -259,14 +253,14 @@
   resolved "https://registry.npmjs.org/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
 
 "@semantic-release/github@^5.0.0":
-  version "5.0.4"
-  resolved "https://registry.npmjs.org/@semantic-release/github/-/github-5.0.4.tgz#09a870e3fb7ccd1a3eedc4d72a7f0a33c1dce794"
+  version "5.0.5"
+  resolved "https://registry.npmjs.org/@semantic-release/github/-/github-5.0.5.tgz#9149b4fd9232f63ee38039c540a800a00a4d9e55"
   dependencies:
     "@octokit/rest" "^15.2.0"
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^1.0.0"
     bottleneck "^2.0.1"
-    debug "^3.1.0"
+    debug "^4.0.0"
     dir-glob "^2.0.0"
     fs-extra "^7.0.0"
     globby "^8.0.0"
@@ -300,14 +294,14 @@
     registry-auth-token "^3.3.1"
 
 "@semantic-release/release-notes-generator@^7.0.0":
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/@semantic-release/release-notes-generator/-/release-notes-generator-7.0.1.tgz#300c06b56e965a0aec5d7a83f164b0d7e497ea7b"
+  version "7.0.2"
+  resolved "https://registry.npmjs.org/@semantic-release/release-notes-generator/-/release-notes-generator-7.0.2.tgz#67f15c53c4f8e68106a74f0364bfb1326ade3e63"
   dependencies:
     conventional-changelog-angular "^5.0.0"
     conventional-changelog-writer "^4.0.0"
     conventional-commits-filter "^2.0.0"
     conventional-commits-parser "^3.0.0"
-    debug "^3.1.0"
+    debug "^4.0.0"
     get-stream "^4.0.0"
     git-url-parse "^10.0.1"
     import-from "^2.1.0"
@@ -320,17 +314,17 @@
   dependencies:
     "@types/chai" "*"
 
-"@types/chai@*", "@types/chai@^4.0.4":
-  version "4.1.4"
-  resolved "https://registry.npmjs.org/@types/chai/-/chai-4.1.4.tgz#5ca073b330d90b4066d6ce18f60d57f2084ce8ca"
+"@types/chai@*", "@types/chai@^4.1.5":
+  version "4.1.5"
+  resolved "https://registry.npmjs.org/@types/chai/-/chai-4.1.5.tgz#6163dc60078d215ec46186dc76062ef6ed68d39c"
 
 "@types/mocha@^5.2.5":
   version "5.2.5"
   resolved "https://registry.npmjs.org/@types/mocha/-/mocha-5.2.5.tgz#8a4accfc403c124a0bafe8a9fc61a05ec1032073"
 
-"@types/node@^10.10.1":
-  version "10.10.1"
-  resolved "https://registry.npmjs.org/@types/node/-/node-10.10.1.tgz#d5c96ca246a418404914d180b7fdd625ad18eca6"
+"@types/node@^10.10.3":
+  version "10.10.3"
+  resolved "https://registry.npmjs.org/@types/node/-/node-10.10.3.tgz#09c75a4ad84d6a3d286790bdd9489a4f8ee9906c"
 
 JSONStream@^1.0.4, JSONStream@^1.3.4:
   version "1.3.4"
@@ -604,8 +598,8 @@ bluebird@^3.5.0, bluebird@^3.5.1, bluebird@~3.5.1:
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.5.2.tgz#1be0908e054a751754549c270489c1505d4ab15a"
 
 bottleneck@^2.0.1:
-  version "2.9.0"
-  resolved "https://registry.npmjs.org/bottleneck/-/bottleneck-2.9.0.tgz#1cf11c3c9db1b65075fae03967418ea03ba66814"
+  version "2.11.0"
+  resolved "https://registry.npmjs.org/bottleneck/-/bottleneck-2.11.0.tgz#d91e194ef071ddb88312f13454405e52067ea9cc"
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -821,17 +815,21 @@ check-error@^1.0.1, check-error@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
-chownr@^1.0.1, chownr@~1.0.1:
+chownr@^1.0.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/chownr/-/chownr-1.1.1.tgz#54726b8b8fff4df053c42187e801fb4412df1494"
+
+chownr@~1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/chownr/-/chownr-1.0.1.tgz#e2a75042a9551908bebd25b8523d5f9769d79181"
+  resolved "http://registry.npmjs.org/chownr/-/chownr-1.0.1.tgz#e2a75042a9551908bebd25b8523d5f9769d79181"
 
-ci-info@^1.3.0, ci-info@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/ci-info/-/ci-info-1.4.0.tgz#4841d53cad49f11b827b648ebde27a6e189b412f"
+ci-info@^1.4.0, ci-info@^1.5.0:
+  version "1.6.0"
+  resolved "https://registry.npmjs.org/ci-info/-/ci-info-1.6.0.tgz#2ca20dbb9ceb32d4524a683303313f0304b1e497"
 
-cidr-regex@^2.0.8:
-  version "2.0.9"
-  resolved "https://registry.npmjs.org/cidr-regex/-/cidr-regex-2.0.9.tgz#9c17bb2b18e15af07f7d0c3b994b961d687ed1c9"
+cidr-regex@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.npmjs.org/cidr-regex/-/cidr-regex-2.0.10.tgz#af13878bd4ad704de77d6dc800799358b3afa70d"
   dependencies:
     ip-regex "^2.1.0"
 
@@ -949,9 +947,15 @@ columnify@~1.5.4:
     strip-ansi "^3.0.0"
     wcwidth "^1.0.0"
 
-combined-stream@1.0.6, combined-stream@~1.0.6:
+combined-stream@1.0.6:
   version "1.0.6"
-  resolved "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.6.tgz#723e7df6e801ac5613113a7e445a9b69cb632818"
+  resolved "http://registry.npmjs.org/combined-stream/-/combined-stream-1.0.6.tgz#723e7df6e801ac5613113a7e445a9b69cb632818"
+  dependencies:
+    delayed-stream "~1.0.0"
+
+combined-stream@~1.0.6:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.7.tgz#2d1d24317afb8abe95d6d2c0b07b57813539d828"
   dependencies:
     delayed-stream "~1.0.0"
 
@@ -1017,8 +1021,8 @@ concat-stream@^1.4.7, concat-stream@^1.5.0, concat-stream@^1.5.2:
     typedarray "^0.0.6"
 
 config-chain@~1.1.11:
-  version "1.1.11"
-  resolved "https://registry.npmjs.org/config-chain/-/config-chain-1.1.11.tgz#aba09747dfbe4c3e70e766a6e41586e1859fc6f2"
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
   dependencies:
     ini "^1.3.4"
     proto-list "~1.2.1"
@@ -1208,7 +1212,7 @@ debug-log@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/debug-log/-/debug-log-1.0.1.tgz#2307632d4c04382b8df8a32f70b895046d52745f"
 
-debug@3.1.0, debug@^3.1.0:
+debug@3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -1219,6 +1223,12 @@ debug@^2.2.0, debug@^2.3.3:
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
     ms "2.0.0"
+
+debug@^3.1.0:
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/debug/-/debug-3.2.5.tgz#c2418fbfd7a29f4d4f70ff4cea604d4b64c46407"
+  dependencies:
+    ms "^2.1.1"
 
 debug@^4.0.0, debug@^4.0.1:
   version "4.0.1"
@@ -1367,7 +1377,7 @@ dot-prop@^4.1.0:
 
 dotenv@^5.0.1:
   version "5.0.1"
-  resolved "https://registry.npmjs.org/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
+  resolved "http://registry.npmjs.org/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
 
 duplexer2@~0.1.0:
   version "0.1.4"
@@ -1411,9 +1421,9 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-env-ci@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/env-ci/-/env-ci-2.4.0.tgz#1ceacee17a6860fffa04436cea586d15534b4c4d"
+env-ci@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/env-ci/-/env-ci-3.0.0.tgz#16f022753562dee387e0bdca3dd629a497ed67b5"
   dependencies:
     execa "^1.0.0"
     java-properties "^0.2.9"
@@ -1439,8 +1449,8 @@ es6-error@^4.0.1:
   resolved "https://registry.npmjs.org/es6-error/-/es6-error-4.1.1.tgz#9e3af407459deed47e9a91f9b885a84eb05c561d"
 
 es6-promise@^4.0.3:
-  version "4.2.4"
-  resolved "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.4.tgz#dc4221c2b16518760bd8c39a52d8f356fc00ed29"
+  version "4.2.5"
+  resolved "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.5.tgz#da6d0d5692efb461e082c14817fe2427d8f5d054"
 
 es6-promisify@^5.0.0:
   version "5.0.0"
@@ -1723,7 +1733,7 @@ for-own@^0.1.4:
 
 foreground-child@^1.5.6:
   version "1.5.6"
-  resolved "https://registry.npmjs.org/foreground-child/-/foreground-child-1.5.6.tgz#4fd71ad2dfde96789b980a5c0a295937cb2f5ce9"
+  resolved "http://registry.npmjs.org/foreground-child/-/foreground-child-1.5.6.tgz#4fd71ad2dfde96789b980a5c0a295937cb2f5ce9"
   dependencies:
     cross-spawn "^4"
     signal-exit "^3.0.0"
@@ -2201,7 +2211,7 @@ init-package-json@^1.10.3:
 
 inquirer@1.2.3:
   version "1.2.3"
-  resolved "https://registry.npmjs.org/inquirer/-/inquirer-1.2.3.tgz#4dec6f32f37ef7bb0b2ed3f1d1a5c3f545074918"
+  resolved "http://registry.npmjs.org/inquirer/-/inquirer-1.2.3.tgz#4dec6f32f37ef7bb0b2ed3f1d1a5c3f545074918"
   dependencies:
     ansi-escapes "^1.1.0"
     chalk "^1.0.0"
@@ -2291,21 +2301,21 @@ is-buffer@^1.1.5:
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/is-builtin-module/-/is-builtin-module-1.0.0.tgz#540572d34f7ac3119f8f76c30cbc1b1e037affbe"
+  resolved "http://registry.npmjs.org/is-builtin-module/-/is-builtin-module-1.0.0.tgz#540572d34f7ac3119f8f76c30cbc1b1e037affbe"
   dependencies:
     builtin-modules "^1.0.0"
 
 is-ci@^1.0.10:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/is-ci/-/is-ci-1.2.0.tgz#3f4a08d6303a09882cef3f0fb97439c5f5ce2d53"
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/is-ci/-/is-ci-1.2.1.tgz#e3779c8ee17fccf428488f6e281187f2e632841c"
   dependencies:
-    ci-info "^1.3.0"
+    ci-info "^1.5.0"
 
 is-cidr@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.npmjs.org/is-cidr/-/is-cidr-2.0.6.tgz#4b01c9693d8e18399dacd18a4f3d60ea5871ac60"
+  version "2.0.7"
+  resolved "https://registry.npmjs.org/is-cidr/-/is-cidr-2.0.7.tgz#0fd4b863c26b2eb2d157ed21060c4f3f8dd356ce"
   dependencies:
-    cidr-regex "^2.0.8"
+    cidr-regex "^2.0.10"
 
 is-data-descriptor@^0.1.4:
   version "0.1.4"
@@ -2430,7 +2440,7 @@ is-number@^4.0.0:
 
 is-obj@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  resolved "http://registry.npmjs.org/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
 
 is-path-inside@^1.0.0:
   version "1.0.1"
@@ -2627,7 +2637,7 @@ json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
 
 jsonfile@^2.1.0:
   version "2.4.0"
-  resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
+  resolved "http://registry.npmjs.org/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
   optionalDependencies:
     graceful-fs "^4.1.6"
 
@@ -2849,8 +2859,8 @@ lodash@4.17.5:
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0:
-  version "4.17.10"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+  version "4.17.11"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
 log-driver@^1.2.7:
   version "1.2.7"
@@ -2883,6 +2893,10 @@ lru-cache@^4.0.1, lru-cache@^4.1.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+macos-release@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/macos-release/-/macos-release-1.1.0.tgz#831945e29365b470aa8724b0ab36c8f8959d10fb"
 
 make-dir@^1.0.0, make-dir@^1.3.0:
   version "1.3.0"
@@ -3647,7 +3661,7 @@ opener@^1.5.0:
 
 opn@4.0.2:
   version "4.0.2"
-  resolved "https://registry.npmjs.org/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
+  resolved "http://registry.npmjs.org/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
   dependencies:
     object-assign "^4.0.1"
     pinkie-promise "^2.0.0"
@@ -3678,6 +3692,13 @@ os-locale@^3.0.0:
     execa "^0.10.0"
     lcid "^2.0.0"
     mem "^4.0.0"
+
+os-name@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/os-name/-/os-name-2.0.1.tgz#b9a386361c17ae3a21736ef0599405c9a8c5dc5e"
+  dependencies:
+    macos-release "^1.0.0"
+    win-release "^1.0.0"
 
 os-shim@^0.1.2:
   version "0.1.3"
@@ -4133,7 +4154,7 @@ read@1, read@~1.0.1, read@~1.0.7:
 
 "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.6:
   version "2.3.6"
-  resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.3"
@@ -4145,7 +4166,7 @@ read@1, read@~1.0.1, read@~1.0.7:
 
 readable-stream@~1.1.10:
   version "1.1.14"
-  resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -4348,7 +4369,7 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^6.3.1, rxjs@^6.3.2:
+rxjs@^6.3.2:
   version "6.3.2"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.3.2.tgz#6a688b16c4e6e980e62ea805ec30648e1c60907f"
   dependencies:
@@ -4368,9 +4389,9 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-semantic-release@^15.9.15:
-  version "15.9.15"
-  resolved "https://registry.npmjs.org/semantic-release/-/semantic-release-15.9.15.tgz#e423dc5468f7e5bf601d5ca8bf4ae6d4ada5eadf"
+semantic-release@^15.9.16:
+  version "15.9.16"
+  resolved "https://registry.npmjs.org/semantic-release/-/semantic-release-15.9.16.tgz#70391ef6a9246253f54061ecd06634994e305b1e"
   dependencies:
     "@semantic-release/commit-analyzer" "^6.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -4380,7 +4401,7 @@ semantic-release@^15.9.15:
     aggregate-error "^1.0.0"
     cosmiconfig "^5.0.1"
     debug "^4.0.0"
-    env-ci "^2.4.0"
+    env-ci "^3.0.0"
     execa "^1.0.0"
     figures "^2.0.0"
     find-versions "^2.0.0"
@@ -4410,7 +4431,7 @@ semver-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/semver-regex/-/semver-regex-1.0.0.tgz#92a4969065f9c70c694753d55248fc68f8f652c9"
 
-"semver@2 >=2.2.1 || 3.x || 4 || 5", "semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", "semver@^2.3.0 || 3.x || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
+"semver@2 >=2.2.1 || 3.x || 4 || 5", "semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", "semver@^2.3.0 || 3.x || 4 || 5", semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
   version "5.5.1"
   resolved "https://registry.npmjs.org/semver/-/semver-5.5.1.tgz#7dfdd8814bdb7cabc7be0fb1d734cfb66c940477"
 
@@ -4470,8 +4491,8 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
 signale@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/signale/-/signale-1.2.1.tgz#fbd4b952603ea3315dbe9e88f4f482f336cee828"
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/signale/-/signale-1.3.0.tgz#1b4917c2c7a8691550adca0ad1da750a662b4497"
   dependencies:
     chalk "^2.3.2"
     figures "^2.0.0"
@@ -4832,8 +4853,8 @@ test-exclude@^5.0.0:
     require-main-filename "^1.0.1"
 
 text-extensions@^1.0.0:
-  version "1.7.0"
-  resolved "https://registry.npmjs.org/text-extensions/-/text-extensions-1.7.0.tgz#faaaba2625ed746d568a23e4d0aacd9bf08a8b39"
+  version "1.8.0"
+  resolved "https://registry.npmjs.org/text-extensions/-/text-extensions-1.8.0.tgz#6f343c62268843019b21a616a003557bdb952d2b"
 
 text-table@~0.2.0:
   version "0.2.0"
@@ -4848,7 +4869,7 @@ through2@^2.0.0, through2@^2.0.2, through2@~2.0.0:
 
 through@2, "through@>=2.2.7 <3", through@^2.3.6:
   version "2.3.8"
-  resolved "https://registry.npmjs.org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+  resolved "http://registry.npmjs.org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 timed-out@^4.0.0:
   version "4.0.1"
@@ -5036,14 +5057,14 @@ union-value@^1.0.0:
     set-value "^0.4.3"
 
 unique-filename@^1.1.0, unique-filename@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/unique-filename/-/unique-filename-1.1.0.tgz#d05f2fe4032560871f30e93cbe735eea201514f3"
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/unique-filename/-/unique-filename-1.1.1.tgz#1d69769369ada0583103a1e6ae87681b56573230"
   dependencies:
     unique-slug "^2.0.0"
 
 unique-slug@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/unique-slug/-/unique-slug-2.0.0.tgz#db6676e7c7cc0629878ff196097c78855ae9f4ab"
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/unique-slug/-/unique-slug-2.0.1.tgz#5e9edc6d1ce8fb264db18a507ef9bd8544451ca6"
   dependencies:
     imurmurhash "^0.1.4"
 
@@ -5052,6 +5073,12 @@ unique-string@^1.0.0:
   resolved "https://registry.npmjs.org/unique-string/-/unique-string-1.0.0.tgz#9e1057cca851abb93398f8b33ae187b99caec11a"
   dependencies:
     crypto-random-string "^1.0.0"
+
+universal-user-agent@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/universal-user-agent/-/universal-user-agent-2.0.1.tgz#18e591ca52b1cb804f6b9cbc4c336cf8191f80e1"
+  dependencies:
+    os-name "^2.0.1"
 
 universalify@^0.1.0:
   version "0.1.2"
@@ -5178,6 +5205,12 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
+win-release@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/win-release/-/win-release-1.1.1.tgz#5fa55e02be7ca934edfc12665632e849b72e5209"
+  dependencies:
+    semver "^5.0.1"
+
 word-wrap@^1.0.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
@@ -5288,10 +5321,6 @@ yargs@^12.0.0:
 yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
-
-zipcodes-regex@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/zipcodes-regex/-/zipcodes-regex-1.0.1.tgz#18763d814245094ace277666b7a805bc7f9db74d"
 
 zipcodes-regex@^1.0.2:
   version "1.0.2"

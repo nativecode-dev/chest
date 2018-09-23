@@ -7,24 +7,24 @@
   "types": "./lib/index.d.ts",
   "version": "0.0.0-development",
   "bin": {
-    "chest": "./lib/chest.js"
+    "chest": "./lib/cli.js"
   },
   "dependencies": {
     "@nofrills/collections": "^3.8.0",
-    "@nofrills/console": "^3.5.0",
-    "@nofrills/fs": "^3.5.1",
-    "@nofrills/lincoln-debug": "^3.6.0",
-    "@nofrills/scrubs": "^3.5.0",
-    "@nofrills/types": "^3.4.1"
+    "@nofrills/console": "^3.5.2",
+    "@nofrills/fs": "^3.5.3",
+    "@nofrills/lincoln-debug": "^3.6.5",
+    "@nofrills/scrubs": "^3.5.6",
+    "@nofrills/types": "^3.4.3"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@nofrills/projector": "^4.7.0",
-    "@nofrills/tasks": "^4.1.9",
-    "@types/chai": "^4.0.4",
+    "@nofrills/projector": "^4.8.4",
+    "@nofrills/tasks": "^5.5.6",
+    "@types/chai": "^4.1.5",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.10.1",
+    "@types/node": "^10.10.3",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "commitizen": "^2.10.1",
@@ -33,7 +33,7 @@
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "rimraf": "^2.6.2",
-    "semantic-release": "^15.9.15",
+    "semantic-release": "^15.9.16",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^8.0.1",
@@ -78,6 +78,6 @@
     "coveralls": "cli-tasks test:coverage",
     "release": "cli-tasks release",
     "commit": "cli-tasks commit",
-    "setup": "cli-tasks configure"
+    "ssh": "set-up-ssh --key $encrypted_7baae619033b_key --iv $encrypted_7baae619033b_iv --path-encrypted-key \".travis/deploy.enc\""
   }
 }
