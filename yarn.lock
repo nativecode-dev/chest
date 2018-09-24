@@ -109,9 +109,9 @@
     "@nofrills/lincoln-debug" "^3.6.2"
     "@nofrills/scrubs" "^3.5.2"
 
-"@nofrills/console@^3.5.2":
-  version "3.5.2"
-  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.5.2.tgz#4937e34b104b4c8749099e2941c09537cf633510"
+"@nofrills/console@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.npmjs.org/@nofrills/console/-/console-3.6.0.tgz#36661086728578f2168e6277f45961e340d75da5"
   dependencies:
     "@nofrills/fs" "^3.5.1"
     "@nofrills/lincoln-debug" "^3.6.2"
@@ -189,9 +189,9 @@
     "@nofrills/types" "^3.4.2"
     deepmerge "^2.1.1"
 
-"@nofrills/tasks@^5.5.6":
-  version "5.5.6"
-  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-5.5.6.tgz#11d4e9f44533a9f7d105fb73ee55e039be6cdd4f"
+"@nofrills/tasks@^5.6.0":
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/@nofrills/tasks/-/tasks-5.6.0.tgz#7cd3873e0a69b099a3372b19440ca6f83cb8b3e1"
   dependencies:
     "@nofrills/console" "^3.5.0"
     "@nofrills/fs" "^3.5.1"
