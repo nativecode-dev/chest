@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
     "lib": [
-      "es2015"
+      "es2019"
     ],
     "module": "commonjs",
     "moduleResolution": "node",

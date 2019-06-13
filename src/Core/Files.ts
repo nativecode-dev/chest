@@ -29,7 +29,7 @@ class InternalFileSystem implements FileSystem {
   }
 
   public deletefile(filepath: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => fs.unlink(filepath, (error: NodeJS.ErrnoException) => {
+    return new Promise<void>((resolve, reject) => fs.unlink(filepath, (error: NodeJS.ErrnoException | null) => {
       if (error) {
         reject(error)
       } else {
@@ -43,7 +43,7 @@ class InternalFileSystem implements FileSystem {
   }
 
   public exists(filepath: string): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => fs.access(filepath, (error: Error) => {
+    return new Promise<boolean>((resolve, reject) => fs.access(filepath, (error: Error | null) => {
       if (error) {
         resolve(false)
       }
@@ -83,7 +83,7 @@ class InternalFileSystem implements FileSystem {
 
   public mkdir(filepath: string): Promise<void> {
     return new Promise<void>(async (resolve, reject) => {
-      fs.mkdir(filepath, (error: NodeJS.ErrnoException) => {
+      fs.mkdir(filepath, (error: NodeJS.ErrnoException | null) => {
         if (error) {
           reject(error)
         } else {
@@ -103,7 +103,7 @@ class InternalFileSystem implements FileSystem {
 
   public readfile(filepath: string): Promise<Buffer> {
     return new Promise<Buffer>((resolve, reject) => {
-      fs.readFile(filepath, (error: NodeJS.ErrnoException, data: Buffer) => {
+      fs.readFile(filepath, (error: NodeJS.ErrnoException | null, data: Buffer) => {
         if (error) {
           reject(error)
         } else {
@@ -115,7 +115,7 @@ class InternalFileSystem implements FileSystem {
   }
 
   public rename(original: string, filepath: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => fs.rename(original, filepath, (error: NodeJS.ErrnoException) => {
+    return new Promise<void>((resolve, reject) => fs.rename(original, filepath, (error: NodeJS.ErrnoException | null) => {
       if (error) {
         reject(error)
       } else {
@@ -130,7 +130,7 @@ class InternalFileSystem implements FileSystem {
 
   public statfile(filepath: string): Promise<fs.Stats> {
     return new Promise<fs.Stats>((resolve, reject) => {
-      fs.stat(filepath, (error: NodeJS.ErrnoException, stats: fs.Stats) => {
+      fs.stat(filepath, (error: NodeJS.ErrnoException | null, stats: fs.Stats) => {
         if (error) {
           reject(error)
         } else {
@@ -142,7 +142,7 @@ class InternalFileSystem implements FileSystem {
 
   public statfiles(filepath: string): Promise<Stat[]> {
     return new Promise<Stat[]>((resolve, reject) => {
-      fs.readdir(filepath, async (error: NodeJS.ErrnoException, files: string[]) => {
+      fs.readdir(filepath, async (error: NodeJS.ErrnoException | null, files: string[]) => {
         if (error) {
           reject(error)
         } else {
@@ -166,7 +166,7 @@ class InternalFileSystem implements FileSystem {
 
   public writefile(filepath: string, data: any): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      fs.writeFile(filepath, data, (error: NodeJS.ErrnoException) => {
+      fs.writeFile(filepath, data, (error: NodeJS.ErrnoException | null) => {
         if (error) {
           reject(error)
         } else {

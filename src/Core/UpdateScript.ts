@@ -42,6 +42,10 @@ export abstract class UpdateScript implements Updater {
         }
       })
 
+      if (!child.stderr || !child.stdout) {
+        throw new Error('could not get stdout or stderr')
+      }
+
       child.stderr.on('data', data =>
         this.stream(project, process.stderr, data)
           .map(lines => lines)
